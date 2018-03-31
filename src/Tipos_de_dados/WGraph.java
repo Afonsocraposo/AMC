@@ -1,3 +1,5 @@
+package Tipos_de_dados;
+
 public class WGraph {
 	
 	private class Edge {
