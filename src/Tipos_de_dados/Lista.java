@@ -17,7 +17,9 @@ public class Lista implements List {
 		first=null;
 		length=0;
 	}
-	
+	public int getFirst() {
+		return first.value;
+	}
 	public void insert(int x) {
 		Node aux=new Node(x,first);
 		first=aux;

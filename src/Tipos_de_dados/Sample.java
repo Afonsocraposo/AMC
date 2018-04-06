@@ -7,4 +7,5 @@ public interface Sample {
 	public int count(int[] variables, int[] values);//recebe um vector de variaveis Xi e um vector de
 	                                               //valores di e devolve o numero de ocorrencias dessas 
 	                                              //variaveis com esses valores
+	public int Domains(int x);//devolve o domínio da variavel x
 }
