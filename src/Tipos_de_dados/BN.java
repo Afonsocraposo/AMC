@@ -17,14 +17,19 @@ public class BN {
 					int[] Values1= {di,wi};
 					int[] Variables2= {Pi};
 					int[] Values2= {wi};
-					temp[di][wi]=(A.count(Variables1,Values1)+S)/(A.count(Variables2,Values2)+S*xDomain);
+					temp[di][wi]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.count(Variables2,Values2)+S*xDomain);
 				}
 			}
 			Theta[x]=temp;
 		}
 	}
 	
-	public double prob(int[] v) {//tenho de ver como calcular a probabilidade, provavelmente somar 
-		return 0.5;             //os logaritmos das entradas de theta para os pares 
-	}	                       // di, wi que tenho no vector e fazer a exponencial disso. 
+	public double prob(int[] v) {
+		double p=0.0;
+		for(int x=0;x<v.length;x++) {
+			int Pi=g.parents(x).getFirst();
+			p+=Theta[x][v[x]][v[Pi]];
+		}
+		return p; 
+	}	                       
 }
