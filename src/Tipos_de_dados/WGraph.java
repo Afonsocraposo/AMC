@@ -4,17 +4,17 @@ public class WGraph {
 	
 	private class Edge {
 		
-		private Node to;
+		private Gnode to;
 		private int weight;
 		private Edge next;
 		
-		private Edge(Node n, int w) {
+		private Edge(Gnode n, int w) {
 			to=n;
 			weight=w;
 			next=null;
 		}
 		
-		public Node get_to() {
+		public Gnode get_to() {
 			return to;
 		}
 		
@@ -34,7 +34,7 @@ public class WGraph {
 			comp = 0;
 		}
 		
-		private void ins(Node n, int w) {
+		private void ins(Gnode n, int w) {
 			Edge e = new Edge(n, w);
 			e.next=last;
 			last=e;
@@ -53,13 +53,13 @@ public class WGraph {
 	}
 	
 	
-	class Node {
+	class Gnode {
 		
 		private int val;
-		private Node next;
+		private Gnode next;
 		private Children children;
 		
-		private Node(int v){
+		private Gnode(int v){
 			val=v;
 			next=null;
 			children = new Children();
@@ -75,7 +75,7 @@ public class WGraph {
 	}
 	
 	
-	private Node first;
+	private Gnode first;
 	private int comp;
 	
 	public WGraph(int n) {
@@ -84,14 +84,14 @@ public class WGraph {
 		comp=n;
 		
 		for(int i=0;i<n;i++) {
-			Node no = new Node(0);
+			Gnode no = new Gnode(0);
 			no.next = first;
 			first=no;
 		}
 	}
 	
-	public void add_edge(Node n1, Node n2, int w) {
-		Node aux=first;
+	public void add_edge(Gnode n1, Gnode n2, int w) {
+		Gnode aux=first;
 		while(aux!=null) {
 			if(aux==n1) {
 				aux.children.ins(n2,w);
@@ -101,8 +101,8 @@ public class WGraph {
 		}
 	}
 	
-	public Node get_node(int pos) {
-		Node aux = first;
+	public Gnode get_Gnode(int pos) {
+		Gnode aux = first;
 		for(int i=comp-1;i>pos;i--) {
 			aux=first.next;
 		}
@@ -111,8 +111,8 @@ public class WGraph {
 	
 	public static void main(String[] args) {
 		WGraph g = new WGraph(3);
-		Node n1 = g.get_node(1);
-		Node n2 = g.get_node(2);
+		Gnode n1 = g.get_Gnode(1);
+		Gnode n2 = g.get_Gnode(2);
 		g.add_edge(n1, n2, 3);
 		Edge e = n1.child().get_edge(0);
 		System.out.println(n2==e.get_to());
