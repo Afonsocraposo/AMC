@@ -6,20 +6,33 @@ public class BN {
 	
 	public BN(Oriented_Graphs g, Sample A, double S) {
 		this.g=g;
-		for(int x=0; x<A.element(0).length; x++) {
-			int Pi=g.parents(x).getFirst();
-			int xDomain=A.Domains(x);
-			int PiDomain=A.Domains(Pi);
-			double[][] temp=new double[xDomain][PiDomain];
-			for(int di=0; di<xDomain;di++) {
-				for(int wi=0;wi<PiDomain;wi++) {
-					int[] Variables1= {x,Pi};
-					int[] Values1= {di,wi};
-					int[] Variables2= {Pi};
-					int[] Values2= {wi};
-					temp[di][wi]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.count(Variables2,Values2)+S*xDomain);
-				}
+		for(int x=0; x<A.element(0).length-1; x++) {
+			List Parents=g.parents(x);
+			double[][] temp;
+			if(!Parents.emptyQ()) {
+				int Pi=Parents.getFirst();
+				int xDomain=A.Domains(x);
+				int PiDomain=A.Domains(Pi);
+				temp=new double[xDomain][PiDomain];
+				for(int di=0; di<xDomain;di++) {
+					for(int wi=0;wi<PiDomain;wi++) {
+						int[] Variables1= {x,Pi};
+						int[] Values1= {di,wi};
+						int[] Variables2= {Pi};
+						int[] Values2= {wi};
+						temp[di][wi]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.count(Variables2,Values2)+S*xDomain);
+					}
+			} 
+		} else {
+				int xDomain=A.Domains(x);
+				int PiDomain=1;
+				temp=new double[xDomain][PiDomain];
+				for(int di=0; di<xDomain;di++) {
+						int[] Variables1= {x};
+						int[] Values1= {di};
+						temp[di][0]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.length()+S*xDomain);
 			}
+		}
 			Theta[x]=temp;
 		}
 	}
