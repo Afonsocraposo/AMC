@@ -79,6 +79,7 @@ public class WGraph {
 		l.insort();
 	}
 	
+	/*
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(9);
 		wg.add_edge(0, 1, 4);
@@ -96,8 +97,9 @@ public class WGraph {
 		wg.add_edge(3, 4, 9);
 		wg.add_edge(5, 4, 10);
 		DGraph dg = wg.MST(0);
+
 	}
-	
+	*/
 	
 	
 	
