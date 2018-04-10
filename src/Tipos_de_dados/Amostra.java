@@ -6,7 +6,7 @@ class no { //no = node mas com vetor em vez de int como entradas
 	int[] vector;
 	no next;
 	
-	public no (int[] vector, no next) {
+	public no(int[] vector, no next) {
 		super();
 		this.vector = vector;
 		this.next = next;
@@ -24,11 +24,12 @@ class no { //no = node mas com vetor em vez de int como entradas
 
 
 public class Amostra implements Sample{
-	int[] Domains;
-	int len;
-	no first;
+	protected int[] Domains;
+	protected int len;
+	protected no first;
 
-	public Amostra(int[] Domains) {
+	public Amostra(int[] Domains) { //O Domains não pode ser introduzido imediatamente como um vetor
+		                            //mas sim como uma variável já definida
 		this.Domains = Domains;
 		this.len = 0;
 		this.first = null;
@@ -61,8 +62,7 @@ public class Amostra implements Sample{
 	}
 
 
-	public int[] element(int i) { //assumi que first = posição 0)
-		//incluir msg de erro se i > len, maybe?
+	public int[] element(int i) { //assumi que first = posição 0
 		no n = first;
 		int j = 0;
 		while (j != i) {
@@ -71,13 +71,26 @@ public class Amostra implements Sample{
 		}
 		return n.vector;
 	}
-
-//não percebi o que é suposto a função count fazer
+//recebe um vector de variaveis e um vector de valores e retorna o numero de
+	//ocorrencias desses valores para essas variaveis na amostra
 	public int count(int[] variables, int[] values) {
-
-		return 0;
+		int num = 0;
+		no n = first;
+		while (n != null) {
+			int j = 0;
+			boolean boo = true;
+			while (j < variables.length && boo) {
+				boo = n.vector[variables[j]] == values[j];
+				j++;
+				}
+			if (boo) {
+				num++;
+			}
+			n = n.next;
+		}
+		return num;
 	}
 
-
+	
 }
 
