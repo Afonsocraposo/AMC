@@ -42,5 +42,35 @@ public class Lista implements List {
 	public boolean emptyQ() {
 		return first==null;
 	}
+	
+	public boolean isIn(int x) {
+		Node runner=first;
+		if(runner.value==x) {
+			return true;}
+		while(runner.next!=null&&runner.next.value!=x)runner=runner.next;
+		if(runner.next!=null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int pos(int x) {
+		Node runner=first;
+		if(x==0) {
+			return runner.value;}
+		for(int i=0;i<x;i++) {
+			runner=runner.next;
+		}
+		return runner.value;
+	}
+	
+	public void disp() {
+		Node runner=first;
+		while(runner!=null) {
+	         System.out.print(runner.value + " ");
+	         runner=runner.next;
+	      }
+		System.out.println(" ");
+	}
 
 }

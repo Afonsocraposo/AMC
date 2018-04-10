@@ -1,122 +1,106 @@
 package Tipos_de_dados;
 
+import Tipos_de_dados.ListaE.Node2;
+
 public class WGraph {
 	
-	private class Edge {
-		
-		private Node to;
-		private int weight;
-		private Edge next;
-		
-		private Edge(Node n, int w) {
-			to=n;
-			weight=w;
-			next=null;
+	private int[][] nodes;
+	private int dim;
+	
+	public WGraph (int n) {
+		nodes = new int[n-1][];
+		for(int i=1;i<n;i++) {
+			nodes[i-1]=new int[n-i];
 		}
-		
-		public Node get_to() {
-			return to;
-		}
-		
-		public int get_weight() {
-			return weight;
-		}
-		
+		dim = n-1;
 	}
 	
-	private class Children {
-		
-		private Edge last;
-		private int comp;
-		
-		private Children() {
-			last = null;
-			comp = 0;
+	public void add_edge (int node1, int node2, int weight) {
+		if(node1!=node2) {
+			if(node1>node2) nodes[node2][node1-(node2+1)] = weight;
+			else nodes[node1][node2-(node1+1)] = weight;
 		}
-		
-		private void ins(Node n, int w) {
-			Edge e = new Edge(n, w);
-			e.next=last;
-			last=e;
-			comp++;
+	}
+	
+	public void remove_edge(int node1, int node2) {
+		if(node1!=node2) {
+			if(node1>node2) nodes[node2][node1-(node2+1)] = 0;
+			else nodes[node1][node2-(node1+1)] = 0;
 		}
+	}
+	
+	public DGraph MST(int node){
 		
-		public Edge get_edge(int pos) {
-			Edge aux = last;
-			for(int i=comp-1;i>pos;i--) {
-				aux=last.next;
+		ListaE result = new ListaE();
+		ListaE options = new ListaE();
+		
+		DGraph result_dgraph = new DGraph(dim+1);
+		
+		Node2 aux;
+		
+		Lista visited = new Lista();
+		visited.insert(node);
+		
+		while(visited.length!=dim+1) {
+			options = new ListaE();
+			for(int i=0; i<visited.length; i++) {
+				adj(visited.pos(i),options);
 			}
-			return aux;
-		}
-		
-		
-	}
-	
-	
-	class Node {
-		
-		private int val;
-		private Node next;
-		private Children children;
-		
-		private Node(int v){
-			val=v;
-			next=null;
-			children = new Children();
-		}	
-		
-		public int val() {
-			return val;
-		}
-		
-		public Children child() {
-			return children;
-		}
-	}
-	
-	
-	private Node first;
-	private int comp;
-	
-	public WGraph(int n) {
-		
-		first=null;
-		comp=n;
-		
-		for(int i=0;i<n;i++) {
-			Node no = new Node(0);
-			no.next = first;
-			first=no;
-		}
-	}
-	
-	public void add_edge(Node n1, Node n2, int w) {
-		Node aux=first;
-		while(aux!=null) {
-			if(aux==n1) {
-				aux.children.ins(n2,w);
-				return;
+			for(int i=options.len()-1; i>0; i--) {
+				aux=options.pos(i);
+				if(!visited.isIn(aux.nodeb)) {
+					result.append(aux.nodea, aux.nodeb, aux.weight);
+					visited.insert(aux.nodeb);
+					break;
+				}
 			}
-			aux=aux.next;
+			
 		}
+		
+		for(int i=0;i<dim+1;i++) {
+			aux=result.pos(i);
+			result_dgraph.add_edge(aux.nodea, aux.nodeb);
+		}
+		return result_dgraph;
 	}
 	
-	public Node get_node(int pos) {
-		Node aux = first;
-		for(int i=comp-1;i>pos;i--) {
-			aux=first.next;
+	public void adj(int node, ListaE l) {
+		for(int i=0;i<node;i++) {
+			if(!(l.pert(i, node)) && nodes[i][node-(i+1)]!=0) {
+				l.append(node, i, nodes[i][node-(i+1)]);
+			}
 		}
-		return aux;
+			
+		for(int j=0; j<dim-node;j++) {
+			if(!(l.pert(node, node+j+1)) && nodes[node][j]!=0) {
+				l.append(node, node+j+1, nodes[node][j]);
+			}
+		}
+		l.insort();
 	}
 	
+	/*
 	public static void main(String[] args) {
-		WGraph g = new WGraph(3);
-		Node n1 = g.get_node(1);
-		Node n2 = g.get_node(2);
-		g.add_edge(n1, n2, 3);
-		Edge e = n1.child().get_edge(0);
-		System.out.println(n2==e.get_to());
-		System.out.println(e.get_weight());
+		WGraph wg = new WGraph(9);
+		wg.add_edge(0, 1, 4);
+		wg.add_edge(0, 7, 8);
+		wg.add_edge(1, 7, 11);
+		wg.add_edge(1, 2, 8);
+		wg.add_edge(7, 6, 1);
+		wg.add_edge(7, 8, 7);
+		wg.add_edge(2, 8, 2);
+		wg.add_edge(8, 6, 6);
+		wg.add_edge(6, 5, 2);
+		wg.add_edge(2, 5, 4);
+		wg.add_edge(2, 3, 7);
+		wg.add_edge(3, 5, 14);
+		wg.add_edge(3, 4, 9);
+		wg.add_edge(5, 4, 10);
+		DGraph dg = wg.MST(0);
+
 	}
+	*/
+	
+	
 	
 }
