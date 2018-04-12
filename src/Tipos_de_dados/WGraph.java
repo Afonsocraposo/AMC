@@ -1,10 +1,10 @@
 package Tipos_de_dados;
 
-import Tipos_de_dados.ListaE.Node2;
+import Tipos_de_dados.ListaE.Edge;
 
-public class WGraph {
+public class WGraph implements Weighted_Graphs {
 	
-	private int[][] nodes;
+	public int[][] nodes;
 	private int dim;
 	
 	public WGraph (int n) {
@@ -36,7 +36,7 @@ public class WGraph {
 		
 		DGraph result_dgraph = new DGraph(dim+1);
 		
-		Node2 aux;
+		Edge aux;
 		
 		Lista visited = new Lista();
 		visited.insert(node);
@@ -56,8 +56,8 @@ public class WGraph {
 			}
 			
 		}
-		
-		for(int i=0;i<dim+1;i++) {
+				
+		for(int i=0;i<dim;i++) {
 			aux=result.pos(i);
 			result_dgraph.add_edge(aux.nodea, aux.nodeb);
 		}
@@ -79,7 +79,7 @@ public class WGraph {
 		l.insort();
 	}
 	
-	/*
+/* Try it
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(9);
 		wg.add_edge(0, 1, 4);
@@ -99,8 +99,8 @@ public class WGraph {
 		DGraph dg = wg.MST(0);
 
 	}
-	*/
-	
+*/
+
 	
 	
 }

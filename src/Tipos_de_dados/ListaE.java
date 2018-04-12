@@ -1,24 +1,24 @@
 package Tipos_de_dados;
 
-public class ListaE {
+public class ListaE implements List_Edges {
 	
-	private Node2 last;
-	private Node2 first;
+	private Edge last;
+	private Edge first;
 	private int comp;
 	
-	protected class Node2 {
+	protected class Edge {
 		protected int weight;
 		protected int nodea;
 		protected int nodeb;
 		
-		Node2 next;
-		Node2 prev;
+		Edge next;
+		Edge prev;
 		
-		Node2(int node1, int node2, int v){
+		Edge(int node1, int Edge, int v){
 			weight=v;
 			
 			nodea=node1;
-			nodeb=node2;
+			nodeb=Edge;
 			
 			next=null;
 			prev=null;
@@ -32,8 +32,8 @@ public class ListaE {
 		comp=0;
 	}
 
-	public void append(int node1, int node2, int x) {
-		Node2 n=new Node2(node1,node2,x);
+	public void append(int node1, int Edge, int x) {
+		Edge n=new Edge(node1,Edge,x);
 		n.next=last;
 		n.prev=null;
 		if(comp==0) {
@@ -45,14 +45,14 @@ public class ListaE {
 		comp++;
 	}
 	
-	public void ins(int node1, int node2, int x, int pos) {
+	public void ins(int node1, int Edge, int x, int pos) {
 		
 		if((pos>comp)||(pos<0)) {
 			System.out.println("Error: segmentation fault");
 			return;
 		}else{
 			
-			Node2 n=new Node2(node1,node2,x);	
+			Edge n=new Edge(node1,Edge,x);	
 			if(pos==0) {
 				n.next=null;
 				n.prev=first;
@@ -74,7 +74,7 @@ public class ListaE {
 				last=n;
 				comp++;
 			} else {
-				Node2 aux;
+				Edge aux;
 				if(pos>comp/2) {
 					aux=last;
 					for(int i=0;i<comp-pos;i++) {
@@ -101,7 +101,7 @@ public class ListaE {
 	}
 	
 	public boolean pert(int nodea, int nodeb) {
-		Node2 aux=last;
+		Edge aux=last;
 		while(aux!=null) {
 			if((aux.nodea==nodea && aux.nodeb==nodeb) || (aux.nodea==nodeb && aux.nodeb==nodea)) {
 				return true;
@@ -111,53 +111,12 @@ public class ListaE {
 		return false;
 	}
 	
-	public void ret(int x) {
-		Node2 aux=last.next;
-		Node2 ant=last;
-		if(ant.weight==x) {
-			last=ant.next;
-			last.prev=null;
-			comp--;
-			return;
-		}
-		while(aux!=null) {
-			if(aux.weight==x) {
-				ant.next=aux.next;
-				aux.next.prev = ant;
-				comp--;
-				return;
-			}
-			ant=ant.next;
-			aux=aux.next;
-		}
-	}
-	
-	public void apaga(int x) {
-		Node2 aux=last.next;
-		Node2 ant=last;
-		if(ant.weight==x) {
-			last=ant.next;
-			last.prev=null;
-			comp--;
-		}
-		while(aux!=null) {
-			if(aux.weight==x) {
-				ant.next=aux.next;
-				aux.next.prev = ant;
-				comp--;
-			}else {
-			ant=ant.next;
-			}
-			aux=aux.next;
-		}
-	}
-	
-	public Node2 pos(int n) {
+	public Edge pos(int n) {
 		if((n>=comp)||(n<0)) {
 			System.out.println("Error: segmentation fault");
-			return new Node2(-1,-1,-1);
+			return new Edge(-1,-1,-1);
 		}
-		Node2 aux;
+		Edge aux;
 		if(n>comp/2) {
 			aux=last;
 			for(int i=1;i<comp-n;i++) {
@@ -177,7 +136,7 @@ public class ListaE {
 			System.out.println("Error: segmentation fault");
 			return;
 		}
-		Node2 aux;
+		Edge aux;
 		if(n>comp/2) {
 			aux=last;
 			for(int i=1;i<comp-n;i++) {
@@ -204,7 +163,7 @@ public class ListaE {
 	}
 	
 	public void disp() {
-		Node2 aux=first;
+		Edge aux=first;
 		System.out.print("[");
 		while(aux!=null) {
 			if(aux.prev==null) {
@@ -219,25 +178,14 @@ public class ListaE {
 		System.out.println(" ");
 	}
 	
-	public int find(int x) {
-		Node2 aux=first;
-		for(int i=0;i<comp;i++) {
-			if(aux.weight==x) {
-				return i;
-			}
-			aux=aux.prev;
-		}
-		return -1;
-	}
-	
 	public int len() {
 		return comp;
 	}
 	
-	public ListaE insort() {
+	public void insort() {
 
 		int i=1, j, n=this.len();
-		Node2 aux;
+		Edge aux;
 		
 		while(i < n){
 			aux=this.pos(i);
@@ -250,7 +198,7 @@ public class ListaE {
 			this.del(j+2);
 		    i++;
 		}
-		return this;
+		return;
 	}
 	
 }
