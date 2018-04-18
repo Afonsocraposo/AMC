@@ -31,7 +31,6 @@ public class WGraph implements Weighted_Graphs {
 	
 	public DGraph MST(int node){
 		
-		ListaE result = new ListaE();
 		ListaE options = new ListaE();
 		
 		DGraph result_dgraph = new DGraph(dim+1);
@@ -46,22 +45,20 @@ public class WGraph implements Weighted_Graphs {
 			for(int i=0; i<visited.length; i++) {
 				adj(visited.pos(i),options);
 			}
+			options.insort();
 			for(int i=options.len()-1; i>0; i--) {
 				aux=options.pos(i);
 				if(!visited.isIn(aux.nodeb)) {
-					result.append(aux.nodea, aux.nodeb, aux.weight);
+					result_dgraph.add_edge(aux.nodea, aux.nodeb);
 					visited.insert(aux.nodeb);
 					break;
 				}
 			}
 			
 		}
-				
-		for(int i=0;i<dim;i++) {
-			aux=result.pos(i);
-			result_dgraph.add_edge(aux.nodea, aux.nodeb);
-		}
+		
 		return result_dgraph;
+	
 	}
 	
 	public void adj(int node, ListaE l) {
@@ -76,10 +73,9 @@ public class WGraph implements Weighted_Graphs {
 				l.append(node, node+j+1, nodes[node][j]);
 			}
 		}
-		l.insort();
 	}
 	
-/* Try it
+/* Try this
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(9);
 		wg.add_edge(0, 1, 4);
