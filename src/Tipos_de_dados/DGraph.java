@@ -22,4 +22,8 @@ public class DGraph implements Oriented_Graphs{
 	public List parents(int n) {
 		return ladj[n];
 	}
+	
+	public int dim() {
+		return dim;
+	}
 }
