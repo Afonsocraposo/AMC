@@ -6,69 +6,60 @@ public class BN {
 	
 	public BN(Oriented_Graphs g, Sample A, double S) {
 		this.g=g;
-		int x,Pi,C,xDomain,PiDomain,CDomain,di,wi,c,j;
-		C=A.element(0).length-1;
-		CDomain=A.Domains(C);
-		for(x=0; x<A.element(0).length-1; x++) {
-			List Parents=g.parents(x);
-			double[][] temp;
-			if(!Parents.emptyQ()) {
-				Pi=Parents.getFirst();
-				xDomain=A.Domains(x);
-				PiDomain=A.Domains(Pi);
-				temp=new double[xDomain][PiDomain*CDomain];
-				for(di=0; di<xDomain;di++) {
-					j=0;
-					for(wi=0;wi<PiDomain;wi++) {
-						for(c=0;c<CDomain;c++) {
-							int[] Variables1= {x,Pi,C};
-							int[] Values1= {di,wi,c};
-							int[] Variables2= {Pi,C};
-							int[] Values2= {wi,c};
-							temp[di][j]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.count(Variables2,Values2)+S*xDomain);
-							j++;
+		for(int x=0;x<g.dim();x++) {
+			int xDomain=A.Domains(x);
+			int[] Parents=g.parents(x).toArray();
+			int[] piDomains=new int[Parents.length];
+			int prodomain=1;
+			for(int i=0;i<piDomains.length;i++) {
+				piDomains[i]=A.Domains(Parents[i]);
+				prodomain*=A.Domains(Parents[i]);
+			}
+			int[] piValues=new int[Parents.length];
+			double[][] temp=new double[xDomain][prodomain];
+			for(int xi=0;xi<xDomain;xi++) {
+				for(int i=0;i<prodomain;i++) {
+					for(int j=0;j<piDomains[0];j++) {
+						int[] values1= new int[Parents.length+1];
+						values1[0]=xi;
+						int[] variables1= new int[Parents.length+1];
+						variables1[0]=x;
+						for(int k=1; k<values1.length;k++) {
+							values1[k]=piValues[k-1];
+							variables1[k]=Parents[k-1];
 						}
-					}
-			} 
-		} else {
-				xDomain=A.Domains(x);
-				PiDomain=1;
-				temp=new double[xDomain][PiDomain*CDomain];
-				for(di=0; di<xDomain;di++) {
-					for(c=0;c<CDomain;c++) {
-						int[] Variables1= {x,C};
-						int[] Values1= {di,c};
-						int[] Variables2= {C};
-						int[] Values2= {c};
-						temp[di][c]=Math.log10(A.count(Variables1,Values1)+S)-Math.log10(A.count(Variables2,Values2)+S*xDomain);
+						temp[x][i]=Math.log10(A.count(variables1, values1)+S)-Math.log10(A.count(Parents, piValues)+S*xDomain);
+						piValues[0]++;}
+					piValues[0]=0;
+					for(int j=1;j<Parents.length;j++) {
+						if(++piValues[j]==piDomains[j]) piValues[j]=0;
+						else {
+							piValues[j]++;
+							break;}
 					}
 				}
 			}
 			Theta[x]=temp;
 		}
-		Theta[x]=new double[CDomain][0];
-		for(c=0;c<CDomain;c++) {
-			int[] Variable= {C};
-			int[] Value= {c};
-			Theta[x][c][0]=Math.log10(A.count(Variable,Value)+S)-Math.log10(A.length()+S*CDomain);
-		}
 	}
 	
 	public double prob(int[] v) {
 		double p=0.0;
-		int c=v[v.length-1];
-		int x,Pi,wi;
+		int x,i,j;
 		for(x=0;x<v.length-1;x++) {
-			List Parents=g.parents(x);
-			if(!Parents.emptyQ()) {
-				Pi=Parents.getFirst();
-				wi=v[Pi];
-				p+=Theta[x][v[x]][wi*Theta[v.length-1].length+c];
-			} else {
-				p+=Theta[x][v[x]][c];
+			int[] Parents=g.parents(x).toArray();
+			int[] piDomains=new int[Parents.length];
+			for(i=0;i<piDomains.length;i++) {
+				piDomains[i]=Theta[Parents[i]].length;}
+			int position=0;
+			for(i=0;i<Parents.length;i++) {
+				int D=1;
+				for(j=0;j<i;j++) {
+					D*=piDomains[j];}
+				position+=Parents[i]*D;	
 			}
+			p+=Theta[x][v[x]][position];
 		}
-		p+=Theta[x][v.length-1][0];
 		return Math.pow(10.0, p); 
 	}	                       
 }

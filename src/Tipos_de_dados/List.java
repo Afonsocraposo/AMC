@@ -1,8 +1,8 @@
 package Tipos_de_dados;
 
 public interface List {
-	void insert(int x);// adiciona o nó com valor x ao início da lista
-	void remove(int x);// retira a primeira ocorrência de x da lista
-	boolean emptyQ();// verifica se a lista é vazia
-	int getFirst();// devolve o valor do primeiro nó
+	void insert(int x);// adiciona o nï¿½ com valor x ao inï¿½cio da lista
+	void remove(int x);// retira a primeira ocorrï¿½ncia de x da lista
+	boolean emptyQ();// verifica se a lista ï¿½ vazia
+	int[] toArray();// converte a lista a um vector
 }
