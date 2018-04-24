@@ -77,12 +77,12 @@ public class WGraph implements Weighted_Graphs {
 	
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(9);
-		wg.add_edge(0, 1, 4.2);
+		wg.add_edge(0, 1, 4.0);
 		wg.add_edge(0, 7, 8.0);
 		wg.add_edge(1, 7, 11.0);
 		wg.add_edge(1, 2, 8.0);
 		wg.add_edge(7, 6, 1.0);
-		wg.add_edge(7, 8, 7.1);
+		wg.add_edge(7, 8, 7.0);
 		wg.add_edge(2, 8, 2.0);
 		wg.add_edge(8, 6, 6.0);
 		wg.add_edge(6, 5, 2.0);
