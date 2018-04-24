@@ -165,7 +165,7 @@ public class Aprendizagem {
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+//      CENAS FIXES				
 				
 			}
 		});

@@ -34,7 +34,6 @@ public class BN {
 					for(int j=1;j<Parents.length;j++) {
 						if(++piValues[j]==piDomains[j]) piValues[j]=0;
 						else {
-							piValues[j]++;
 							break;}
 					}
 				}
