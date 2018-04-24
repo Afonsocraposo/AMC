@@ -4,18 +4,18 @@ import Tipos_de_dados.ListaE.Edge;
 
 public class WGraph implements Weighted_Graphs {
 	
-	public int[][] nodes;
+	public double[][] nodes;
 	private int dim;
 	
 	public WGraph (int n) {
-		nodes = new int[n-1][];
+		nodes = new double[n-1][];
 		for(int i=1;i<n;i++) {
-			nodes[i-1]=new int[n-i];
+			nodes[i-1]=new double[n-i];
 		}
 		dim = n-1;
 	}
 	
-	public void add_edge (int node1, int node2, int weight) {
+	public void add_edge (int node1, int node2, double weight) {
 		if(node1!=node2) {
 			if(node1>node2) nodes[node2][node1-(node2+1)] = weight;
 			else nodes[node1][node2-(node1+1)] = weight;
@@ -75,27 +75,26 @@ public class WGraph implements Weighted_Graphs {
 		}
 	}
 	
-/* Try this
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(9);
-		wg.add_edge(0, 1, 4);
-		wg.add_edge(0, 7, 8);
-		wg.add_edge(1, 7, 11);
-		wg.add_edge(1, 2, 8);
-		wg.add_edge(7, 6, 1);
-		wg.add_edge(7, 8, 7);
-		wg.add_edge(2, 8, 2);
-		wg.add_edge(8, 6, 6);
-		wg.add_edge(6, 5, 2);
-		wg.add_edge(2, 5, 4);
-		wg.add_edge(2, 3, 7);
-		wg.add_edge(3, 5, 14);
-		wg.add_edge(3, 4, 9);
-		wg.add_edge(5, 4, 10);
+		wg.add_edge(0, 1, 4.2);
+		wg.add_edge(0, 7, 8.0);
+		wg.add_edge(1, 7, 11.0);
+		wg.add_edge(1, 2, 8.0);
+		wg.add_edge(7, 6, 1.0);
+		wg.add_edge(7, 8, 7.1);
+		wg.add_edge(2, 8, 2.0);
+		wg.add_edge(8, 6, 6.0);
+		wg.add_edge(6, 5, 2.0);
+		wg.add_edge(2, 5, 4.0);
+		wg.add_edge(2, 3, 7.0);
+		wg.add_edge(3, 5, 14.0);
+		wg.add_edge(3, 4, 9.0);
+		wg.add_edge(5, 4, 10.0);
 		DGraph dg = wg.MST(0);
 
 	}
-*/
+
 
 	
 	

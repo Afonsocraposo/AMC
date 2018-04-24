@@ -7,14 +7,14 @@ public class ListaE implements List_Edges {
 	private int comp;
 	
 	protected class Edge {
-		protected int weight;
+		protected double weight;
 		protected int nodea;
 		protected int nodeb;
 		
 		Edge next;
 		Edge prev;
 		
-		Edge(int node1, int Edge, int v){
+		Edge(int node1, int Edge, double v){
 			weight=v;
 			
 			nodea=node1;
@@ -32,7 +32,7 @@ public class ListaE implements List_Edges {
 		comp=0;
 	}
 
-	public void append(int node1, int Edge, int x) {
+	public void append(int node1, int Edge, double x) {
 		Edge n=new Edge(node1,Edge,x);
 		n.next=last;
 		n.prev=null;
@@ -45,7 +45,7 @@ public class ListaE implements List_Edges {
 		comp++;
 	}
 	
-	public void ins(int node1, int Edge, int x, int pos) {
+	public void ins(int node1, int Edge, double x, int pos) {
 		
 		if((pos>comp)||(pos<0)) {
 			System.out.println("Error: segmentation fault");
