@@ -7,8 +7,13 @@ public class DGraph implements Oriented_Graphs{
 	public DGraph(int dim) {
 		this.dim=dim;
 		ladj=new List[dim];
+<<<<<<< HEAD
 		for(int i=0;i<dim;i++) {
 			ladj[i]=new Lista();
+=======
+		for(int i=0;i<dim;i++){
+		    ladj[i] =new Lista();
+>>>>>>> master
 		}
 	}
 	
