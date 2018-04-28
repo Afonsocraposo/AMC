@@ -39,6 +39,7 @@ public class WGraph { // implements Weighted_Graphs {
 		ArrayList<Integer> visited = new ArrayList<Integer>();
 		
 		visited.add(node);
+		result_dgraph.add_edge(dim, node);
 		
 		while(visited.size()!=dim) {
 			
@@ -56,7 +57,7 @@ public class WGraph { // implements Weighted_Graphs {
 			//System.out.println(Integer.toString(edge2add.getA()) + " , " + Integer.toString(edge2add.getB()) + " | " + Double.toString(edge2add.getW()));
 			
 			result_dgraph.add_edge(edge2add.getA(),edge2add.getB());
-			result_dgraph.add_edge(edge2add.getB(),dim);
+			result_dgraph.add_edge(dim,edge2add.getB());
 			
 		}
 		
