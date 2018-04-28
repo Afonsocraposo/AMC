@@ -166,6 +166,7 @@ public class Aprendizagem {
 			public void actionPerformed(ActionEvent e) {
 				
 //      CENAS FIXES				
+//  	Pega na amostra cria 
 				
 			}
 		});

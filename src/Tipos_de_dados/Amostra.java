@@ -1,8 +1,6 @@
 package Tipos_de_dados;
 
-import java.util.Arrays;
-
-class no { //no = node mas com vetor em vez de int como entradas
+class no { 
 	int[] vector;
 	no next;
 	
@@ -11,14 +9,6 @@ class no { //no = node mas com vetor em vez de int como entradas
 		this.vector = vector;
 		this.next = next;
 	}
-
-	@Override
-	public String toString() {
-		return "no [vector=" + Arrays.toString(vector) + ", next=" + next + "]";
-	}
-	
-	
-	
 }	
 	
 
@@ -27,28 +17,18 @@ public class Amostra implements Sample{
 	protected int[] Domains;
 	protected int len;
 	protected no first;
+	
 
-	public Amostra(int[] Domains) { //O Domains não pode ser introduzido imediatamente como um vetor
-		                            //mas sim como uma variável já definida
+	public Amostra(int[] Domains) {
 		this.Domains = Domains;
 		this.len = 0;
 		this.first = null;
 	}
 	
-	@Override
-	public String toString() {
-		return "Amostra [Domains=" + Arrays.toString(Domains) + ", len=" + len + ", first=" + first + "]";
-	}
-
-
 
 	public int Domains(int x) {
 		return Domains[x];
 	}
-// Pus esta parte aqui em cima porque é um acrescento ao que o professor pediu, mas eu preciso de conhecer os 
-//domínios das coisas para calcular as distribuições, e acho que esta é a melhor forma de o fazer
-// basicamente Domains é uma lista com os domínios de cada variavel, que conhecemos mesmo antes de inserir 
-//qualquer vector, já que depende apenas de se estamos numa amostra de diabetes, cancro, etc.
 
 
 	public void add(int[] v) {
@@ -62,7 +42,7 @@ public class Amostra implements Sample{
 	}
 
 
-	public int[] element(int i) { //assumi que first = posição 0
+	public int[] element(int i) { 
 		no n = first;
 		int j = 0;
 		while (j != i) {
@@ -71,8 +51,7 @@ public class Amostra implements Sample{
 		}
 		return n.vector;
 	}
-//recebe um vector de variaveis e um vector de valores e retorna o numero de
-	//ocorrencias desses valores para essas variaveis na amostra
+
 	public int count(int[] variables, int[] values) {
 		int num = 0;
 		no n = first;
