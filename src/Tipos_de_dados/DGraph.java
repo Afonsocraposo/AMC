@@ -7,6 +7,9 @@ public class DGraph implements Oriented_Graphs{
 	public DGraph(int dim) {
 		this.dim=dim;
 		ladj=new List[dim];
+		for(int i=0;i<dim;i++){
+		    ladj[i] =new Lista();
+		}
 	}
 	
 	public void add_edge(int o, int d) {
