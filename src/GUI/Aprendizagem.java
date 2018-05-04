@@ -65,15 +65,12 @@ public class Aprendizagem {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
-		
-		
-		
+
 		frame = new JFrame();
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setTitle("Medicine for Dummies");
 		
 		JButton btnChooseFile = new JButton("Choose file");
 		btnChooseFile.addActionListener(new ActionListener() {
@@ -133,29 +130,19 @@ public class Aprendizagem {
 		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
 		frame.getContentPane().add(rdbtnNewRadioButton_2);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Parkisons");
-		rdbtnNewRadioButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				choosenparameter="Parkinsons";
-			}
-		});
-		rdbtnNewRadioButton_3.setBounds(490, 235, 155, 30);
-		frame.getContentPane().add(rdbtnNewRadioButton_3);
-		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid");
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid";
 			}
 		});
-		rdbtnNewRadioButton_4.setBounds(490, 285, 155, 30);
+		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);
 		frame.getContentPane().add(rdbtnNewRadioButton_4);
 		
 		ButtonGroup group = new ButtonGroup(); 
 		group.add(rdbtnNewRadioButton);
 		group.add(rdbtnNewRadioButton_1);
 		group.add(rdbtnNewRadioButton_2);
-		group.add(rdbtnNewRadioButton_3);
 		group.add(rdbtnNewRadioButton_4);
 		
 		JButton btnTeachMe = new JButton("Teach me!");
@@ -164,59 +151,57 @@ public class Aprendizagem {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
 				System.out.println(choosenparameter);//a base de dados e o tipo da mesma
 				
-//				int[][] Domainoptions= {{10,10,10,10,2},{5,5,5,5,4},{1,2,3,4,5},{5,4,3,2,1},{2,4,6,8,10}};
-//				int[] Domains=null;
-//				switch(choosenparameter) {
-//				case("Breast Cancer"):{ Domains= Domainoptions[0];
-//				break;}
-//				case("Diabetes"): { Domains= Domainoptions[1];
-//				break;}
-//				case("Hepatitis"): { Domains= Domainoptions[2];
-//				break;}
-//				case("Parkinsons"): { Domains= Domainoptions[3];
-//				break;}
-//				case("Thyroid"): { Domains= Domainoptions[4];
-//				break;}
-//				}
-//
-//				Amostra amostra=new Amostra(Domains);
-//				
-//				try {
-//					FileReader fr=new FileReader(selecteddatabase);
-//					BufferedReader br=new BufferedReader(fr);
-//					
-//					String CurrentLine;
-//					String[] line;
-//					int[] dataentry=new int[Domains.length];
-//					while((CurrentLine=br.readLine())!=null) {
-//						line=CurrentLine.split(",");
-//						for(int pos=0;pos<line.length;pos++) {
-//							dataentry[pos]=Integer.parseInt(line[pos]);
-//						}
-//						amostra.add(dataentry);
-//					}
-//					br.close();
-//					fr.close();
-//				} catch (FileNotFoundException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				
-//				
-//				WGraph WG=new WGraph(Domains.length-1);
-//				for(int i=0;i<WG.dim();i++) {
-//					for(int j=0;j<WG.dim();j++) {
-//						double w=Weights.weight(i, j, amostra);
-//						WG.add_edge(i, j, w);
-//					}
-//				}
-//				
-//				DGraph DG=WG.MST(0);
-//				
-//				BN net=new BN(DG,amostra,0.5);
+				int[][] Domainoptions= {{10,10,10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,2}};
+				int[] Domains=null;
+				switch(choosenparameter) {
+				case("Breast Cancer"):{ Domains= Domainoptions[0];
+				break;}
+				case("Diabetes"): { Domains= Domainoptions[1];
+				break;}
+				case("Hepatitis"): { Domains= Domainoptions[2];
+				break;}
+				case("Thyroid"): { Domains= Domainoptions[3];
+				break;}
+				}
+
+				Amostra amostra=new Amostra(Domains);
+				
+				try {
+					FileReader fr=new FileReader(selecteddatabase);
+					BufferedReader br=new BufferedReader(fr);
+					
+					String CurrentLine;
+					String[] line;
+					int[] dataentry=new int[Domains.length];
+					while((CurrentLine=br.readLine())!=null) {
+						line=CurrentLine.split(",");
+						for(int pos=0;pos<line.length;pos++) {
+							dataentry[pos]=Integer.parseInt(line[pos]);
+						}
+						amostra.add(dataentry);
+					}
+					br.close();
+					fr.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				WGraph WG=new WGraph(Domains.length-1);
+				for(int i=0;i<WG.dim();i++) {
+					for(int j=0;j<WG.dim();j++) {
+						double w=Weights.weight(i, j, amostra);
+						WG.add_edge(i, j, w);
+					}
+				}
+				
+				DGraph DG=WG.MST(0);
+				
+				BN net=new BN(DG,amostra,0.5);
 //				
 				
 				JFileChooser f = new JFileChooser();
@@ -225,18 +210,18 @@ public class Aprendizagem {
 		        
 		        System.out.println(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
 				
-//				try {
-//					FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
-//					ObjectOutputStream oos=new ObjectOutputStream(fos);
-//					oos.writeObject(net);
-//					oos.close();
-//				} catch (FileNotFoundException e3) {
-//					// TODO Auto-generated catch block
-//					e3.printStackTrace();
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
+				try {
+					FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
+					ObjectOutputStream oos=new ObjectOutputStream(fos);
+					oos.writeObject(net);
+					oos.close();
+				} catch (FileNotFoundException e3) {
+					// TODO Auto-generated catch block
+					e3.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 //Falta ter a certeza de que forma estão escritos os ficheiros, mas tenho quase a 
 //certeza que serão .csv, pelo que fiz aqui foi pensando assim
 

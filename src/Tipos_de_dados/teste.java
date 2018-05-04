@@ -15,7 +15,7 @@ public class teste {
 		am.add(values1);
 		am.add(values0);
 	
-		System.out.println(Weights.Weight(0,1,am));
+		System.out.println(Weights.weight(0,1,am));
 	}
 }
 
