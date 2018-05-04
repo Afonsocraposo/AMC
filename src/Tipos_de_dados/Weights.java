@@ -17,16 +17,16 @@ public class Weights {
 				
 				for(int k=0; k<a.Domains(a.element(0).length-1); k++) { //percorre o dominio da classe
 					
-					int[] valxyc = {a.Domains(i),a.Domains(j),a.Domains(k)}; 
-					int[] valxc = {a.Domains(i),a.Domains(k)};
-					int[] valyc = {a.Domains(j),a.Domains(k)};
-					int[] valc = {a.Domains(k)};
+					int[] valxyc = {i,j,k}; 
+					int[] valxc = {i,k};
+					int[] valyc = {j,k};
+					int[] valc = {k};
 					int Nxyc = a.count(varxyc,valxyc); 
 					int Nxc = a.count(varxc, valxc);
 					int Nyc = a.count(varyc, valyc);
 					int Nc = a.count(varc, valc);
-					int N = Nxyc+Nxc+Nyc+Nc;
-					it += (Nxyc/N)*Math.log10(((Nxyc/N)*(Nc/N))/((Nyc/N)*(Nxc/N)));
+					//int N = a.length();
+					it += Nxyc*Math.log10((Nxyc*Nc)/(Nyc*Nxc));
 		}
 		}
 		}
