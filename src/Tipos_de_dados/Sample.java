@@ -1,7 +1,7 @@
 package Tipos_de_dados;
 
 public interface Sample {
-	public void add(int[] v);//adiciona o vetor v à amostra
+	public void add(int[] v);//adiciona o vetor v à amostra 
 	public int length();//retorna o comprimento da amostra
 	public int[] element(int i);//devolve o vector na posição i da amostra
 	public int count(int[] variables, int[] values);//recebe um vector de variaveis Xi e um vector de
@@ -9,3 +9,4 @@ public interface Sample {
 	                                              //variaveis com esses valores
 	public int Domains(int x);//devolve o domínio da variavel x
 }
+// SERÁ QUE A AMOSTRA SÓ RECEBE MESMO INTEIROS?
