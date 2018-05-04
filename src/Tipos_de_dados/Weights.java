@@ -2,9 +2,9 @@ package Tipos_de_dados;
 
 public class Weights {
 
-	public static double Weight (int var1, int var2, Amostra a) { //var1 e var2 dão a posição da variável
+	public static double weight (int var1, int var2, Amostra a) { //var1 e var2 dï¿½o a posiï¿½ï¿½o da variï¿½vel
 		double it = 0; 
-		int[] varxyc = {var1,var2,a.element(0).length-1}; //a.element(0).length-1 = posição da classe
+		int[] varxyc = {var1,var2,a.element(0).length-1}; //a.element(0).length-1 = posiï¿½ï¿½o da classe
 		int[] varxc = {var1,a.element(0).length-1};
 		int[] varyc = {var2,a.element(0).length-1};
 		int[] varc = {a.element(0).length-1};
