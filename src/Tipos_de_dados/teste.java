@@ -15,6 +15,17 @@ public class teste {
 		am.add(values1);
 		am.add(values0);
 	
+		 
+		int[] valt1 = {0,1,3};
+		int[] valt2 = {0,0,1};
+		int[] valt3 = {1,2,0};
+		int[] valt4 = {0,1,2};
+		int[] vart = {0,1,2};
+		
+		//System.out.println(am.count(vart,valt1));
+		//System.out.println(am.count(vart,valt2));
+		//System.out.println(am.count(vart,valt3));
+		//System.out.println(am.count(vart,valt4));
 		System.out.println(Weights.weight(0,1,am));
 	}
 }

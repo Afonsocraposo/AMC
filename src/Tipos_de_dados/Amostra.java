@@ -32,7 +32,7 @@ public class Amostra implements Sample{
 
 
 	public void add(int[] v) {
-		no n = new no (v, first);
+		no n = new no(v, first);
 		first = n;
 		len++;
 	}
@@ -70,6 +70,5 @@ public class Amostra implements Sample{
 		return num;
 	}
 
-	
 }
 

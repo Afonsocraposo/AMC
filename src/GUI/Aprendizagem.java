@@ -17,6 +17,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -165,20 +167,25 @@ public class Aprendizagem {
 				}
 
 				Amostra amostra=new Amostra(Domains);
-				
+				int[][] dataentry=new int[683][Domains.length];
 				try {
 					FileReader fr=new FileReader(selecteddatabase);
 					BufferedReader br=new BufferedReader(fr);
 					
 					String CurrentLine;
-					String[] line;
-					int[] dataentry=new int[Domains.length];
-					while((CurrentLine=br.readLine())!=null) {
-						line=CurrentLine.split(",");
-						for(int pos=0;pos<line.length;pos++) {
-							dataentry[pos]=Integer.parseInt(line[pos]);
+					String[] line; 
+					ArrayList<int[]> data=new ArrayList<int[]>();
+					for(int i=0;i<683;i++) {
+						try {
+							CurrentLine=br.readLine();
+							line=CurrentLine.split(",");
+							for(int pos=0;pos<line.length;pos++) {
+								dataentry[i][pos]=Integer.parseInt(line[pos]);
+							}
 						}
-						amostra.add(dataentry);
+						catch(Exception e3) {
+							break;
+						}
 					}
 					br.close();
 					fr.close();
@@ -189,11 +196,13 @@ public class Aprendizagem {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+				for(int k=0;k<dataentry.length;k++) {
+					amostra.add(dataentry[k]);
+				}
 				
 				WGraph WG=new WGraph(Domains.length-1);
 				for(int i=0;i<WG.dim();i++) {
-					for(int j=0;j<WG.dim();j++) {
+					for(int j=i+1;j<WG.dim();j++) {
 						double w=Weights.weight(i, j, amostra);
 						WG.add_edge(i, j, w);
 					}
