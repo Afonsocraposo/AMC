@@ -173,7 +173,6 @@ public class Aprendizagem {
 					
 					String CurrentLine;
 					String[] line; 
-					ArrayList<int[]> data=new ArrayList<int[]>();
 					for(int i=0;i<683;i++) {
 						try {
 							CurrentLine=br.readLine();

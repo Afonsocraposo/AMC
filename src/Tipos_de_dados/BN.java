@@ -1,6 +1,8 @@
 package Tipos_de_dados;
 
-public class BN {
+import java.io.Serializable;
+
+public class BN implements Serializable{
 	protected Oriented_Graphs g;
 	protected double[][][] Theta;
 	
