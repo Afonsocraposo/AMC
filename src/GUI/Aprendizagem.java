@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
