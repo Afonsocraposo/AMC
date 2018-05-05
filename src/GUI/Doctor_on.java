@@ -25,7 +25,7 @@ public class Doctor_on extends JFrame {
 	String username;
 	
 	public Doctor_on(String user){
-		username = "Dr." + user;
+		username = "Dr. " + user;
 		JLabel lbluser = new JLabel(username);
 		lbluser.setBounds(0, 0, 980, 50);
 		lbluser.setHorizontalAlignment(SwingConstants.RIGHT);
