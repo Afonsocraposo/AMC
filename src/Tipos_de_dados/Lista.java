@@ -1,6 +1,8 @@
 package Tipos_de_dados;
 
-class Node{
+import java.io.Serializable;
+
+class Node implements Serializable{
 	public int value;
 	public Node next;
 	
@@ -9,7 +11,7 @@ class Node{
 		this.next=next;
 	}
 }
-public class Lista implements List {
+public class Lista implements List,Serializable {
 	protected Node first;
 	protected int length;
 	
