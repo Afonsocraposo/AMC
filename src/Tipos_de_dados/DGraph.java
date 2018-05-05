@@ -1,6 +1,8 @@
 package Tipos_de_dados;
 
-public class DGraph implements Oriented_Graphs{
+import java.io.Serializable;
+
+public class DGraph implements Oriented_Graphs,Serializable{
 	protected List[] ladj;
 	protected int dim;
 	

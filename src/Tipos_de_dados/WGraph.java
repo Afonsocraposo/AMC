@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class WGraph { // implements Weighted_Graphs {
 	
-	public double[][] nodes;
+	private double[][] nodes;
 	private int dim;
 	
 	public WGraph (int n) {
@@ -15,6 +15,9 @@ public class WGraph { // implements Weighted_Graphs {
 		dim = n;
 	}
 	
+	public int dim() {
+		return dim;
+	}
 	public void add_edge (int node1, int node2, double weight) {
 		if(node1!=node2) {
 			if(node1>node2) nodes[node2][node1-(node2+1)] = weight;
