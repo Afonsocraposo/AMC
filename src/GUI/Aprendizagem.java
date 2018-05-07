@@ -151,39 +151,31 @@ public class Aprendizagem {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
 				System.out.println(choosenparameter);//a base de dados e o tipo da mesma
 				
-				int[][] Domainoptions= {{10,10,10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,2},{10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,2}};
+				
+//Primeira leitura, define domínios e determina as dimensões dos dados (entradas para  amostra e número de variaveis)				
+				int nlines=0;
 				int[] Domains=null;
-				switch(choosenparameter) {
-				case("Breast Cancer"):{ Domains= Domainoptions[0];
-				break;}
-				case("Diabetes"): { Domains= Domainoptions[1];
-				break;}
-				case("Hepatitis"): { Domains= Domainoptions[2];
-				break;}
-				case("Thyroid"): { Domains= Domainoptions[3];
-				break;}
-				}
 
-				Amostra amostra=new Amostra(Domains);
-				int[][] dataentry=new int[683][Domains.length];
 				try {
 					FileReader fr=new FileReader(selecteddatabase);
 					BufferedReader br=new BufferedReader(fr);
 					
-					String CurrentLine;
-					String[] line; 
-					for(int i=0;i<683;i++) {
-						try {
-							CurrentLine=br.readLine();
+					String CurrentLine=br.readLine();
+					String[] line=CurrentLine.split(",");
+					Domains=new int[line.length];
+					nlines++;
+					for(int pos=0;pos<line.length;pos++) {
+						int x=Integer.parseInt(line[pos]);
+						if(Domains[pos]<x)Domains[pos]=x;
+					}
+					while ((CurrentLine=br.readLine())!=null){
+							nlines++;
 							line=CurrentLine.split(",");
 							for(int pos=0;pos<line.length;pos++) {
-								dataentry[i][pos]=Integer.parseInt(line[pos]);
+								int x=Integer.parseInt(line[pos]);
+								if(Domains[pos]<x)Domains[pos]=x;
 							}
-						}
-						catch(Exception e3) {
-							break;
-						}
-					}
+					}	
 					br.close();
 					fr.close();
 				} catch (FileNotFoundException e1) {
@@ -193,10 +185,49 @@ public class Aprendizagem {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				for(int i=0;i<Domains.length;i++) {
+					Domains[i]++;
+				}
+				
+				
+//Segunda leitura, copia os dados para a matriz dataentry				
+				Amostra amostra;
+				int[][] dataentry=new int[nlines][Domains.length];
+				
+				try {
+					FileReader fr=new FileReader(selecteddatabase);
+					BufferedReader br=new BufferedReader(fr);
+					
+					String CurrentLine;
+					String[] line;
+					for(int i=0;i<nlines;i++){
+						CurrentLine=br.readLine();
+						line=CurrentLine.split(",");
+						for(int j=0;j<line.length;j++) {
+							dataentry[i][j]=Integer.parseInt(line[j]);
+						}
+					}	
+					br.close();
+					fr.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+//Formação da amostra
+				amostra=new Amostra(Domains);
+				
+				
 				for(int k=0;k<dataentry.length;k++) {
 					amostra.add(dataentry[k]);
 				}
 				
+				
+//Criação dos grafo pesado completo
 				WGraph WG=new WGraph(Domains.length-1);
 				for(int i=0;i<WG.dim();i++) {
 					for(int j=i+1;j<WG.dim();j++) {
