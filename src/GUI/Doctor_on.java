@@ -18,7 +18,9 @@ import java.awt.GridBagConstraints;
 public class Doctor_on extends JFrame {
 
 	JPanel firstPanel = new Doctor_cancer();
-	JPanel secondPanel = new JPanel();
+	JPanel secondPanel = new Doctor_diabetes();
+	JPanel thirdPanel = new Doctor_hepatitis();
+	JPanel forthPanel = new Doctor_thyroid();
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -33,7 +35,9 @@ public class Doctor_on extends JFrame {
 		getContentPane().add(lbluser);
 		
 		tabbedPane.add("Cancer",firstPanel);
-		tabbedPane.add("Second panel",secondPanel);
+		tabbedPane.add("Diabetes",secondPanel);
+		tabbedPane.add("Hepatitis",thirdPanel);
+		tabbedPane.add("Thyroid Disease",forthPanel);
 		getContentPane().add(tabbedPane);
 		setSize(1000,600);
 	}
@@ -48,7 +52,9 @@ public class Doctor_on extends JFrame {
 		getContentPane().add(lbluser);
 		
 		tabbedPane.add("Cancer",firstPanel);
-		tabbedPane.add("Second panel",secondPanel);
+		tabbedPane.add("Diabetes",secondPanel);
+		tabbedPane.add("Hepatitis",thirdPanel);
+		tabbedPane.add("Thyroid Disease",forthPanel);
 		getContentPane().add(tabbedPane);
 		setSize(1000,600);
 	}
