@@ -12,7 +12,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class PDF_demo {
  
     public static final String DEST
-        = "results_pdf/test.pdf";
+        = "results_pdf/test2.pdf";
  
     public static void main(String[] args)
     	throws DocumentException, IOException {
