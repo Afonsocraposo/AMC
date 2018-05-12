@@ -127,10 +127,10 @@ public class teste {
 		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
 		frame.getContentPane().add(rdbtnNewRadioButton_2);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid");
+		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid Disease");
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				choosenparameter="Thyroid";
+				choosenparameter="Thyroid Disease";
 			}
 		});
 		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);

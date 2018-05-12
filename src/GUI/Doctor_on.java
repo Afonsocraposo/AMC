@@ -34,7 +34,7 @@ public class Doctor_on extends JFrame {
 		lbluser.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		getContentPane().add(lbluser);
 		
-		tabbedPane.add("Cancer",firstPanel);
+		tabbedPane.add("Breast Cancer",firstPanel);
 		tabbedPane.add("Diabetes",secondPanel);
 		tabbedPane.add("Hepatitis",thirdPanel);
 		tabbedPane.add("Thyroid Disease",forthPanel);
@@ -51,7 +51,7 @@ public class Doctor_on extends JFrame {
 		lbluser.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		getContentPane().add(lbluser);
 		
-		tabbedPane.add("Cancer",firstPanel);
+		tabbedPane.add("Breast Cancer",firstPanel);
 		tabbedPane.add("Diabetes",secondPanel);
 		tabbedPane.add("Hepatitis",thirdPanel);
 		tabbedPane.add("Thyroid Disease",forthPanel);

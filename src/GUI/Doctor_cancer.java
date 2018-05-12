@@ -12,6 +12,9 @@ public class Doctor_cancer extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	// 10 parâmetros
+	
 	public Doctor_cancer() {
 		setLayout(null);
 		setPreferredSize(new Dimension(1000	, 600));

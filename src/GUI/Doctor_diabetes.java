@@ -12,6 +12,8 @@ public class Doctor_diabetes extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	// 8 parâmetros
 	public Doctor_diabetes() {
 		setLayout(null);
 		setPreferredSize(new Dimension(1000	, 600));

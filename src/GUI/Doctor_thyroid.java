@@ -12,6 +12,9 @@ public class Doctor_thyroid extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	// 20 parâmetros
+	
 	public Doctor_thyroid() {
 		setLayout(null);
 		setPreferredSize(new Dimension(1000	, 600));

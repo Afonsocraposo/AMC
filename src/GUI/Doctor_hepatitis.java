@@ -12,6 +12,9 @@ public class Doctor_hepatitis extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
+	// 19 parâmetros
+	
 	public Doctor_hepatitis() {
 		setLayout(null);
 		setPreferredSize(new Dimension(1000	, 600));
