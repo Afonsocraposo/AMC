@@ -236,12 +236,12 @@ public class teste {
 					}
 				}
 				
-		//		DGraph DG=WG.MST(0);
+			DGraph DG=WG.MST(0);
 				
-			//	BN net=new BN(DG,amostra,0.5);
+			BN net=new BN(DG,amostra,0.5);
 			
 				
-			/*	JFileChooser f = new JFileChooser();
+				JFileChooser f = new JFileChooser();
 		        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
 		        f.showSaveDialog(null);
 		        
@@ -259,7 +259,9 @@ public class teste {
 					// TODO Auto-generated catch block
 					e1.printStackTrace(); 
 				}
-				*/
+				
+				System.out.println("All goody, m8!");
+				
 
 
 			}
