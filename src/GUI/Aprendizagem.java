@@ -8,6 +8,7 @@ import Tipos_de_dados.BN;
 import Tipos_de_dados.DGraph;
 import Tipos_de_dados.WGraph;
 import Tipos_de_dados.Weights;
+import javafx.concurrent.Task;
 
 import javax.swing.JFrame;
 
@@ -27,6 +28,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Font;
+import javax.swing.JProgressBar;
 
 
 
@@ -67,12 +75,13 @@ public class Aprendizagem {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		frame.setTitle("Medicine for Dummies");
 		
 		JButton btnChooseFile = new JButton("Choose file");
+		btnChooseFile.setBounds(15, 40, 115, 30);
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -91,53 +100,48 @@ public class Aprendizagem {
 				textField.setText(filename);
 			}
 		});
-		btnChooseFile.setBounds(15, 40, 115, 30);
-		frame.getContentPane().add(btnChooseFile);
 		
 		textField = new JTextField();
-		textField.setBounds(145, 40, 270, 30);
-		frame.getContentPane().add(textField);
+		textField.setBounds(145, 40, 277, 30);
+		textField.addComponentListener(new ComponentAdapter() {
+			
+		});
 		textField.setColumns(10);
 		
 		JLabel lblChooseParameter = new JLabel("Choose parameter");
 		lblChooseParameter.setBounds(480, 40, 140, 20);
-		frame.getContentPane().add(lblChooseParameter);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Breast Cancer");
+		rdbtnNewRadioButton.setBounds(490, 85, 155, 30);
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Breast Cancer";
 			}
 		});
-		rdbtnNewRadioButton.setBounds(490, 85, 155, 30);
-		frame.getContentPane().add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Diabetes");
+		rdbtnNewRadioButton_1.setBounds(490, 135, 155, 30);
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Diabetes";
 			}
 		});
-		rdbtnNewRadioButton_1.setBounds(490, 135, 155, 30);
-		frame.getContentPane().add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Hepatitis");
+		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
 		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Hepatitis";
 			}
 		});
-		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
-		frame.getContentPane().add(rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid");
+		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid";
 			}
 		});
-		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);
-		frame.getContentPane().add(rdbtnNewRadioButton_4);
 		
 		ButtonGroup group = new ButtonGroup(); 
 		group.add(rdbtnNewRadioButton);
@@ -146,6 +150,7 @@ public class Aprendizagem {
 		group.add(rdbtnNewRadioButton_4);
 		
 		JButton btnTeachMe = new JButton("Teach me!");
+		btnTeachMe.setBounds(15, 335, 115, 30);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
@@ -264,8 +269,17 @@ public class Aprendizagem {
 
 			}
 		});
-		btnTeachMe.setBounds(15, 335, 115, 30);
+
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().add(rdbtnNewRadioButton);
+		frame.getContentPane().add(rdbtnNewRadioButton_1);
+		frame.getContentPane().add(rdbtnNewRadioButton_2);
+		frame.getContentPane().add(btnChooseFile);
+		frame.getContentPane().add(textField);
 		frame.getContentPane().add(btnTeachMe);
+		frame.getContentPane().add(rdbtnNewRadioButton_4);
+		frame.getContentPane().add(lblChooseParameter);
+
 	}
 }
 	

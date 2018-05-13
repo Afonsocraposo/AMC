@@ -26,6 +26,14 @@ import Tipos_de_dados.BN;
 import Tipos_de_dados.DGraph;
 import Tipos_de_dados.WGraph;
 import Tipos_de_dados.Weights;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.beans.PropertyChangeEvent;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class teste {
 
@@ -34,6 +42,9 @@ public class teste {
 	
 	private String selecteddatabase;
 	private String choosenparameter;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -92,7 +103,7 @@ public class teste {
 		frame.getContentPane().add(btnChooseFile);
 		
 		textField = new JTextField();
-		textField.setBounds(145, 40, 270, 30);
+		textField.setBounds(145, 40, 146, 26);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -266,8 +277,56 @@ public class teste {
 
 			}
 		});
-		btnTeachMe.setBounds(15, 335, 115, 30);
-		frame.getContentPane().add(btnTeachMe); 
+		btnTeachMe.setBounds(15, 398, 115, 30);
+		frame.getContentPane().add(btnTeachMe);
+		
+		JButton btnGraphs = new JButton("Graphs");
+		btnGraphs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField_1.setVisible(true);
+				textField_2.setVisible(true);
+				textField_3.setVisible(true);
+				
+			}
+		});
+		btnGraphs.setBounds(516, 399, 115, 29);
+		frame.getContentPane().add(btnGraphs);
+		
+		textField_1 = new JTextField();
+		textField_1.setForeground(SystemColor.text);
+		textField_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+		textField_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_1.setBackground(SystemColor.activeCaption);
+		textField_1.setBounds(15, 109, (int)(360*0.5), 30);
+		textField_1.setText(String.valueOf(50)+"%");
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		textField_1.setVisible(false);
+		
+		textField_2 = new JTextField();
+		textField_2.setForeground(SystemColor.text);
+		textField_2.setFont(new Font("Tahoma", Font.BOLD, 18));
+		textField_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_2.setColumns(10);
+		textField_2.setBackground(SystemColor.activeCaption);
+		textField_2.setBounds(15, 155, (int)(360*0.2), 30);
+		textField_2.setText(String.valueOf(20)+"%");
+		frame.getContentPane().add(textField_2);
+		textField_2.setVisible(false);
+		
+		textField_3 = new JTextField();
+		textField_3.setForeground(SystemColor.text);
+		textField_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+		textField_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField_3.setColumns(10);
+		textField_3.setBackground(SystemColor.activeCaption);
+		textField_3.setBounds(15, 201, (int)(360*0.3), 30);
+		textField_3.setText(String.valueOf(30)+"%");
+		frame.getContentPane().add(textField_3);
+		textField_3.setVisible(false);
+		
+		
+		
 	}
 }
 	

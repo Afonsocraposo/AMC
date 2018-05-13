@@ -46,9 +46,9 @@ public class Doctor_on extends JFrame {
 	public Doctor_on(){
 		username = "Unknown";
 		JLabel lbluser = new JLabel(username);
-		lbluser.setBounds(0, 0, 980, 50);
+		lbluser.setBounds(0, 0, 970, 60);
 		lbluser.setHorizontalAlignment(SwingConstants.RIGHT);
-		lbluser.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lbluser.setFont(new Font("Dialog", Font.PLAIN, 18));
 		getContentPane().add(lbluser);
 		
 		tabbedPane.add("Breast Cancer",firstPanel);
