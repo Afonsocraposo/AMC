@@ -52,30 +52,30 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_3.setBounds(135, 252, 57, 26);
 		add(comboBox_3);
 		
+		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.addItem(0);
+		comboBox_4.addItem(1);
+		comboBox_4.addItem(2);
+		comboBox_4.setBounds(342, 102, 57, 26);
+		add(comboBox_4);
+		
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.addItem(0);
 		comboBox_5.addItem(1);
-		comboBox_5.addItem(2);
-		comboBox_5.setBounds(342, 102, 57, 26);
+		comboBox_5.setBounds(342, 152, 57, 26);
 		add(comboBox_5);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.addItem(0);
 		comboBox_6.addItem(1);
-		comboBox_6.setBounds(342, 152, 57, 26);
+		comboBox_6.setBounds(342, 202, 57, 26);
 		add(comboBox_6);
 		
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.setBounds(342, 202, 57, 26);
+		comboBox_7.setBounds(342, 252, 57, 26);
 		add(comboBox_7);
-		
-		JComboBox comboBox_8 = new JComboBox();
-		comboBox_8.addItem(0);
-		comboBox_8.addItem(1);
-		comboBox_8.setBounds(342, 252, 57, 26);
-		add(comboBox_8);
 		
 		JLabel lblParmetro = new JLabel("Parameter 1");
 		lblParmetro.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -127,15 +127,15 @@ public class Doctor_diabetes extends JPanel {
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				int [] parameters = new int[10];
+				int [] parameters = new int[9];
 				parameters[0] = comboBox.getSelectedIndex();
 				parameters[1] = comboBox_1.getSelectedIndex();
 				parameters[2] = comboBox_2.getSelectedIndex();
 				parameters[3] = comboBox_3.getSelectedIndex();
-				parameters[4] = comboBox_5.getSelectedIndex();
-				parameters[5] = comboBox_6.getSelectedIndex();
-				parameters[6] = comboBox_7.getSelectedIndex();
-				parameters[7] = comboBox_8.getSelectedIndex();
+				parameters[4] = comboBox_4.getSelectedIndex();
+				parameters[5] = comboBox_5.getSelectedIndex();
+				parameters[6] = comboBox_6.getSelectedIndex();
+				parameters[7] = comboBox_7.getSelectedIndex();
 				System.out.println(Arrays.toString(parameters));
 				
 			}
