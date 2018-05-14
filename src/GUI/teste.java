@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
@@ -32,8 +33,11 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.beans.PropertyChangeEvent;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Frame;
 
 public class teste {
 
@@ -75,12 +79,16 @@ public class teste {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(teste.class.getResource("/GUI/DoctorEmoji_icon.png")));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setTitle("Medicine for Dummies");
 		
+
+		
 		JButton btnChooseFile = new JButton("Choose file");
+		btnChooseFile.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -99,52 +107,57 @@ public class teste {
 				textField.setText(filename);
 			}
 		});
-		btnChooseFile.setBounds(15, 40, 115, 30);
+		btnChooseFile.setBounds(15, 40, 119, 31);
 		frame.getContentPane().add(btnChooseFile);
 		
 		textField = new JTextField();
-		textField.setBounds(145, 40, 146, 26);
+		textField.setBounds(170, 43, 146, 26);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblChooseParameter = new JLabel("Choose parameter");
-		lblChooseParameter.setBounds(480, 40, 140, 20);
+		lblChooseParameter.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblChooseParameter.setBounds(480, 40, 143, 22);
 		frame.getContentPane().add(lblChooseParameter);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Breast Cancer");
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Breast Cancer";
 			}
 		});
-		rdbtnNewRadioButton.setBounds(490, 85, 155, 30);
+		rdbtnNewRadioButton.setBounds(490, 85, 141, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Diabetes");
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Diabetes";
 			}
 		});
-		rdbtnNewRadioButton_1.setBounds(490, 135, 155, 30);
+		rdbtnNewRadioButton_1.setBounds(490, 135, 99, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Hepatitis");
+		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Hepatitis";
 			}
 		});
-		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
+		rdbtnNewRadioButton_2.setBounds(490, 185, 101, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid Disease");
+		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid Disease";
 			}
 		});
-		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);
+		rdbtnNewRadioButton_4.setBounds(490, 235, 157, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton_4);
 		
 		ButtonGroup group = new ButtonGroup(); 
@@ -154,6 +167,7 @@ public class teste {
 		group.add(rdbtnNewRadioButton_4);
 		
 		JButton btnTeachMe = new JButton("Teach me!");
+		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
@@ -277,10 +291,11 @@ public class teste {
 
 			}
 		});
-		btnTeachMe.setBounds(15, 398, 115, 30);
+		btnTeachMe.setBounds(15, 398, 115, 31);
 		frame.getContentPane().add(btnTeachMe);
 		
 		JButton btnGraphs = new JButton("Graphs");
+		btnGraphs.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnGraphs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField_1.setVisible(true);
@@ -289,7 +304,7 @@ public class teste {
 				
 			}
 		});
-		btnGraphs.setBounds(516, 399, 115, 29);
+		btnGraphs.setBounds(516, 399, 87, 31);
 		frame.getContentPane().add(btnGraphs);
 		
 		textField_1 = new JTextField();
