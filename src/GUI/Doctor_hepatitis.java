@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,24 +17,6 @@ import javax.swing.JTextField;
 
 public class Doctor_hepatitis extends JPanel {
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
 
 	/**
 	 * Create the panel.
@@ -44,18 +27,25 @@ public class Doctor_hepatitis extends JPanel {
 	public Doctor_hepatitis() {
 		setLayout(null);
 
-		setSize(1000,1000);
+		setSize(1000,600);
 		
 		
-		JLabel lblSelectValuesFor = new JLabel("Introduce parameters' values:");
+		JLabel lblSelectValuesFor = new JLabel("Insert parameters (use ',' to separate the values):");
 		lblSelectValuesFor.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblSelectValuesFor.setBounds(15, 53, 281, 20);
+		lblSelectValuesFor.setBounds(15, 53, 442, 20);
 		add(lblSelectValuesFor);
 		
-	
+		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
+		Jlabel_1.setForeground(Color.RED);
+		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		Jlabel_1.setBounds(326, 98, 489, 20);
+		add(Jlabel_1);
+		
+		Jlabel_1.setVisible(false);
 		
 		textField = new JTextField();
-		textField.setBounds(15, 95, 394, 26);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textField.setBounds(15, 95, 296, 26);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -64,10 +54,17 @@ public class Doctor_hepatitis extends JPanel {
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String [] parameters = new String[20];
-			
-
-				System.out.println(Arrays.toString(parameters));
+				String[] param = textField.getText().split(",");	
+				if(param.length!=19) {
+					Jlabel_1.setVisible(true);
+				}
+					else {
+						Jlabel_1.setVisible(false);
+						int[] parameters = new int[param.length+1]; // Já inclui uma entrada para pormos a classe mais tarde
+					for(int i=0; i<param.length; i++)
+						parameters[i] = Integer.parseInt(param[i]);
+					System.out.println(Arrays.toString(parameters));
+					}
 				
 			}
 		});
