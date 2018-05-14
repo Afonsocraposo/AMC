@@ -82,7 +82,7 @@ public class Aprendizagem {
 		
 		JButton btnChooseFile = new JButton("Choose file");
 		btnChooseFile.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnChooseFile.setBounds(15, 40, 119, 31);
+		btnChooseFile.setBounds(15, 40, 141, 31);
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -104,7 +104,7 @@ public class Aprendizagem {
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField.setBounds(153, 41, 156, 28);
+		textField.setBounds(171, 41, 156, 28);
 		textField.addComponentListener(new ComponentAdapter() {
 			
 		});
@@ -158,7 +158,7 @@ public class Aprendizagem {
 		
 		JButton btnTeachMe = new JButton("Teach me!");
 		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTeachMe.setBounds(15, 335, 115, 31);
+		btnTeachMe.setBounds(15, 335, 141, 31);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
