@@ -195,7 +195,15 @@ public class Doctor_panel extends JPanel {
 				}
 	        }
 		});
-		JButton btnSource = new JButton("Choose Model");
+		GridBagConstraints gbc_btnSave = new GridBagConstraints();
+		gbc_btnSave.anchor = GridBagConstraints.EAST;
+		gbc_btnSave.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSave.gridx = 8;
+		gbc_btnSave.gridy = 3;
+		add(btnSave, gbc_btnSave);
+
+		
+		JButton btnSource = new JButton("Choose Models");
 		btnSource.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -207,16 +215,12 @@ public class Doctor_panel extends JPanel {
 		        System.out.println(f.getCurrentDirectory());
 	        }
 		});
-		GridBagConstraints gbc_btnSave = new GridBagConstraints();
-		gbc_btnSave.anchor = GridBagConstraints.EAST;
-		gbc_btnSave.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSave.gridx = 8;
-		gbc_btnSave.gridy = 3;
-		add(btnSave, gbc_btnSave);
+		GridBagConstraints gbc_btnSource = new GridBagConstraints();
+		gbc_btnSource.anchor = GridBagConstraints.EAST;
+		gbc_btnSource.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSource.gridx = 8;
+		gbc_btnSource.gridy = 2;
+		add(btnSource, gbc_btnSource);
 
 	}
-	public File modelsource() {
-		return modelsource;
-	}
-
 }

@@ -48,9 +48,9 @@ public class Doctor_on extends JFrame {
 	 */
 	public Doctor_on(String username) {
 		firstPanel = new Doctor_cancer(this);
-		secondPanel = new Doctor_diabetes();
-		thirdPanel = new Doctor_hepatitis();
-		forthPanel = new Doctor_thyroid();
+		secondPanel = new Doctor_diabetes(this);
+		thirdPanel = new Doctor_hepatitis(this);
+		forthPanel = new Doctor_thyroid(this);
 		
 		doctorPanel = new Doctor_panel(username, this);
 
