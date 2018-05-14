@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -144,22 +145,29 @@ public class Doctor_cancer extends JPanel {
 		add(lblSelectValuesFor);
 		
 		JButton btnDiagnose = new JButton("Diagnose");
+		btnDiagnose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int [] parameters = new int[10];
+				parameters[0] = comboBox.getSelectedIndex();
+				parameters[1] = comboBox_1.getSelectedIndex();
+				parameters[2] = comboBox_2.getSelectedIndex();
+				parameters[3] = comboBox_3.getSelectedIndex();
+				parameters[4] = comboBox_4.getSelectedIndex();
+				parameters[5] = comboBox_5.getSelectedIndex();
+				parameters[6] = comboBox_6.getSelectedIndex();
+				parameters[7] = comboBox_7.getSelectedIndex();
+				parameters[8] = comboBox_8.getSelectedIndex();
+				parameters[9] = comboBox_9.getSelectedIndex();
+				System.out.println(Arrays.toString(parameters));
+				
+			}
+		});
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnDiagnose.setBounds(145, 366, 115, 29);
+		btnDiagnose.setBounds(165, 367, 115, 29);
 		add(btnDiagnose);
-		
-		int [] parameters = new int[10];
-		parameters[0] = comboBox.getSelectedIndex();
-		parameters[1] = comboBox_1.getSelectedIndex();
-		parameters[2] = comboBox_2.getSelectedIndex();
-		parameters[3] = comboBox_3.getSelectedIndex();
-		parameters[4] = comboBox_4.getSelectedIndex();
-		parameters[5] = comboBox_5.getSelectedIndex();
-		parameters[6] = comboBox_6.getSelectedIndex();
-		parameters[7] = comboBox_7.getSelectedIndex();
-		parameters[8] = comboBox_8.getSelectedIndex();
-		parameters[9] = comboBox_9.getSelectedIndex();
 	
-		System.out.println(parameters);
+	
+
 	}
 }
