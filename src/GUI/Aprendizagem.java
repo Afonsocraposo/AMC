@@ -75,13 +75,14 @@ public class Aprendizagem {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
+		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Medicine for Dummies");
 		
 		JButton btnChooseFile = new JButton("Choose file");
-		btnChooseFile.setBounds(15, 40, 115, 30);
+		btnChooseFile.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnChooseFile.setBounds(15, 40, 119, 31);
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -102,17 +103,20 @@ public class Aprendizagem {
 		});
 		
 		textField = new JTextField();
-		textField.setBounds(145, 40, 277, 30);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textField.setBounds(153, 41, 156, 28);
 		textField.addComponentListener(new ComponentAdapter() {
 			
 		});
 		textField.setColumns(10);
 		
 		JLabel lblChooseParameter = new JLabel("Choose parameter");
-		lblChooseParameter.setBounds(480, 40, 140, 20);
+		lblChooseParameter.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblChooseParameter.setBounds(480, 40, 143, 22);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Breast Cancer");
-		rdbtnNewRadioButton.setBounds(490, 85, 155, 30);
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnNewRadioButton.setBounds(490, 85, 141, 31);
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Breast Cancer";
@@ -120,7 +124,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Diabetes");
-		rdbtnNewRadioButton_1.setBounds(490, 135, 155, 30);
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnNewRadioButton_1.setBounds(490, 135, 99, 31);
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Diabetes";
@@ -128,7 +133,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Hepatitis");
-		rdbtnNewRadioButton_2.setBounds(490, 185, 155, 30);
+		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnNewRadioButton_2.setBounds(490, 185, 101, 31);
 		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Hepatitis";
@@ -136,7 +142,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid");
-		rdbtnNewRadioButton_4.setBounds(490, 235, 155, 30);
+		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnNewRadioButton_4.setBounds(490, 235, 93, 31);
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid";
@@ -150,7 +157,8 @@ public class Aprendizagem {
 		group.add(rdbtnNewRadioButton_4);
 		
 		JButton btnTeachMe = new JButton("Teach me!");
-		btnTeachMe.setBounds(15, 335, 115, 30);
+		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnTeachMe.setBounds(15, 335, 115, 31);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
