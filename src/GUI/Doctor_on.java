@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 
 public class Doctor_on extends JFrame {
@@ -51,6 +53,7 @@ public class Doctor_on extends JFrame {
 		setSize(1000,600);
 
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);

@@ -1,5 +1,6 @@
 package PDF;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -326,6 +327,8 @@ public class Report {
         
         document.close();
       
+        Desktop.getDesktop().open(new File(dest));
+
         System.out.println("PDF successfully generated!");
     
     }

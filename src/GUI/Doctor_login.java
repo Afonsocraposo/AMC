@@ -1,5 +1,6 @@
 package GUI;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -50,10 +51,11 @@ public class Doctor_login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+				
 		JLabel lblDoctorsName = new JLabel("Doctor's name:");
 		lblDoctorsName.setBounds(177, 95, 95, 16);
 		contentPane.add(lblDoctorsName);
@@ -63,7 +65,9 @@ public class Doctor_login extends JFrame {
 		textUsername.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode()==10) {
-					username=textUsername.getText();
+					if(!textUsername.getText().isEmpty()) {
+						username=textUsername.getText();
+					}
 					frame_on = new Doctor_on(username);
 					frame_on.setVisible(true);
 					setVisible(false);
@@ -76,7 +80,9 @@ public class Doctor_login extends JFrame {
 		JButton btnEnter = new JButton("Enter");
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				username=textUsername.getText();
+				if(!textUsername.getText().isEmpty()) {
+					username=textUsername.getText();
+				}
 				frame_on = new Doctor_on(username);
 				frame_on.setVisible(true);
 				setVisible(false);
