@@ -61,20 +61,44 @@ setSize(1000,600);
 		JButton btnDiagnose = new JButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-			String[] param = textField.getText().split(",");	
+
+			
+				String[] param = textField.getText().split(",");
+				int[] parameters = new int[param.length+1]; // Jï¿½ inclui uma entrada para pormos a classe mais tarde
 				if(param.length!=10) {
 					Jlabel_1.setVisible(true);
 				}
-					else {
-						Jlabel_1.setVisible(false);
-						int[] parameters = new int[param.length+1]; // Já inclui uma entrada para pormos a classe mais tarde
+				else {
+					Jlabel_1.setVisible(false);
 					for(int i=0; i<param.length; i++)
 						parameters[i] = Integer.parseInt(param[i]);
 					System.out.println(Arrays.toString(parameters));
-					}
-				
+				}
+
+				BN bayesnet; 
+
+				String filename="breast cancer.BN"; 
+				FileInputStream fis; 
+				ObjectInputStream ois; 
+				try { 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					ois=new ObjectInputStream(fis); 
+					bayesnet=(BN)ois.readObject(); 
+					ois.close(); 
+					fis.close(); 
+
+					parameters[10]=0; 
+					double Benign=bayesnet.prob(parameters); 
+					parameters[10]=1; 
+					double Malign=bayesnet.prob(parameters); 
+				} 
+				catch(FileNotFoundException e1) { 
+
+				} 
+				catch(IOException e2) { 
+				}  
+				catch (ClassNotFoundException e3) {
+				}
 			}
 		});
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
