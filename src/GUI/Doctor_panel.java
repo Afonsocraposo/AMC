@@ -8,18 +8,23 @@ import javax.swing.JLabel;
 import java.awt.Insets;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.SwingConstants;
 
 import com.itextpdf.text.DocumentException;
 
 import PDF.PatientInfo;
 import PDF.Report;
+import Tipos_de_dados.BN;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +35,8 @@ public class Doctor_panel extends JPanel {
 	
 	private JTextField textName;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	public File modelsource;
 
 	/**
 	 * Create the panel.
@@ -186,6 +193,18 @@ public class Doctor_panel extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+	        }
+		});
+		JButton btnSource = new JButton("Choose Model");
+		btnSource.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFileChooser f = new JFileChooser();
+		        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
+		        f.showSaveDialog(null);
+		        
+		        modelsource= f.getCurrentDirectory();
+		        System.out.println(f.getCurrentDirectory());
 	        }
 		});
 		GridBagConstraints gbc_btnSave = new GridBagConstraints();
