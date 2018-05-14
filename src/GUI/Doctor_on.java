@@ -56,7 +56,7 @@ public class Doctor_on extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setSize(1000,600);
+		setSize(1000,700);
 
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
