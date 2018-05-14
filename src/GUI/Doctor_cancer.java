@@ -17,7 +17,6 @@ public class Doctor_cancer extends JPanel {
 	
 	public Doctor_cancer() {
 		setLayout(null);
-		setPreferredSize(new Dimension(1000	, 600));
 		
 		JLabel lblCancerSucls = new JLabel("Cancer sucks");
 		lblCancerSucls.setBounds(0, 0, 1000, 500);

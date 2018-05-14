@@ -17,7 +17,6 @@ public class Doctor_thyroid extends JPanel {
 	
 	public Doctor_thyroid() {
 		setLayout(null);
-		setPreferredSize(new Dimension(1000	, 600));
 		
 		JLabel lblCancerSucls = new JLabel("Thyroid sucks");
 		lblCancerSucls.setBounds(0, 0, 1000, 500);

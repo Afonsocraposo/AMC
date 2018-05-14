@@ -16,7 +16,6 @@ public class Doctor_diabetes extends JPanel {
 	// 8 parâmetros
 	public Doctor_diabetes() {
 		setLayout(null);
-		setPreferredSize(new Dimension(1000	, 600));
 		
 		JLabel lblCancerSucls = new JLabel("Diabetes sucks");
 		lblCancerSucls.setBounds(0, 0, 1000, 500);

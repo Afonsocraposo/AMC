@@ -17,7 +17,6 @@ public class Doctor_hepatitis extends JPanel {
 	
 	public Doctor_hepatitis() {
 		setLayout(null);
-		setPreferredSize(new Dimension(1000	, 600));
 		
 		JLabel lblCancerSucls = new JLabel("Hepatitis sucks");
 		lblCancerSucls.setBounds(0, 0, 1000, 500);

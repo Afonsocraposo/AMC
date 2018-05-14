@@ -12,17 +12,25 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
+class P extends JPanel {
+	private int percent;
+	public P(int percent) {
+		this.percent = percent;
+	}
+}
 
-public class Doctor_on extends JFrame {
+public class Doctor_on_test extends JFrame {
 
 	private JPanel contentPane;
 	JPanel firstPanel = new Doctor_cancer();
 	JPanel secondPanel = new Doctor_diabetes();
 	JPanel thirdPanel = new Doctor_hepatitis();
 	JPanel forthPanel = new Doctor_thyroid();
+	JPanel doctorPanel = new Doctor_panel();
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 
+	String username;
 
 	/**
 	 * Launch the application.
@@ -31,7 +39,7 @@ public class Doctor_on extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Doctor_on frame = new Doctor_on("Unknown");
+					Doctor_on_test frame = new Doctor_on_test();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,9 +51,7 @@ public class Doctor_on extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Doctor_on(String username) {
-		JPanel doctorPanel = new Doctor_panel(username);
-
+	public Doctor_on_test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(1000,600);
