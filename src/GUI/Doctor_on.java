@@ -18,10 +18,11 @@ import java.awt.Color;
 public class Doctor_on extends JFrame {
 
 	private JPanel contentPane;
-	JPanel firstPanel = new Doctor_cancer();
-	JPanel secondPanel = new Doctor_diabetes();
-	JPanel thirdPanel = new Doctor_hepatitis();
-	JPanel forthPanel = new Doctor_thyroid();
+	Doctor_cancer firstPanel;
+	Doctor_diabetes secondPanel;
+	Doctor_hepatitis thirdPanel;
+	Doctor_thyroid forthPanel;
+	Doctor_panel doctorPanel;
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -46,7 +47,12 @@ public class Doctor_on extends JFrame {
 	 * Create the frame.
 	 */
 	public Doctor_on(String username) {
-		JPanel doctorPanel = new Doctor_panel(username);
+		firstPanel = new Doctor_cancer(this);
+		secondPanel = new Doctor_diabetes();
+		thirdPanel = new Doctor_hepatitis();
+		forthPanel = new Doctor_thyroid();
+		
+		doctorPanel = new Doctor_panel(username, this);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

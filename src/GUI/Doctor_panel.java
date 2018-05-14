@@ -41,7 +41,7 @@ public class Doctor_panel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Doctor_panel(String username) {
+	public Doctor_panel(String username, Doctor_on parent) {
 		setBackground(Color.WHITE);
 		setSize(1000,120);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -214,6 +214,9 @@ public class Doctor_panel extends JPanel {
 		gbc_btnSave.gridy = 3;
 		add(btnSave, gbc_btnSave);
 
+	}
+	public File modelsource() {
+		return modelsource;
 	}
 
 }

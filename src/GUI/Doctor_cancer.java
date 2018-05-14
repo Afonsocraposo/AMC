@@ -6,8 +6,16 @@ import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Tipos_de_dados.BN;
+
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
@@ -20,7 +28,7 @@ public class Doctor_cancer extends JPanel {
 	
 	// 10 parâmetros
 	
-	public Doctor_cancer() {
+	public Doctor_cancer(Doctor_on parent) {
 		setLayout(null);
 		
 		setSize(1000,1000);
@@ -160,6 +168,32 @@ public class Doctor_cancer extends JPanel {
 				parameters[8] = comboBox_8.getSelectedIndex();
 				parameters[9] = comboBox_9.getSelectedIndex();
 				System.out.println(Arrays.toString(parameters));
+				File modelsource=parent.doctorPanel.modelsource;
+				
+				BN bayesnet;
+				
+				String filename="breast cancer.BN";
+				FileInputStream fis;
+				ObjectInputStream ois;
+				try {
+					fis=new FileInputStream(modelsource+filename);
+					ois=new ObjectInputStream(fis);
+					bayesnet=(BN)ois.readObject();
+					ois.close();
+					fis.close();
+					
+					parameters[10]=0;
+					double Benign=bayesnet.prob(parameters);
+					parameters[10]=1;
+					double Malign=bayesnet.prob(parameters);
+				}
+				catch(FileNotFoundException e) {
+					
+				}
+				catch(IOException e1) {
+				} 
+				catch (ClassNotFoundException e) {
+				}
 				
 			}
 		});
