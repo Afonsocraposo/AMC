@@ -382,6 +382,7 @@ public class Doctor_cancer extends JPanel {
 				}
 								
 				parent.patient.signs = signsParameters;
+				parent.patient.exam = "BREAST CANCER";
 
 				
 				Jlabel_1.setVisible(false);
