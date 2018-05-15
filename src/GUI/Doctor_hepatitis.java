@@ -104,6 +104,5 @@ public class Doctor_hepatitis extends JPanel {
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDiagnose.setBounds(15, 274, 115, 29);
 		add(btnDiagnose);
-
 	}
 }
