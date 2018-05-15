@@ -77,7 +77,7 @@ setSize(1000,600);
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 

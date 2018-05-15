@@ -395,7 +395,7 @@ public class Doctor_cancer extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
@@ -405,6 +405,8 @@ public class Doctor_cancer extends JPanel {
 					double Benign=bayesnet.prob(parameters); 
 					parameters[10]=1; 
 					double Malign=bayesnet.prob(parameters); 
+					System.out.println(Benign);
+					System.out.println(Malign);
 				} 
 				catch(FileNotFoundException e1) { 
 

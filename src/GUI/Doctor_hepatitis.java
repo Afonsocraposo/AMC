@@ -79,7 +79,7 @@ public class Doctor_hepatitis extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
