@@ -3,22 +3,7 @@ package GUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-import java.awt.BorderLayout;
-//import com.jgoodies.forms.layout.FormLayout;
-//import com.jgoodies.forms.layout.ColumnSpec;
-//import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.SwingConstants;
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.Insets;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 
 public class Doctor {
 

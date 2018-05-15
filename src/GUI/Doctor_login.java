@@ -1,24 +1,19 @@
 package GUI;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
 import javax.swing.JButton;
-import java.awt.Insets;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class Doctor_login extends JFrame {
 
 	private JPanel contentPane;
