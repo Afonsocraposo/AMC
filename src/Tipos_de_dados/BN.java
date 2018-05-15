@@ -74,6 +74,7 @@ public class BN implements Serializable{
 			}
 			p+=Theta[x][v[x]][position];
 		}
+		p+=Theta[x][v[x]][0];
 		return Math.pow(10.0, p); 
 	}	                       
 }
