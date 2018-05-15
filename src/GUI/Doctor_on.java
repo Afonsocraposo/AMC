@@ -8,13 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSplitPane;
+
+import PDF.PatientInfo;
+
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
-import java.awt.SystemColor;
 import java.awt.Color;
 
 
+@SuppressWarnings("serial")
 public class Doctor_on extends JFrame {
 
 	private JPanel contentPane;
@@ -23,6 +25,8 @@ public class Doctor_on extends JFrame {
 	Doctor_hepatitis thirdPanel;
 	Doctor_thyroid forthPanel;
 	Doctor_panel doctorPanel;
+	
+	public PatientInfo patient = new PatientInfo();
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
 

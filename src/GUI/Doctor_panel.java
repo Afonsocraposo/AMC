@@ -13,7 +13,6 @@ import javax.swing.SwingConstants;
 
 import com.itextpdf.text.DocumentException;
 
-import PDF.PatientInfo;
 import PDF.Report;
 import Tipos_de_dados.BN;
 
@@ -172,23 +171,23 @@ public class Doctor_panel extends JPanel {
 					gender = "F";
 				}
 				
-	        	PatientInfo patient = new PatientInfo();
+	        	
 
 	        	if(!textName.getText().isEmpty()) {
-	        		patient.name = textName.getText();
+	        		parent.patient.name = textName.getText();
 	        	}
-	        	patient.gender = gender;
-	        	patient.doctor = username;
+	        	parent.patient.gender = gender;
+	        	parent.patient.doctor = username;
 	        	
-	        	patient.birth_year = Integer.parseInt(comboBoxYear.getSelectedItem().toString());
-	        	patient.birth_month = Integer.parseInt(comboBoxMonth.getSelectedItem().toString());
-	        	patient.birth_day = Integer.parseInt(comboBoxDay.getSelectedItem().toString());
+	        	parent.patient.birth_year = Integer.parseInt(comboBoxYear.getSelectedItem().toString());
+	        	parent.patient.birth_month = Integer.parseInt(comboBoxMonth.getSelectedItem().toString());
+	        	parent.patient.birth_day = Integer.parseInt(comboBoxDay.getSelectedItem().toString());
 	        	
 	        	String DEST = "results_pdf/Report-" + timeStampFile + ".pdf";
 	            File file = new File(DEST);
 	            file.getParentFile().mkdirs();
 	        	try {
-					new Report().createPdf(DEST, patient);
+					new Report().createPdf(DEST, parent.patient);
 				} catch (DocumentException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -4,24 +4,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 
 import Tipos_de_dados.BN;
 
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class Doctor_cancer extends JPanel {
 	private JTextField textField;
 
@@ -38,7 +38,7 @@ public class Doctor_cancer extends JPanel {
 		setLayout(null);
 		
 		setSize(1000,500);
-		
+				
 		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
 		Jlabel_1.setForeground(Color.RED);
 		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -129,7 +129,7 @@ public class Doctor_cancer extends JPanel {
 		
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				java.util.List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
+				List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
 				
 				if(list.size()!=10) {
 					Jlabel_1.setVisible(true);
@@ -222,6 +222,13 @@ public class Doctor_cancer extends JPanel {
 					}
 					
 				}
+				
+				list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
+				for(int j=0;j<parameters.length;j++) {
+					parameters[j]=Integer.parseInt(list.get(j));
+				}
+				
+				
 				}
 			}}
 		});
@@ -368,6 +375,14 @@ public class Doctor_cancer extends JPanel {
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				ArrayList<Integer> signsParameters = new ArrayList<Integer>();
+				
+				for(int i=0; i<parameters.length; i++) {
+					signsParameters.add(parameters[i]);
+				}
+								
+				parent.patient.signs = signsParameters;
+
 				
 				Jlabel_1.setVisible(false);
 				Jlabel_2.setVisible(false);
