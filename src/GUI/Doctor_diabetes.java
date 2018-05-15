@@ -41,7 +41,7 @@ public class Doctor_diabetes extends JPanel {
 		setSize(1000,500);
 		
 		
-		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
+		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 8 parameters.");
 		Jlabel_1.setForeground(Color.RED);
 		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Jlabel_1.setBounds(253, 380, 489, 20);
@@ -343,7 +343,7 @@ public class Doctor_diabetes extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 

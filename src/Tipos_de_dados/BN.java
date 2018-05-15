@@ -70,7 +70,7 @@ public class BN implements Serializable{
 				int D=1;
 				for(j=0;j<i;j++) {
 					D*=piDomains[j];}
-				position+=Parents[i]*D;	
+				position+=v[Parents[i]]*D;	
 			}
 			p+=Theta[x][v[x]][position];
 		}

@@ -41,7 +41,7 @@ public class Doctor_thyroid extends JPanel {
 
 		setSize(1000,500);
 		
-		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
+		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 20 parameters.");
 		Jlabel_1.setForeground(Color.RED);
 		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Jlabel_1.setBounds(385, 380, 489, 20);
@@ -604,7 +604,7 @@ public class Doctor_thyroid extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+filename); 
+					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
