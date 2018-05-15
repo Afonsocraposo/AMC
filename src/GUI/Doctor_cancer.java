@@ -31,7 +31,7 @@ public class Doctor_cancer extends JPanel {
 	
 	// 10 parâmetros
 	
-	int [] parameters = new int[10];
+	int [] parameters = new int[11];
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_cancer(Doctor_on parent) {
@@ -143,7 +143,7 @@ public class Doctor_cancer extends JPanel {
 					Jlabel_2.setVisible(false);
 					
 				
-				for(int i=0; i<parameters.length; i++) {
+				for(int i=0; i<10; i++) {
 					if(parameters[i]!=Integer.parseInt(list.get(i))) {
 						switch (i) {
 				        case 0:  
@@ -224,7 +224,7 @@ public class Doctor_cancer extends JPanel {
 				}
 				
 				list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
-				for(int j=0;j<parameters.length;j++) {
+				for(int j=0;j<10;j++) {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
@@ -377,7 +377,7 @@ public class Doctor_cancer extends JPanel {
 				
 				ArrayList<Integer> signsParameters = new ArrayList<Integer>();
 				
-				for(int i=0; i<parameters.length; i++) {
+				for(int i=0; i<10; i++) {
 					signsParameters.add(parameters[i]);
 				}
 								
