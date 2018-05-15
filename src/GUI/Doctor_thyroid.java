@@ -73,7 +73,7 @@ setSize(1000,600);
 				
 				BN bayesnet; 
 
-				String filename="breast cancer.BN"; 
+				String filename="Thyroid.BN"; 
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 

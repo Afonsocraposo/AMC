@@ -391,7 +391,7 @@ public class Doctor_cancer extends JPanel {
 
 				BN bayesnet; 
 
-				String filename="breast cancer.BN"; 
+				String filename="Breast Cancer.BN"; 
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
