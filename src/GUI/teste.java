@@ -1,18 +1,24 @@
 package GUI;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -25,19 +31,26 @@ import javax.swing.JTextField;
 import Tipos_de_dados.Amostra;
 import Tipos_de_dados.BN;
 import Tipos_de_dados.DGraph;
+import Tipos_de_dados.Sample;
 import Tipos_de_dados.WGraph;
 import Tipos_de_dados.Weights;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
 import javax.swing.SwingConstants;
+
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
+
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Graphics2D;
 
 public class teste {
 
@@ -50,6 +63,59 @@ public class teste {
 	private JTextField textField_2;
 	private JTextField textField_3;
 
+
+	public void saveComponentAsJPEG(Component myComponent, String filename) {
+	       Dimension size = myComponent.getSize();
+	       BufferedImage myImage = 
+	         new BufferedImage(size.width, size.height,
+	         BufferedImage.TYPE_INT_RGB);
+	       Graphics2D g2 = myImage.createGraphics();
+	       myComponent.paint(g2);
+	       try {
+	         OutputStream out = new FileOutputStream(filename);
+	         JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+	         encoder.encode(myImage);
+	         out.close();
+	       } catch (Exception e) {
+	         System.out.println(e); 
+	       }
+	     }  
+	
+	
+	public static BufferedImage getScreenShot (Component component) {
+		
+		BufferedImage image = new BufferedImage(component.getWidth(), component.getHeight(),BufferedImage.TYPE_INT_RGB);
+		
+		component.paint(image.getGraphics());
+		return image;
+	}
+	
+	public static void SaveScreenShot (Component component, String filename) throws Exception {
+		
+		BufferedImage img = getScreenShot(component);
+		ImageIO.write(img, "png", new File(filename));
+	}
+	
+/*private void makePanelImage(Component panel) {
+		
+		Dimension size = panel.getSize();
+        BufferedImage image = new BufferedImage(
+                    size.width, size.height 
+                              , BufferedImage.TYPE_INT_RGB);
+        
+        Graphics2D g2 = image.createGraphics();
+        panel.paint(g2);
+        try
+        {
+            ImageIO.write(image, "png", new File("snapshot3.png"));
+            System.out.println("Panel saved as Image.");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+	}
+*/
 	/**
 	 * Launch the application.
 	 */
@@ -62,6 +128,8 @@ public class teste {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			
+			
 			}
 		});
 	}
@@ -79,12 +147,10 @@ public class teste {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(teste.class.getResource("/GUI/DoctorEmoji_icon.png")));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setTitle("Medicine for Dummies");
-		
 
 		
 		JButton btnChooseFile = new JButton("Choose file");
@@ -307,16 +373,7 @@ public class teste {
 		btnGraphs.setBounds(516, 399, 87, 31);
 		frame.getContentPane().add(btnGraphs);
 		
-		textField_1 = new JTextField();
-		textField_1.setForeground(SystemColor.text);
-		textField_1.setFont(new Font("Tahoma", Font.BOLD, 18));
-		textField_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField_1.setBackground(SystemColor.activeCaption);
-		textField_1.setBounds(15, 109, (int)(360*0.5), 30);
-		textField_1.setText(String.valueOf(50)+"%");
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		textField_1.setVisible(false);
+
 		
 		textField_2 = new JTextField();
 		textField_2.setForeground(SystemColor.text);
@@ -338,9 +395,15 @@ public class teste {
 		textField_3.setBounds(15, 201, (int)(360*0.3), 30);
 		textField_3.setText(String.valueOf(30)+"%");
 		frame.getContentPane().add(textField_3);
-		textField_3.setVisible(false);
 		
+		try {
 		
+//		saveComponentAsJPEG(frame,"C:\\Users\\anaso\\Documents\\AMC\\snapshot.jpeg");
+		SaveScreenShot(frame,"screen.png");
+		}
+		catch(Exception e) {
+			
+		}
 		
 	}
 }

@@ -42,7 +42,7 @@ public class Doctor_hepatitis extends JPanel {
 		lblSelectValuesFor.setBounds(15, 53, 442, 20);
 		add(lblSelectValuesFor);
 		
-		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
+		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 19 parameters.");
 		Jlabel_1.setForeground(Color.RED);
 		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		Jlabel_1.setBounds(326, 98, 489, 20);
