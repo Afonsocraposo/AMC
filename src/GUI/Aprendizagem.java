@@ -119,7 +119,7 @@ public class Aprendizagem {
 		rdbtnNewRadioButton.setBounds(490, 85, 141, 31);
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				choosenparameter="Breast Cancer";
+				choosenparameter="Breast_Cancer";
 			}
 		});
 		
