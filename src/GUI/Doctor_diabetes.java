@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class Doctor_diabetes extends JPanel {
 	public Doctor_diabetes(Doctor_on parent) {
 		setLayout(null);
 
-		setSize(1000,600);
+		setSize(1000,500);
 		
 		
 		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
@@ -58,7 +59,7 @@ public class Doctor_diabetes extends JPanel {
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setBounds(15, 377, 222, 26);
-		textField.setText(Arrays.toString(parameters));
+		textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 		add(textField);
 		textField.setColumns(10);
 		
@@ -119,7 +120,7 @@ public class Doctor_diabetes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
 				
-				if(list.size()!=10) {
+				if(list.size()!=8) {
 					Jlabel_1.setVisible(true);
 					Jlabel_2.setVisible(false);
 				}else {
@@ -131,7 +132,7 @@ public class Doctor_diabetes extends JPanel {
 					Jlabel_2.setVisible(false);
 					
 				
-				for(int i=0; i<parameters.length; i++) {
+				for(int i=0; i<8; i++) {
 					if(parameters[i]!=Integer.parseInt(list.get(i))) {
 						switch (i) {
 				        case 0:  
@@ -197,7 +198,7 @@ public class Doctor_diabetes extends JPanel {
 				}
 				
 				list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
-				for(int j=0;j<parameters.length;j++) {
+				for(int j=0;j<8;j++) {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
@@ -209,7 +210,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[0] = comboBox.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -217,7 +218,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[1] = comboBox_1.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -225,7 +226,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[2] = comboBox_2.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -233,7 +234,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[3] = comboBox_3.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -241,7 +242,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[4] = comboBox_4.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -249,7 +250,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[5] = comboBox_5.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -257,7 +258,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[6] = comboBox_6.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -265,7 +266,7 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[7] = comboBox_7.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 8)));
 				
 			}
 		});
@@ -323,17 +324,18 @@ public class Doctor_diabetes extends JPanel {
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String[] param = textField.getText().split(",");	
-				int[] parameters = new int[param.length+1]; // J� inclui uma entrada para pormos a classe mais tarde
-				if(param.length!=8) {
-					Jlabel_1.setVisible(true);
+				ArrayList<Integer> signsParameters = new ArrayList<Integer>();
+				
+				for(int i=0; i<8; i++) {
+					signsParameters.add(parameters[i]);
 				}
-					else {
-						Jlabel_1.setVisible(false);
-					for(int i=0; i<param.length; i++)
-						parameters[i] = Integer.parseInt(param[i]);
-					System.out.println(Arrays.toString(parameters));
-					}
+								
+				parent.patient.signs = signsParameters;
+				parent.patient.exam = "DIABETES";
+
+				
+				Jlabel_1.setVisible(false);
+				Jlabel_2.setVisible(false);
 				
 				BN bayesnet; 
 
@@ -362,9 +364,15 @@ public class Doctor_diabetes extends JPanel {
 				
 			}
 		});
+		
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnDiagnose.setBounds(15, 274, 115, 29);
+		btnDiagnose.setBounds(24, 421, 115, 29);
 		add(btnDiagnose);
+		
+		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form:");
+		lblInsertParametersIn.setBounds(15, 353, 222, 16);
+		add(lblInsertParametersIn);
+		
 	}
 
 }

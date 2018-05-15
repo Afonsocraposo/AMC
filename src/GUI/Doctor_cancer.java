@@ -57,7 +57,7 @@ public class Doctor_cancer extends JPanel {
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setBounds(15, 377, 222, 26);
-		textField.setText(Arrays.toString(parameters));
+		textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 		add(textField);
 		textField.setColumns(10);
 		
@@ -236,7 +236,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[0] = comboBox.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -244,7 +244,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[1] = comboBox_1.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -252,7 +252,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[2] = comboBox_2.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -260,7 +260,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[3] = comboBox_3.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -268,7 +268,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[4] = comboBox_4.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -276,7 +276,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[5] = comboBox_5.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -284,7 +284,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[6] = comboBox_6.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -292,7 +292,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[7] = comboBox_7.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -300,7 +300,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[8] = comboBox_8.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -308,7 +308,7 @@ public class Doctor_cancer extends JPanel {
 		comboBox_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[9] = comboBox_9.getSelectedIndex();
-				textField.setText(Arrays.toString(parameters));
+				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 				
 			}
 		});
@@ -390,7 +390,7 @@ public class Doctor_cancer extends JPanel {
 
 
 				BN bayesnet; 
-
+				
 				String filename="Breast Cancer.BN"; 
 				FileInputStream fis; 
 				ObjectInputStream ois; 
@@ -415,6 +415,7 @@ public class Doctor_cancer extends JPanel {
 				}
 			}
 		});
+		
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDiagnose.setBounds(24, 421, 115, 29);
 		add(btnDiagnose);
