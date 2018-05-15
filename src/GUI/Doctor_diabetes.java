@@ -7,7 +7,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,10 +18,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.SwingConstants;
 
 import Tipos_de_dados.BN;
 
+@SuppressWarnings("serial")
 public class Doctor_diabetes extends JPanel {
 	private JTextField textField;
 
@@ -343,7 +342,11 @@ public class Doctor_diabetes extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
+					try {
+						fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
+						} catch(FileNotFoundException e1) {
+							fis=new FileInputStream("trained_models/"+filename); 
+						}
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
@@ -352,11 +355,13 @@ public class Doctor_diabetes extends JPanel {
 					parameters[8]=0; 
 					double negative=bayesnet.prob(parameters); 
 					parameters[8]=1; 
-					double positive=bayesnet.prob(parameters); 
-				} 
-				catch(FileNotFoundException e1) { 
+					double positive=bayesnet.prob(parameters);
+					
+					System.out.println(negative +", "+ positive);
 
+					
 				} 
+
 				catch(IOException e2) { 
 				}  
 				catch (ClassNotFoundException e3) {

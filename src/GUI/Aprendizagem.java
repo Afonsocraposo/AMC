@@ -8,7 +8,6 @@ import Tipos_de_dados.BN;
 import Tipos_de_dados.DGraph;
 import Tipos_de_dados.WGraph;
 import Tipos_de_dados.Weights;
-import javafx.concurrent.Task;
 
 import javax.swing.JFrame;
 
@@ -29,12 +28,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
-import javax.swing.JProgressBar;
 
 
 

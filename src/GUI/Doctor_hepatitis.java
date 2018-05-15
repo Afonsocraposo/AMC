@@ -6,7 +6,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,12 +17,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.SwingConstants;
 
 import Tipos_de_dados.BN;
 
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class Doctor_hepatitis extends JPanel {
 	private JTextField textField;
 
@@ -587,7 +586,11 @@ public class Doctor_hepatitis extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
-					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
+					try {
+						fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
+						} catch(FileNotFoundException e1) {
+							fis=new FileInputStream("trained_models/"+filename); 
+						}
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
@@ -597,10 +600,11 @@ public class Doctor_hepatitis extends JPanel {
 					double Die=bayesnet.prob(parameters); 
 					parameters[19]=1; 
 					double Live=bayesnet.prob(parameters); 
-				} 
-				catch(FileNotFoundException e1) { 
+					
+					System.out.println(Die +", "+ Live);
 
 				} 
+
 				catch(IOException e2) { 
 				}  
 				catch (ClassNotFoundException e3) {

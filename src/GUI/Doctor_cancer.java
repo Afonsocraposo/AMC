@@ -20,14 +20,11 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.JSeparator;
-import java.awt.Panel;
+
 
 @SuppressWarnings("serial")
 public class Doctor_cancer extends JPanel {
 	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Create the panel.
@@ -399,7 +396,13 @@ public class Doctor_cancer extends JPanel {
 				FileInputStream fis; 
 				ObjectInputStream ois; 
 				try { 
+					
+					try {
 					fis=new FileInputStream(parent.doctorPanel.modelsource+"/"+filename); 
+					} catch(FileNotFoundException e1) {
+						fis=new FileInputStream("trained_models/"+filename); 
+					}
+					
 					ois=new ObjectInputStream(fis); 
 					bayesnet=(BN)ois.readObject(); 
 					ois.close(); 
@@ -412,9 +415,6 @@ public class Doctor_cancer extends JPanel {
 					
 					System.out.println(Benign +", "+ Malign);
 					
-				} 
-				catch(FileNotFoundException e1) { 
-
 				} 
 				catch(IOException e2) { 
 				}  
