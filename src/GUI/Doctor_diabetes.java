@@ -70,13 +70,15 @@ public class Doctor_diabetes extends JPanel {
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.addItem(0);
+		comboBox_1.addItem(1);
+		comboBox_1.addItem(2);
+		comboBox_1.addItem(3);
 		comboBox_1.setBounds(135, 150, 60, 25);
 		add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.addItem(0);
 		comboBox_2.addItem(1);
-		comboBox_2.addItem(2);
 		comboBox_2.setBounds(135, 200, 60, 25);
 		add(comboBox_2);
 		
@@ -110,7 +112,6 @@ public class Doctor_diabetes extends JPanel {
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.addItem(2);
 		comboBox_7.setBounds(340, 200, 60, 25);
 		add(comboBox_7);
 		
