@@ -2,6 +2,8 @@ package Tipos_de_dados;
 
 import java.util.ArrayList;
 
+import Tipos_de_dados.WGraph.Edge;
+
 public interface Weighted_Graphs {
 	void add_edge(int node1, int node2, double weight); //adiciona a aresta com extremidades node1 e node2 e peso weight ao grafo
 	void remove_edge(int node1, int node2); //remove a aresta com extremidades node1 e node2

@@ -375,7 +375,7 @@ public class Doctor_diabetes extends JPanel {
 		btnDiagnose.setBounds(24, 421, 115, 29);
 		add(btnDiagnose);
 		
-		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form:");
+		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form (and press ENTER):");
 		lblInsertParametersIn.setBounds(15, 353, 222, 16);
 		add(lblInsertParametersIn);
 		

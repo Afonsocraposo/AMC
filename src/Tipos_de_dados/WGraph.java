@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class WGraph { // implements Weighted_Graphs {
 	
 	
-	private class Edge {
+	class Edge {
 		
 		private int nodea;
 		private int nodeb;
