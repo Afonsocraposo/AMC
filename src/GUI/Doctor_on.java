@@ -40,7 +40,7 @@ public class Doctor_on extends JFrame {
 			public void run() {
 				try {
 					Doctor_on frame = new Doctor_on("Unknown");
-					frame.setTitle("Medicine for Dummies");
+					frame.setTitle("Medicine for Dummies - Diagnose");
 					frame.setIconImage(img.getImage());
 					frame.setVisible(true);
 				} catch (Exception e) {

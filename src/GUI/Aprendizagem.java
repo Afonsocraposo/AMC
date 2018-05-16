@@ -77,7 +77,7 @@ public class Aprendizagem {
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(img.getImage());
-		frame.setTitle("Medicine for Dummies");
+		frame.setTitle("Medicine for Dummies - Learning");
 		
 		
 		JLabel lblInfo = new JLabel("");
