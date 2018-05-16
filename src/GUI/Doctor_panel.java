@@ -154,7 +154,7 @@ public class Doctor_panel extends JPanel {
 		gbc_comboBoxDay.gridy = 3;
 		add(comboBoxDay, gbc_comboBoxDay);
 		
-		JButton btnSave = new JButton("SAVE");
+		JButton btnSave = new JButton("Print as PDF");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

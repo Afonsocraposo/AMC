@@ -68,13 +68,20 @@ public class Report {
         		age ++;
         	}
         }
-
+        
+        String safe;
+        
+        if(pat.result=="NEGATIVE") {
+        	safe="SAFE";
+        } else {
+        	safe= "NOT SAFE";
+        }
         
         String para1 = "MEDICINE FOR DUMMIES";
         String para2 = "Medical Report";     
         String para3 = pat.exam + " EXAM:";  
         String para4 = "EXAM RESULT:"; 
-        String para5 = "After examination and comparasion with previous cases of " + pat.exam + ", the result for this exam is " + pat.result + ". You're safe!";
+        String para5 = "After examination and comparasion with previous cases of " + pat.exam + ", the result for this exam is " + pat.result + ". You're "+safe+"!";
         String para6 = "Comments:";
         String para7 = pat.comments;
         String para8 = "Dr. " + pat.doctor;

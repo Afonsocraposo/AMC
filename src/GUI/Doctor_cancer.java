@@ -426,6 +426,13 @@ public class Doctor_cancer extends JPanel {
 					
 					System.out.println(probB +", "+ probM);
 					
+					if(probB>probM) {
+						parent.patient.result="NEGATIVE";
+					} else {
+						parent.patient.result="POSITIVE";
+					}
+					
+					
 				} 
 				catch(IOException e2) { 
 				}  
