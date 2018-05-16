@@ -102,9 +102,9 @@ public class Aprendizagem {
 				fd.setVisible(true);
 				String filename = fd.getFile();
 				if (filename == null)
-					System.out.println("Cancelled");
+					lblInfo.setText("Select a valid file");
 				else 
-					System.out.println("File selected: " + filename);
+					lblInfo.setText("File selected: " + filename);
 				selecteddatabase=fd.getDirectory()+filename;
 				textField.setText(filename);
 			}
@@ -264,9 +264,7 @@ public class Aprendizagem {
 				JFileChooser f = new JFileChooser();
 		        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
 		        f.showSaveDialog(null);
-		        
-		        System.out.println(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
-				
+		        				
 				try {
 					FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
 					ObjectOutputStream oos=new ObjectOutputStream(fos);
