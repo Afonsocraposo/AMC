@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ public class Doctor_on extends JFrame {
 	public PatientInfo patient = new PatientInfo();
 	
 	JTabbedPane tabbedPane = new JTabbedPane();
-
+	static ImageIcon img=new ImageIcon("images/logo.png");
 
 	/**
 	 * Launch the application.
@@ -39,6 +40,8 @@ public class Doctor_on extends JFrame {
 			public void run() {
 				try {
 					Doctor_on frame = new Doctor_on("Unknown");
+					frame.setTitle("Medicine for Dummies");
+					frame.setIconImage(img.getImage());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
