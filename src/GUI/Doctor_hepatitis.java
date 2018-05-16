@@ -606,7 +606,12 @@ public class Doctor_hepatitis extends JPanel {
 					parameters[19]=1; 
 					double Live=bayesnet.prob(parameters); 
 					
-					System.out.println(Die +", "+ Live);
+					double total=Die+Live;
+					
+					double probD=Die/total;
+					double probL=Live/total;
+					
+					System.out.println(probD +", "+ probL);
 
 				} 
 

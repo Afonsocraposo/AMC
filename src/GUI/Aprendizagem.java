@@ -19,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
@@ -41,7 +42,7 @@ public class Aprendizagem {
 	
 	private String selecteddatabase;
 	private String choosenparameter;
-
+	static ImageIcon img=new ImageIcon("images/logo.png");
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +76,8 @@ public class Aprendizagem {
 		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Medicine for Dummies - Baesyan Net leaner");
+		frame.setIconImage(img.getImage());
+		frame.setTitle("Medicine for Dummies - Learning");
 		
 		
 		JLabel lblInfo = new JLabel("");

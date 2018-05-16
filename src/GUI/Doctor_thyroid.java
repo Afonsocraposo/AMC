@@ -624,7 +624,12 @@ public class Doctor_thyroid extends JPanel {
 					parameters[20]=1; 
 					double Hiper=bayesnet.prob(parameters); 
 					
-					System.out.println(Normal +", "+ Hiper);
+					double total=Normal+Hiper;
+					
+					double probN=Normal/total;
+					double probH=Hiper/total;
+					
+					System.out.println(probN +", "+ probH);
 
 				} 
 

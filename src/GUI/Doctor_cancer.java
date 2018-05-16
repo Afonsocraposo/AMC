@@ -419,7 +419,12 @@ public class Doctor_cancer extends JPanel {
 					parameters[10]=1; 
 					double Malign=bayesnet.prob(parameters); 
 					
-					System.out.println(Benign +", "+ Malign);
+					double total=Benign+Malign;
+					
+					double probM=Malign/total;
+					double probB=Benign/total;
+					
+					System.out.println(probB +", "+ probM);
 					
 				} 
 				catch(IOException e2) { 
