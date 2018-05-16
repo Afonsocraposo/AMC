@@ -2,6 +2,7 @@ package Tipos_de_dados;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class BN implements Serializable{
 	protected Oriented_Graphs g;
 	protected double[][][] Theta;

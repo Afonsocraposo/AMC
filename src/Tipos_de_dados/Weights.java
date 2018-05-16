@@ -15,7 +15,6 @@ public class Weights {
 				for(int k=0; k<a.Domains(c); k++) { //percorre o dominio da classe
 					
 					double r;
-					double r2;
 					int[] valxyc = {i,j,k}; 
 					int[] valxc = {i,k};
 					int[] valyc = {j,k};

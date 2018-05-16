@@ -2,6 +2,7 @@ package Tipos_de_dados;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class DGraph implements Oriented_Graphs,Serializable{
 	protected List[] ladj;
 	protected int dim;

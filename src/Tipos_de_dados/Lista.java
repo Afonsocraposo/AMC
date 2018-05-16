@@ -2,6 +2,7 @@ package Tipos_de_dados;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 class Node implements Serializable{
 	public int value;
 	public Node next;
@@ -11,6 +12,8 @@ class Node implements Serializable{
 		this.next=next;
 	}
 }
+
+@SuppressWarnings("serial")
 public class Lista implements List,Serializable {
 	protected Node first;
 	protected int length;

@@ -2,7 +2,7 @@ package Tipos_de_dados;
 
 import java.util.ArrayList;
 
-public class WGraph { // implements Weighted_Graphs {
+public class WGraph implements Weighted_Graphs {
 	
 	
 	class Edge {
@@ -264,6 +264,7 @@ public class WGraph { // implements Weighted_Graphs {
 */
 		
 		
+		@SuppressWarnings("unused")
 		DGraph dg = wg.MST(0);
 
 	}
