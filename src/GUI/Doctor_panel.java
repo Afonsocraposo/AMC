@@ -2,10 +2,7 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import javax.swing.JLabel;
-import java.awt.Insets;
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -16,7 +13,6 @@ import com.itextpdf.text.DocumentException;
 import PDF.Report;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class Doctor_panel extends JPanel {
@@ -38,77 +36,44 @@ public class Doctor_panel extends JPanel {
 	 * Create the panel.
 	 */
 	public Doctor_panel(String username, Doctor_on parent) {
-		setBackground(Color.WHITE);
-		setSize(1000,120);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{32, 117, 63, 52, 171, 48, 39, 151, 246, 0, 0};
-		gridBagLayout.rowHeights = new int[]{33, 16, 26, 16, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		setBackground(new Color(240,250,255));
+		setPreferredSize(new Dimension(1000, 120));
+		setLayout(null);
+		
 		
 		JLabel lblNewLabel = new JLabel("Patient's Name:");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 0;
-		add(lblNewLabel, gbc_lblNewLabel);
+		lblNewLabel.setBounds(6, 5, 97, 16);
+		add(lblNewLabel);
 		
 		textName = new JTextField();
-		GridBagConstraints gbc_textName = new GridBagConstraints();
-		gbc_textName.anchor = GridBagConstraints.NORTH;
-		gbc_textName.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textName.insets = new Insets(0, 0, 5, 5);
-		gbc_textName.gridwidth = 3;
-		gbc_textName.gridx = 1;
-		gbc_textName.gridy = 1;
-		add(textName, gbc_textName);
+		textName.setBounds(6, 24, 280, 26);
+		add(textName);
 		
 		JLabel lblGender = new JLabel("Gender:");
-		GridBagConstraints gbc_lblGender = new GridBagConstraints();
-		gbc_lblGender.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblGender.insets = new Insets(0, 0, 5, 5);
-		gbc_lblGender.gridx = 5;
-		gbc_lblGender.gridy = 1;
-		add(lblGender, gbc_lblGender);
-		
-		JLabel lblNewLabel_1 = new JLabel("Dr. "+username);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
-		gbc_lblNewLabel_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 8;
-		gbc_lblNewLabel_1.gridy = 1;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
-		JLabel lblBirthday = new JLabel("Birthday:");
-		GridBagConstraints gbc_lblBirthday = new GridBagConstraints();
-		gbc_lblBirthday.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblBirthday.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBirthday.gridx = 1;
-		gbc_lblBirthday.gridy = 2;
-		add(lblBirthday, gbc_lblBirthday);
+		lblGender.setBounds(296, 80, 48, 16);
+		lblGender.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lblGender);
 		
 		JRadioButton rdbtnM = new JRadioButton("M");
+		rdbtnM.setBounds(349, 76, 43, 23);
 		buttonGroup.add(rdbtnM);
-		rdbtnM.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_rdbtnM = new GridBagConstraints();
-		gbc_rdbtnM.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnM.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnM.gridx = 5;
-		gbc_rdbtnM.gridy = 2;
-		add(rdbtnM, gbc_rdbtnM);
+		rdbtnM.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(rdbtnM);
 		
 		JRadioButton rdbtnF = new JRadioButton("F");
+		rdbtnF.setBounds(397, 76, 39, 23);
 		buttonGroup.add(rdbtnF);
-		GridBagConstraints gbc_rdbtnF = new GridBagConstraints();
-		gbc_rdbtnF.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnF.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnF.gridx = 6;
-		gbc_rdbtnF.gridy = 2;
-		add(rdbtnF, gbc_rdbtnF);
+		add(rdbtnF);
+		
+		JLabel lblNewLabel_1 = new JLabel("Dr. "+username);
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		lblNewLabel_1.setBounds(632, 24, 283, 16);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		add(lblNewLabel_1);
+		
+		JLabel lblBirthday = new JLabel("Birthday:");
+		lblBirthday.setBounds(6, 59, 55, 16);
+		add(lblBirthday);
 		
 		ArrayList<String> years_tmp = new ArrayList<String>();
 		for(int years = Calendar.getInstance().get(Calendar.YEAR); years>=1900; years--) {
@@ -127,34 +92,41 @@ public class Doctor_panel extends JPanel {
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox comboBoxYear = new JComboBox(years_tmp.toArray());
-		GridBagConstraints gbc_comboBoxYear = new GridBagConstraints();
-		gbc_comboBoxYear.anchor = GridBagConstraints.NORTH;
-		gbc_comboBoxYear.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxYear.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxYear.gridx = 1;
-		gbc_comboBoxYear.gridy = 3;
-		add(comboBoxYear, gbc_comboBoxYear);
+		comboBoxYear.setBounds(6, 75, 90, 25);
+		add(comboBoxYear);
 	
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox comboBoxMonth = new JComboBox(months_tmp.toArray());
-		GridBagConstraints gbc_comboBoxMonth = new GridBagConstraints();
-		gbc_comboBoxMonth.anchor = GridBagConstraints.NORTH;
-		gbc_comboBoxMonth.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMonth.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxMonth.gridx = 2;
-		gbc_comboBoxMonth.gridy = 3;
-		add(comboBoxMonth, gbc_comboBoxMonth);
+		comboBoxMonth.setBounds(102, 75, 70, 25);
+		add(comboBoxMonth);
 
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		JComboBox comboBoxDay = new JComboBox(days_tmp.toArray());
-		GridBagConstraints gbc_comboBoxDay = new GridBagConstraints();
-		gbc_comboBoxDay.anchor = GridBagConstraints.NORTHWEST;
-		gbc_comboBoxDay.insets = new Insets(0, 0, 0, 5);
-		gbc_comboBoxDay.gridx = 3;
-		gbc_comboBoxDay.gridy = 3;
-		add(comboBoxDay, gbc_comboBoxDay);
+		comboBoxDay.setBounds(163, 75, 70, 25);
+		add(comboBoxDay);
 		
-		JButton btnSave = new JButton("Print as PDF");
+				
+				RoundedButton btnSource = new RoundedButton("Choose Models");
+				btnSource.setBounds(632, 69, 136, 26);
+				btnSource.setBackground(new Color(100,155,175));
+				btnSource.setForeground(Color.WHITE);
+				btnSource.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						JFileChooser f = new JFileChooser();
+				        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
+				        f.setDialogTitle("Choose folder containing models");
+				        f.showOpenDialog(null);
+				        
+				        modelsource= f.getCurrentDirectory();
+	        }
+				});
+				add(btnSource);
+		
+		RoundedButton btnSave = new RoundedButton("Print as PDF");
+		btnSave.setBounds(800, 69, 115, 26);
+		btnSave.setBackground(new Color(100,155,175));
+		btnSave.setForeground(Color.WHITE);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -190,33 +162,7 @@ public class Doctor_panel extends JPanel {
 				}
 	        }
 		});
-		GridBagConstraints gbc_btnSave = new GridBagConstraints();
-		gbc_btnSave.anchor = GridBagConstraints.EAST;
-		gbc_btnSave.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSave.gridx = 8;
-		gbc_btnSave.gridy = 3;
-		add(btnSave, gbc_btnSave);
-
-		
-		JButton btnSource = new JButton("Choose Models");
-		btnSource.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				JFileChooser f = new JFileChooser();
-		        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
-		        f.setDialogTitle("Choose folder containing models");
-		        f.showOpenDialog(null);
-		        
-		        modelsource= f.getCurrentDirectory();
-		        System.out.println(f.getCurrentDirectory());
-	        }
-		});
-		GridBagConstraints gbc_btnSource = new GridBagConstraints();
-		gbc_btnSource.anchor = GridBagConstraints.EAST;
-		gbc_btnSource.insets = new Insets(0, 0, 0, 5);
-		gbc_btnSource.gridx = 8;
-		gbc_btnSource.gridy = 2;
-		add(btnSource, gbc_btnSource);
+		add(btnSave);
 
 	}
 }

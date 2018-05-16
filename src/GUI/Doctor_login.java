@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class Doctor_login extends JFrame {
@@ -50,13 +52,18 @@ public class Doctor_login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
 				
 		JLabel lblDoctorsName = new JLabel("Doctor's name:");
-		lblDoctorsName.setBounds(177, 95, 95, 16);
+		lblDoctorsName.setForeground(new Color(100,155,175));
+		lblDoctorsName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDoctorsName.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblDoctorsName.setBounds(160, 94, 130, 16);
 		contentPane.add(lblDoctorsName);
 		
 		textUsername = new JTextField();
 		textUsername.setBounds(160, 116, 130, 26);
+		textUsername.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		textUsername.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode()==10) {
@@ -72,7 +79,9 @@ public class Doctor_login extends JFrame {
 		contentPane.add(textUsername);
 		textUsername.setColumns(10);
 		
-		JButton btnEnter = new JButton("Enter");
+		RoundedButton btnEnter = new RoundedButton("Enter");
+		btnEnter.setBackground(new Color(100,155,175));
+		btnEnter.setForeground(Color.WHITE);
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!textUsername.getText().isEmpty()) {
