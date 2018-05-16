@@ -75,7 +75,7 @@ public class Aprendizagem {
 		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
 		frame.setBounds(300, 300, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Medicine for Dummies");
+		frame.setTitle("Medicine for Dummies - Baesyan Net leaner");
 		
 		
 		JLabel lblInfo = new JLabel("");

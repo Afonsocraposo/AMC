@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -581,6 +582,10 @@ public class Doctor_thyroid extends JPanel {
 		lblSelectValuesFor1.setBounds(15, 53, 281, 20);
 		add(lblSelectValuesFor1);
 		
+		JTextArea textObs = new JTextArea();
+		textObs.setBounds(15, 430, 530, 46);
+		add(textObs);
+
 
 		JButton btnDiagnose = new JButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -594,6 +599,7 @@ public class Doctor_thyroid extends JPanel {
 								
 				parent.patient.signs = signsParameters;
 				parent.patient.exam = "THYROID DISEASE";
+				parent.patient.comments = textObs.getText();
 
 				Jlabel_1.setVisible(false);
 				
@@ -630,7 +636,7 @@ public class Doctor_thyroid extends JPanel {
 		});
 		
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnDiagnose.setBounds(24, 421, 115, 29);
+		btnDiagnose.setBounds(442, 96, 115, 29);
 		add(btnDiagnose);
 		
 		
@@ -688,7 +694,9 @@ public class Doctor_thyroid extends JPanel {
 		label_18.setBounds(310, 300, 105, 20);
 		add(label_18);
 		
-		
+		JLabel lblComment = new JLabel("Comment:");
+		lblComment.setBounds(15, 412, 358, 16);
+		add(lblComment);
 
 
 	}

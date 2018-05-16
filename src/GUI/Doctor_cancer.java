@@ -20,6 +20,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JTextArea;
 
 
 @SuppressWarnings("serial")
@@ -369,6 +370,10 @@ public class Doctor_cancer extends JPanel {
 		lblSelectValuesFor1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblSelectValuesFor1.setBounds(15, 53, 281, 20);
 		add(lblSelectValuesFor1);
+		
+		JTextArea textObs = new JTextArea();
+		textObs.setBounds(15, 430, 530, 46);
+		add(textObs);
 
 		
 
@@ -384,8 +389,9 @@ public class Doctor_cancer extends JPanel {
 								
 				parent.patient.signs = signsParameters;
 				parent.patient.exam = "BREAST CANCER";
+				parent.patient.comments = textObs.getText();
 
-				
+
 				Jlabel_1.setVisible(false);
 				Jlabel_2.setVisible(false);
 
@@ -425,12 +431,18 @@ public class Doctor_cancer extends JPanel {
 		});
 		
 		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnDiagnose.setBounds(24, 421, 115, 29);
+		btnDiagnose.setBounds(442, 96, 115, 29);
 		add(btnDiagnose);
 		
 		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form (and press ENTER):");
 		lblInsertParametersIn.setBounds(15, 353, 358, 16);
 		add(lblInsertParametersIn);
+		
+		JLabel lblComment = new JLabel("Comment:");
+		lblComment.setBounds(15, 412, 358, 16);
+		add(lblComment);
+		
+		
 		
 
 		

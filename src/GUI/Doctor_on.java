@@ -57,6 +57,8 @@ public class Doctor_on extends JFrame {
 		forthPanel = new Doctor_thyroid(this);
 		
 		doctorPanel = new Doctor_panel(username, this);
+		
+		setTitle("Medicine for Dummies");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

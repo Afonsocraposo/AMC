@@ -221,55 +221,152 @@ public class Report {
         
 // ------------------ SIGNS TABLE ----------------------
         
+        PdfPTable signsTable;
+        
         //Create the table which will be 8 Columns wide and make it 100% of the page
-        PdfPTable signsTable = new PdfPTable(2);
-        signsTable.setWidthPercentage(30);
-        signsTable.setHorizontalAlignment(Element.ALIGN_LEFT);
-        
-        cell = new PdfPCell(new Paragraph("Patient Signs:",h4));
-        cell.setColspan(2);
-        cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(Element.ALIGN_LEFT);
-        signsTable.addCell(cell);
-        
-        cell = new PdfPCell(new Paragraph("Sign",h4));
-        cell.setColspan(1);
-        cell.setBorder(PdfPCell.BOTTOM);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        signsTable.addCell(cell);
-        
-        cell = new PdfPCell(new Paragraph("Value",h4));
-        cell.setColspan(1);
-        cell.setBorder(PdfPCell.BOTTOM);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        signsTable.addCell(cell);
-                
-        for(int i = 0; i<pat.signs.size(); i++) {
-        	
-        	cell = new PdfPCell(new Paragraph(Integer.toString(i+1),p));
+        if(pat.signs.size()>10) {
+        	signsTable = new PdfPTable(4);
+            signsTable.setWidthPercentage(30);
+            signsTable.setHorizontalAlignment(Element.ALIGN_LEFT);
+            
+            cell = new PdfPCell(new Paragraph("Sign",h4));
             cell.setColspan(1);
-            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setBorder(PdfPCell.BOTTOM);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             signsTable.addCell(cell);
             
-            cell = new PdfPCell(new Paragraph(Integer.toString(pat.signs.get(i)),p));
+            cell = new PdfPCell(new Paragraph("Value",h4));
             cell.setColspan(1);
-            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setBorder(PdfPCell.BOTTOM | PdfPCell.RIGHT );
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             signsTable.addCell(cell);
-        		
-        }
+            
+            cell = new PdfPCell(new Paragraph("Sign",h4));
+            cell.setColspan(1);
+            cell.setBorder(PdfPCell.BOTTOM);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            signsTable.addCell(cell);
+            
+            cell = new PdfPCell(new Paragraph("Value",h4));
+            cell.setColspan(1);
+            cell.setBorder(PdfPCell.BOTTOM);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            signsTable.addCell(cell);
+            
+            for(int i = 0; i<10; i++) {
+	        	
+	        	cell = new PdfPCell(new Paragraph(Integer.toString(i+1),p));
+	            cell.setColspan(1);
+	            cell.setBorder(PdfPCell.NO_BORDER);
+	            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	            signsTable.addCell(cell);
+	            
+	            cell = new PdfPCell(new Paragraph(Integer.toString(pat.signs.get(i)),p));
+	            cell.setColspan(1);
+	            cell.setBorder(PdfPCell.RIGHT);
+	            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	            signsTable.addCell(cell);
+	            
+	            try {
+	            	
+	            	int value = pat.signs.get(10+i);
+	        		
+	            	cell = new PdfPCell(new Paragraph(Integer.toString(10+i+1),p));
+		            cell.setColspan(1);
+		            cell.setBorder(PdfPCell.NO_BORDER);
+		            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+		            signsTable.addCell(cell);
+		            
+	        		cell = new PdfPCell(new Paragraph(Integer.toString(value),p));
+		            cell.setColspan(1);
+		            cell.setBorder(PdfPCell.NO_BORDER);
+		            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+		            signsTable.addCell(cell);
+		            
+	            }catch(Exception e) {
+	            	cell = new PdfPCell(new Paragraph(" "));
+	                cell.setColspan(1);
+	                cell.setBorder(PdfPCell.NO_BORDER);
+	                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	                signsTable.addCell(cell);
+	                
+	                cell = new PdfPCell(new Paragraph(" "));
+	                cell.setColspan(1);
+	                cell.setBorder(PdfPCell.NO_BORDER);
+	                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	                signsTable.addCell(cell);
+	            }
+	        		
+	        }
+
+
+        } else if (pat.signs.size()>0) {
+	        signsTable = new PdfPTable(2);
+	        signsTable.setWidthPercentage(30);
+	        signsTable.setHorizontalAlignment(Element.ALIGN_LEFT);
+	        
+	        cell = new PdfPCell(new Paragraph("Sign",h4));
+	        cell.setColspan(1);
+	        cell.setBorder(PdfPCell.BOTTOM);
+	        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        signsTable.addCell(cell);
+	        
+	        cell = new PdfPCell(new Paragraph("Value",h4));
+	        cell.setColspan(1);
+	        cell.setBorder(PdfPCell.BOTTOM);
+	        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        signsTable.addCell(cell);
+                
+	        for(int i = 0; i<10; i++) {
+	        	
+	        	try {
+	        		int value = pat.signs.get(i);
+	        		
+	            	cell = new PdfPCell(new Paragraph(Integer.toString(i+1),p));
+		            cell.setColspan(1);
+		            cell.setBorder(PdfPCell.NO_BORDER);
+		            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+		            signsTable.addCell(cell);
+		            
+	        		cell = new PdfPCell(new Paragraph(Integer.toString(value),p));
+		            cell.setColspan(1);
+		            cell.setBorder(PdfPCell.NO_BORDER);
+		            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+		            signsTable.addCell(cell);
+	            	
+	            	
+	            }catch(Exception e) {
+	            	cell = new PdfPCell(new Paragraph(" "));
+	                cell.setColspan(1);
+	                cell.setBorder(PdfPCell.NO_BORDER);
+	                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	                signsTable.addCell(cell);
+	                
+	                cell = new PdfPCell(new Paragraph(" "));
+	                cell.setColspan(1);
+	                cell.setBorder(PdfPCell.NO_BORDER);
+	                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	                signsTable.addCell(cell);
+	            }
+	        		
+	        }
+        }else {
         
-        if(pat.signs.size()==0) {
-        	for(int i = 0; i<10; i++) {
-            	
-            	cell = new PdfPCell(new Paragraph(" "));
-                cell.setColspan(2);
-                cell.setBorder(PdfPCell.NO_BORDER);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                signsTable.addCell(cell);
-            		
-            }
+	        signsTable = new PdfPTable(1);
+
+        
+	        if(pat.signs.size()==0) {
+	        	for(int i = 0; i<10; i++) {
+	            	
+	            	cell = new PdfPCell(new Paragraph(" "));
+	                cell.setColspan(1);
+	                cell.setBorder(PdfPCell.NO_BORDER);
+	                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	                signsTable.addCell(cell);
+	
+	            }
+        }
+	        
         }
         
                
@@ -306,6 +403,8 @@ public class Report {
         document.add(new Paragraph(" "));
         
         // Adding table
+        document.add(new Paragraph("Patient Signs:",h4));
+        document.add(new Paragraph(" "));
         document.add(signsTable);
         
         document.add(new Paragraph(" "));
@@ -319,7 +418,6 @@ public class Report {
         document.add(new Paragraph(" "));
         document.add(paragraph8);
         
-        document.add(new Paragraph(" "));
         document.add(new Paragraph(" "));
         document.add(paragraph9);
         

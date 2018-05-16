@@ -14,22 +14,19 @@ import javax.swing.SwingConstants;
 import com.itextpdf.text.DocumentException;
 
 import PDF.Report;
-import Tipos_de_dados.BN;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class Doctor_panel extends JPanel {
 	
 	private JTextField textName;
@@ -59,7 +56,6 @@ public class Doctor_panel extends JPanel {
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		textName = new JTextField();
-		String default_val = textName.getText();
 		GridBagConstraints gbc_textName = new GridBagConstraints();
 		gbc_textName.anchor = GridBagConstraints.NORTH;
 		gbc_textName.fill = GridBagConstraints.HORIZONTAL;
