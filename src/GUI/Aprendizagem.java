@@ -29,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.event.ComponentAdapter;
 import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 
 
@@ -43,6 +45,7 @@ public class Aprendizagem {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -74,11 +77,22 @@ public class Aprendizagem {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Medicine for Dummies");
 		
+		
+		JLabel lblInfo = new JLabel("");
+		lblInfo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		lblInfo.setOpaque(true);
+		lblInfo.setVerticalAlignment(SwingConstants.TOP);
+		lblInfo.setBackground(Color.WHITE);
+		lblInfo.setBounds(60, 327, 582, 94);
+		
+		
 		JButton btnChooseFile = new JButton("Choose file");
 		btnChooseFile.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnChooseFile.setBounds(15, 40, 141, 31);
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblInfo.setText("");
 				
 				FileDialog fd = new FileDialog(frame, "Select a file", FileDialog.LOAD);
 				frame.getContentPane().setLayout(null);
@@ -150,14 +164,13 @@ public class Aprendizagem {
 		group.add(rdbtnNewRadioButton_2);
 		group.add(rdbtnNewRadioButton_4);
 		
+
+		
 		JButton btnTeachMe = new JButton("Teach me!");
-		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnTeachMe.setBounds(15, 335, 141, 31);
+		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		btnTeachMe.setBounds(77, 135, 213, 106);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(selecteddatabase);//só para ver que ele trás até aqui
-				System.out.println(choosenparameter);//a base de dados e o tipo da mesma
-				
 				
 //Primeira leitura, define domínios e determina as dimensões dos dados (entradas para  amostra e número de variaveis)				
 				int nlines=0;
@@ -259,12 +272,16 @@ public class Aprendizagem {
 					ObjectOutputStream oos=new ObjectOutputStream(fos);
 					oos.writeObject(net);
 					oos.close();
+					lblInfo.setText("Bayesian net successfully generated and saved as ''"+f.getCurrentDirectory()+"/"+choosenparameter+".BN''");
+					
 				} catch (FileNotFoundException e3) {
 					// TODO Auto-generated catch block
 					e3.printStackTrace();
+					lblInfo.setText(e3.getMessage());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					lblInfo.setText(e1.getMessage());
 				}
 //Falta ter a certeza de que forma estão escritos os ficheiros, mas tenho quase a 
 //certeza que serão .csv, pelo que fiz aqui foi pensando assim
@@ -273,6 +290,13 @@ public class Aprendizagem {
 		});
 
 		frame.getContentPane().setLayout(null);
+		
+		
+		
+		
+		
+		
+		frame.getContentPane().add(lblInfo);
 		frame.getContentPane().add(rdbtnNewRadioButton);
 		frame.getContentPane().add(rdbtnNewRadioButton_1);
 		frame.getContentPane().add(rdbtnNewRadioButton_2);

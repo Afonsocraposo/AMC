@@ -619,7 +619,7 @@ public class Doctor_hepatitis extends JPanel {
 		add(btnDiagnose);
 		
 		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form (and press ENTER):");
-		lblInsertParametersIn.setBounds(15, 353, 222, 16);
+		lblInsertParametersIn.setBounds(15, 353, 358, 16);
 		add(lblInsertParametersIn);
 		
 		JLabel label_9 = new JLabel("11");
