@@ -172,6 +172,8 @@ public class Aprendizagem {
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				lblInfo.setText("LEARNING...");
+				
 //Primeira leitura, define domínios e determina as dimensões dos dados (entradas para  amostra e número de variaveis)				
 				int nlines=0;
 				int[] Domains=null;
