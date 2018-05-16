@@ -358,7 +358,12 @@ public class Doctor_diabetes extends JPanel {
 					parameters[8]=1; 
 					double positive=bayesnet.prob(parameters);
 					
-					System.out.println(negative +", "+ positive);
+					double total=negative+positive;
+					
+					double probN=negative/total;
+					double probP=positive/total;
+					
+					System.out.println(probN +", "+ probP);
 
 					
 				} 
