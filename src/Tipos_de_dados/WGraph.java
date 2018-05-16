@@ -2,82 +2,70 @@ package Tipos_de_dados;
 
 import java.util.ArrayList;
 
+// Grafo pesado implementado como uma array em que cada posição é um Node e cada Node tem uma ArrayList
+// chamada children em que terá a os nós aos quais liga e os seus respetivos pesos na forma de Edge
 public class WGraph implements Weighted_Graphs {
 	
-	
+	// uma classe de arestas que tem o nó A, o nó B e o peso Weight
 	class Edge {
-		
-		private int nodea;
-		private int nodeb;
+		// self-explanatory
+		private int nodeA;
+		private int nodeB;
 		private double weight;
-
-		Edge(int node1, int node2, double value){
-			nodea = node1;
-			nodeb = node2;
-			weight = value;
+		
+		public Edge(int nA, int nB, double w) {
+			nodeA = nA;
+			nodeB = nB;
+			weight = w;
 		}
 		
-		public int getA() {
-			return nodea;
+		public int getNodeA() {
+			return nodeA;
 		}
 		
-		public int getB() {
-			return nodeb;
+		public int getNodeB() {
+			return nodeB;
 		}
 		
-		public double getW() {
+		public double getWeight() {
 			return weight;
 		}
 		
 	}
 	
+	// classe nó que fará parte da implementação 
 	private class Node {
 		
-		private class Nedge {
-			private int node;
-			private double weight;
-			
-			public Nedge(int n, double w) {
-				node = n;
-				weight = w;
-			}
-			
-			public int getNode() {
-				return node;
-			}
-			
-			public double getWeight() {
-				return weight;
-			}
-			
-		}
-		
-		private ArrayList<Nedge> children;
+		// filhos de cada nó, ou seja, nós aos quais liga
+		private ArrayList<Edge> children;
 		
 		public Node() {
-			children = new ArrayList<Nedge>();
+			children = new ArrayList<Edge>();
 		}
 		
-		public ArrayList<Nedge> getChildren(){
+		public ArrayList<Edge> getChildren(){
 			return children;
 		}
 		
-		public void addChildren(int node, double weight) {
-			children.add(new Nedge(node,weight));
+		public void addChildren(int nodeA, int nodeB, double weight) {
+			children.add(new Edge(nodeA, nodeB, weight));
 		}
 		
-		public boolean hasChildren(int node) {
+		// Devolve um booleano após verificar se o nó tem o filho nodeB, ou seja, se o nó em
+		// estudo se liga ao nodeB
+		public boolean hasChildren(int nodeB) {
 			for(int i=0;i<children.size();i++) {
-				if(children.get(i).getNode()==node) {
+				if(children.get(i).getNodeB()==nodeB) {
 					return true;
 				}
 			}
 			return false;
 		}
 		
-		public void removeChildren(int node) {
+		// Remove a ligação entre os nós caso exista
+		public void removeChildren(int nodeB) {
 			for(int i=0;i<children.size();i++) {
-				if(children.get(i).getNode()==node) {
+				if(children.get(i).getNodeB()==nodeB) {
 					children.remove(i);
 				}
 			}
@@ -86,11 +74,13 @@ public class WGraph implements Weighted_Graphs {
 	}
 	
 	private Node[] nodes;
-	private int dim;
+	protected int dim;
 	
+	// inicializador
 	public WGraph (int n) {
 		dim=n;
 		nodes = new Node[n];
+		// cria um nó em cada posição da array de dimensão n
 		for(int i=0; i<n; i++) {
 			nodes[i]=new Node();
 		}
@@ -100,15 +90,18 @@ public class WGraph implements Weighted_Graphs {
 		return dim;
 	}
 	
+	// adiciona a aresta caso não seja um loop e caso não exista já
 	public void add_edge (int node1, int node2, double weight) {
 		if(node1!=node2) {
 			if(!nodes[node1].hasChildren(node2)) {
-				nodes[node1].addChildren(node2, weight);
-				nodes[node2].addChildren(node1, weight);
+				// adiciona o filho em cada um dos nós
+				nodes[node1].addChildren(node1, node2, weight);
+				nodes[node2].addChildren(node2, node1, weight);
 			}
 		}
 	}
 	
+	// remove aresta
 	public void remove_edge(int node1, int node2) {
 		if(node1!=node2) {
 			nodes[node1].removeChildren(node2);
@@ -119,39 +112,49 @@ public class WGraph implements Weighted_Graphs {
 	
 	public DGraph MST(int node){
 		
-		int nodeA2add;
-		int nodeB2add;
+		// inicialização das variáveis que serviram para armazenar os valores a adicionar ao grafo orientado
+		int nodeA2add=-1;
+		int nodeB2add=-1;
 		double weight2add;
 		
 		DGraph result_dgraph = new DGraph(dim+1);
-				
+		
+		// lista de nós visitados
 		ArrayList<Integer> visited = new ArrayList<Integer>();
 		
+		// o nó onde se começa é adicionado aos visitados
 		visited.add(node);
+		// adiciona-se a ligação entre a classe e o primeiro nó
 		result_dgraph.add_edge(dim, node);
 		
+		// enquanto todos os nós não foram visitados, o programa corre
 		while(visited.size()!=dim) {
 			
+			// parametrização do peso mínimo
 			weight2add=-1;
-			nodeA2add=node;
-			nodeB2add=-1;
 			
+			// percorre a lista de nós visitados
 			for(int no:visited) {
+				// obtém a aresta com o maior peso que leva a um nó não visitado
 				Edge aux = adj(no,visited);
-				if(aux.getW()>weight2add) {
-					nodeA2add=aux.getA();
-					nodeB2add=aux.getB();
-					weight2add=aux.getW();
+				// vai comparando os valores das arestas de maior peso e guarda o máximo
+				if(aux.getWeight()>weight2add) {
+					nodeA2add=aux.getNodeA();
+					nodeB2add=aux.getNodeB();
+					weight2add=aux.getWeight();
 				}
 			}
 			
+			// adiciona o novo nó à lista de visitados
 			visited.add(nodeB2add);
 			
 			// check if it works
-			 System.out.println(nodeA2add + " , " + nodeB2add + " | " + weight2add);
+			System.out.println(nodeA2add + " , " + nodeB2add + " | " + weight2add);
 			
+			// adiciona a aresta ao grafo orientado
 			result_dgraph.add_edge(nodeA2add,nodeB2add);
 
+			// liga a classe ao novo nó adicionado
 			result_dgraph.add_edge(dim,nodeB2add);
 			
 		}
@@ -160,16 +163,18 @@ public class WGraph implements Weighted_Graphs {
 	
 	}
 	
-	
+	// descobre qual a maior aresta do nó node que leva a um nó ainda não visitado
 	public Edge adj(int node, ArrayList<Integer> visited) {
 		
+		// parametrização dos valores de máximo e maximizante, usa-se -1 pois funciona como mínimo
 		double max = -1;
 		int nodeb = -1;
 		
-		for(int i=0; i<nodes[node].getChildren().size();i++) {
-			if(nodes[node].getChildren().get(i).getWeight()>max && !visited.contains(nodes[node].getChildren().get(i).getNode())) {
-				max=nodes[node].getChildren().get(i).getWeight();
-				nodeb=nodes[node].getChildren().get(i).getNode();
+		// percorre as arestas da lista de filhos do nó node e descobre a aresta com o maior peso 
+		for(Edge edge:nodes[node].getChildren()) {
+			if(edge.getWeight()>max && !visited.contains(edge.getNodeB())) {
+				max=edge.getWeight();
+				nodeb=edge.getNodeB();
 			}
 		}
 		
@@ -183,8 +188,10 @@ public class WGraph implements Weighted_Graphs {
 //  TRY IT
 					
 	public static void main(String[] args) {
-		WGraph wg = new WGraph(9);
+		WGraph wg = new WGraph(10);
 		
+/*
+ * 
 		wg.add_edge(0, 1, 4.0);
 		wg.add_edge(0, 7, 8.0);
 		wg.add_edge(1, 7, 11.0);
@@ -201,7 +208,7 @@ public class WGraph implements Weighted_Graphs {
 		wg.add_edge(5, 4, 10.0); 
 		
 
-/*
+*/
 
 		wg.add_edge(0,1,0);
 		wg.add_edge(0,2,0.0889);
@@ -261,7 +268,6 @@ public class WGraph implements Weighted_Graphs {
 
 		wg.add_edge(8,9,0.0511);
 		
-*/
 		
 		
 		@SuppressWarnings("unused")
