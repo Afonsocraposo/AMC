@@ -69,34 +69,30 @@ public class Doctor_hepatitis extends JPanel {
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
-		comboBox.addItem(1);
 		comboBox.setBounds(84, 69, 60, 25);
 		add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.addItem(0);
 		comboBox_1.setBounds(84, 119, 60, 25);
+		comboBox_1.addItem(1);
 		add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.addItem(0);
 		comboBox_2.addItem(1);
-		comboBox_2.addItem(2);
 		comboBox_2.setBounds(84, 169, 60, 25);
 		add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.addItem(0);
 		comboBox_3.addItem(1);
-		comboBox_3.addItem(2);
-		comboBox_3.addItem(3);
 		comboBox_3.setBounds(84, 219, 60, 25);
 		add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox();
 		comboBox_4.addItem(0);
 		comboBox_4.addItem(1);
-		comboBox_4.addItem(2);
 		comboBox_4.setBounds(84, 269, 60, 25);
 		add(comboBox_4);
 		
@@ -115,7 +111,6 @@ public class Doctor_hepatitis extends JPanel {
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.addItem(2);
 		comboBox_7.setBounds(227, 169, 60, 25);
 		add(comboBox_7);
 		
@@ -146,7 +141,6 @@ public class Doctor_hepatitis extends JPanel {
 		JComboBox comboBox_12 = new JComboBox();
 		comboBox_12.addItem(0);
 		comboBox_12.addItem(1);
-		comboBox_12.addItem(2);
 		comboBox_12.setBounds(372, 169, 60, 25);
 		add(comboBox_12);
 		
@@ -158,13 +152,11 @@ public class Doctor_hepatitis extends JPanel {
 		
 		JComboBox comboBox_14 = new JComboBox();
 		comboBox_14.addItem(0);
-		comboBox_14.addItem(1);
 		comboBox_14.setBounds(372, 269, 60, 25);
 		add(comboBox_14);
 		
 		JComboBox comboBox_15 = new JComboBox();
 		comboBox_15.addItem(0);
-		comboBox_15.addItem(1);
 		comboBox_15.setBounds(516, 69, 60, 25);
 		add(comboBox_15);
 		

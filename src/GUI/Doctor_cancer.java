@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -490,7 +491,48 @@ public class Doctor_cancer extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
+
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setForeground(new Color(100, 155, 175));
+		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblResults.setBounds(556, 79, 281, 20);
+		lblResults.setVisible(false);
+		add(lblResults);
 		
+		JLabel BenignB = new JLabel("");
+		BenignB.setBackground(new Color(0, 100, 0));
+		BenignB.setOpaque(true);
+		BenignB.setBounds(556, 119, 171, 46);
+		BenignB.setVisible(false);
+		add(BenignB);
+		
+		JLabel MalignB = new JLabel("");
+		MalignB.setOpaque(true);
+		MalignB.setBackground(new Color(255, 0, 0));
+		MalignB.setBounds(726, 119, 171, 46);
+		MalignB.setVisible(false);
+		add(MalignB);
+		
+		JLabel lblLabel = new JLabel("Label:");
+		lblLabel.setForeground(new Color(100, 155, 175));
+		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLabel.setBounds(556, 195, 281, 20);
+		lblLabel.setVisible(false);
+		add(lblLabel);
+		
+		JLabel lblBenign = new JLabel("Benign: ");
+		lblBenign.setForeground(new Color(0, 100, 0));
+		lblBenign.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBenign.setBounds(566, 231, 331, 20);
+		lblBenign.setVisible(false);
+		add(lblBenign);
+		
+		JLabel lblMalign = new JLabel("Malign:");
+		lblMalign.setForeground(new Color(255, 0, 0));
+		lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblMalign.setBounds(566, 267, 331, 20);
+		lblMalign.setVisible(false);
+		add(lblMalign);
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -642,6 +684,23 @@ public class Doctor_cancer extends JPanel {
 					double probM=Malign/total;
 					double probB=Benign/total;
 					
+					lblResults.setVisible(true);
+					
+					int width = 350;
+					
+					BenignB.setBounds(BenignB.getX(), BenignB.getY(), (int)(width*probB), BenignB.getHeight());
+					BenignB.setVisible(true);
+					
+					MalignB.setBounds(BenignB.getX()+BenignB.getWidth(), MalignB.getY(), (int)(width*probM), MalignB.getHeight());
+					MalignB.setVisible(true);
+					
+					lblLabel.setVisible(true);
+					lblBenign.setText("Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
+					lblBenign.setVisible(true);
+					lblMalign.setText("Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
+					lblMalign.setVisible(true);
+					
+					
 					System.out.println(probB +", "+ probM);
 					
 					if(probB>probM) {
@@ -649,13 +708,14 @@ public class Doctor_cancer extends JPanel {
 					} else {
 						parent.patient.result="POSITIVE";
 					}
-					
+	
 					
 				} 
 				catch(IOException e2) { 
 				}  
 				catch (ClassNotFoundException e3) {
 				}
+				
 			
 			}
 		});
@@ -674,12 +734,10 @@ public class Doctor_cancer extends JPanel {
 		lblComment.setBounds(15, 379, 358, 16);
 		add(lblComment);
 		
+
 		
-		
-		
+			
 
 		
 	}
-	
-	
 }
