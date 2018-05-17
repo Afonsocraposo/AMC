@@ -131,7 +131,7 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_10 = new JComboBox();
 		comboBox_10.addItem(0);
 		comboBox_10.addItem(1);
-		comboBox_10.setBounds(372, 69, 60, 25);
+		comboBox_11.setBounds(388, 119, 60, 25);
 		add(comboBox_10);
 		
 		JComboBox comboBox_11 = new JComboBox();
@@ -143,37 +143,37 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_12 = new JComboBox();
 		comboBox_12.addItem(0);
 		comboBox_12.addItem(1);
-		comboBox_12.setBounds(372, 169, 60, 25);
+		comboBox_12.setBounds(388, 169, 60, 25);
 		add(comboBox_12);
 		
 		JComboBox comboBox_13 = new JComboBox();
 		comboBox_13.addItem(0);
 		comboBox_13.addItem(1);
-		comboBox_13.setBounds(372, 219, 60, 25);
+		comboBox_13.setBounds(388, 219, 60, 25);
 		add(comboBox_13);
 		
 		JComboBox comboBox_14 = new JComboBox();
 		comboBox_14.addItem(0);
 		comboBox_14.addItem(1);
-		comboBox_14.setBounds(372, 269, 60, 25);
+		comboBox_14.setBounds(388, 269, 60, 25);
 		add(comboBox_14);
 		
 		JComboBox comboBox_15 = new JComboBox();
 		comboBox_15.addItem(0);
 		comboBox_15.addItem(1);
-		comboBox_15.setBounds(516, 69, 60, 25);
+		comboBox_15.setBounds(542, 69, 60, 25);
 		add(comboBox_15);
 		
 		JComboBox comboBox_16 = new JComboBox();
 		comboBox_16.addItem(0);
 		comboBox_16.addItem(1);
-		comboBox_16.setBounds(516, 119, 60, 25);
+		comboBox_16.setBounds(542, 119, 60, 25);
 		add(comboBox_16);
 		
 		JComboBox comboBox_17 = new JComboBox();
 		comboBox_17.addItem(0);
 		comboBox_17.addItem(1);
-		comboBox_17.setBounds(516, 169, 60, 25);
+		comboBox_17.setBounds(542, 169, 60, 25);
 		add(comboBox_17);
 		
 		JComboBox comboBox_18 = new JComboBox();
@@ -181,7 +181,7 @@ public class Doctor_thyroid extends JPanel {
 		comboBox_18.addItem(1);
 		comboBox_18.addItem(2);
 		comboBox_18.addItem(3);
-		comboBox_18.setBounds(516, 219, 60, 25);
+		comboBox_18.setBounds(542, 219, 60, 25);
 		add(comboBox_18);
 		
 		JComboBox comboBox_19 = new JComboBox();
