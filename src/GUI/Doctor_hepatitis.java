@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -734,7 +735,47 @@ public class Doctor_hepatitis extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
-
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setForeground(new Color(100, 155, 175));
+		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblResults.setBounds(644, 79, 281, 20);
+		lblResults.setVisible(false);
+		add(lblResults);
+		
+		JLabel LiveB = new JLabel("");
+		LiveB.setBackground(new Color(0, 100, 0));
+		LiveB.setOpaque(true);
+		LiveB.setBounds(644, 119, 171, 46);
+		LiveB.setVisible(false);
+		add(LiveB);
+		
+		JLabel DieB = new JLabel("");
+		DieB.setOpaque(true);
+		DieB.setBackground(new Color(255, 0, 0));
+		DieB.setBounds(814, 119, 171, 46);
+		DieB.setVisible(false);
+		add(DieB);
+		
+		JLabel lblLabel = new JLabel("Label:");
+		lblLabel.setForeground(new Color(100, 155, 175));
+		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLabel.setBounds(644, 195, 281, 20);
+		lblLabel.setVisible(false);
+		add(lblLabel);
+		
+		JLabel lblLive = new JLabel("");
+		lblLive.setForeground(new Color(0, 100, 0));
+		lblLive.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLive.setBounds(644, 231, 331, 20);
+		lblLive.setVisible(false);
+		add(lblLive);
+		
+		JLabel lblDie = new JLabel("");
+		lblDie.setForeground(new Color(255, 0, 0));
+		lblDie.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblDie.setBounds(644, 267, 331, 20);
+		lblDie.setVisible(false);
+		add(lblDie);
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -946,7 +987,22 @@ public class Doctor_hepatitis extends JPanel {
 					double probD=Die/total;
 					double probL=Live/total;
 					
-					System.out.println(probD +", "+ probL);
+					lblResults.setVisible(true);
+					
+					int width = 300;
+					
+					LiveB.setBounds(LiveB.getX(), LiveB.getY(), (int)(width*probL), LiveB.getHeight());
+					LiveB.setVisible(true);
+					
+					DieB.setBounds(LiveB.getX()+LiveB.getWidth(), DieB.getY(), (int)(width*probD), DieB.getHeight());
+					DieB.setVisible(true);
+					
+					lblLabel.setVisible(true);
+					lblLive.setText("(class 1) You live: "+(new DecimalFormat("##.##").format(probL*100))+"%");
+					lblLive.setVisible(true);
+					lblDie.setText("(class 0) You die: "+(new DecimalFormat("##.##").format(probD*100))+"%");
+					lblDie.setVisible(true);
+
 
 				} 
 

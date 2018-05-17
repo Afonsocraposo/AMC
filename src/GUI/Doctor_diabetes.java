@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -418,6 +419,48 @@ public class Doctor_diabetes extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setForeground(new Color(100, 155, 175));
+		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblResults.setBounds(556, 79, 281, 20);
+		lblResults.setVisible(false);
+		add(lblResults);
+		
+		JLabel NegativeB = new JLabel("");
+		NegativeB.setBackground(new Color(0, 100, 0));
+		NegativeB.setOpaque(true);
+		NegativeB.setBounds(556, 119, 171, 46);
+		NegativeB.setVisible(false);
+		add(NegativeB);
+		
+		JLabel PositiveB = new JLabel("");
+		PositiveB.setOpaque(true);
+		PositiveB.setBackground(new Color(255, 0, 0));
+		PositiveB.setBounds(726, 119, 171, 46);
+		PositiveB.setVisible(false);
+		add(PositiveB);
+		
+		JLabel lblLabel = new JLabel("Label:");
+		lblLabel.setForeground(new Color(100, 155, 175));
+		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLabel.setBounds(556, 195, 281, 20);
+		lblLabel.setVisible(false);
+		add(lblLabel);
+		
+		JLabel lblNegative = new JLabel("0: ");
+		lblNegative.setForeground(new Color(0, 100, 0));
+		lblNegative.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNegative.setBounds(566, 231, 331, 20);
+		lblNegative.setVisible(false);
+		add(lblNegative);
+		
+		JLabel lblPositive = new JLabel("1:");
+		lblPositive.setForeground(new Color(255, 0, 0));
+		lblPositive.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblPositive.setBounds(566, 267, 331, 20);
+		lblPositive.setVisible(false);
+		add(lblPositive);
+
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -552,7 +595,22 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 					double probN=negative/total;
 					double probP=positive/total;
 					
-					System.out.println(probN +", "+ probP);
+					lblResults.setVisible(true);
+					
+					int width = 350;
+					
+					NegativeB.setBounds(NegativeB.getX(), NegativeB.getY(), (int)(width*probN), NegativeB.getHeight());
+					NegativeB.setVisible(true);
+					
+					PositiveB.setBounds(NegativeB.getX()+NegativeB.getWidth(), PositiveB.getY(), (int)(width*probP), PositiveB.getHeight());
+					PositiveB.setVisible(true);
+					
+					lblLabel.setVisible(true);
+					lblNegative.setText("Class 0: "+(new DecimalFormat("##.##").format(probN*100))+"%");
+					lblNegative.setVisible(true);
+					lblPositive.setText("Class 1: "+(new DecimalFormat("##.##").format(probP*100))+"%");
+					lblPositive.setVisible(true);
+					
 
 					
 				} 

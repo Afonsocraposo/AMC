@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -771,7 +772,48 @@ public class Doctor_thyroid extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
-
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setForeground(new Color(100, 155, 175));
+		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblResults.setBounds(644, 79, 281, 20);
+		lblResults.setVisible(false);
+		add(lblResults);
+		
+		JLabel NormalB = new JLabel("");
+		NormalB.setBackground(new Color(0, 100, 0));
+		NormalB.setOpaque(true);
+		NormalB.setBounds(644, 119, 171, 46);
+		NormalB.setVisible(false);
+		add(NormalB);
+		
+		JLabel AbnormalB = new JLabel("");
+		AbnormalB.setOpaque(true);
+		AbnormalB.setBackground(new Color(255, 0, 0));
+		AbnormalB.setBounds(814, 119, 171, 46);
+		AbnormalB.setVisible(false);
+		add(AbnormalB);
+		
+		JLabel lblLabel = new JLabel("Label:");
+		lblLabel.setForeground(new Color(100, 155, 175));
+		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblLabel.setBounds(644, 195, 281, 20);
+		lblLabel.setVisible(false);
+		add(lblLabel);
+		
+		JLabel lblNormal = new JLabel("0: ");
+		lblNormal.setForeground(new Color(0, 100, 0));
+		lblNormal.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNormal.setBounds(644, 231, 331, 20);
+		lblNormal.setVisible(false);
+		add(lblNormal);
+		
+		JLabel lblAbnormal = new JLabel("1:");
+		lblAbnormal.setForeground(new Color(255, 0, 0));
+		lblAbnormal.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAbnormal.setBounds(644, 267, 331, 20);
+		lblAbnormal.setVisible(false);
+		add(lblAbnormal);
+		
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -982,14 +1024,29 @@ public class Doctor_thyroid extends JPanel {
 					parameters[20]=0; 
 					double Normal=bayesnet.prob(parameters); 
 					parameters[20]=1; 
-					double Hiper=bayesnet.prob(parameters); 
+					double Abnormal=bayesnet.prob(parameters); 
 					
-					double total=Normal+Hiper;
+					double total=Normal+Abnormal;
 					
 					double probN=Normal/total;
-					double probH=Hiper/total;
+					double probAb=Abnormal/total;
 					
-					System.out.println(probN +", "+ probH);
+					lblResults.setVisible(true);
+					
+					int width = 300;
+					
+					NormalB.setBounds(NormalB.getX(), NormalB.getY(), (int)(width*probN), NormalB.getHeight());
+					NormalB.setVisible(true);
+					
+					AbnormalB.setBounds(NormalB.getX()+NormalB.getWidth(), AbnormalB.getY(), (int)(width*probAb), AbnormalB.getHeight());
+					AbnormalB.setVisible(true);
+					
+					lblLabel.setVisible(true);
+					lblNormal.setText("(class 0) Normal functioning: "+(new DecimalFormat("##.##").format(probN*100))+"%");
+					lblNormal.setVisible(true);
+					lblAbnormal.setText("(class 1) Abnormal functioning: "+(new DecimalFormat("##.##").format(probAb*100))+"%");
+					lblAbnormal.setVisible(true);
+
 
 				} 
 

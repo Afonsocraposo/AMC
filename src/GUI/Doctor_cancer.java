@@ -519,14 +519,14 @@ public class Doctor_cancer extends JPanel {
 		lblLabel.setVisible(false);
 		add(lblLabel);
 		
-		JLabel lblBenign = new JLabel("Benign: ");
+		JLabel lblBenign = new JLabel("");
 		lblBenign.setForeground(new Color(0, 100, 0));
 		lblBenign.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblBenign.setBounds(566, 231, 331, 20);
 		lblBenign.setVisible(false);
 		add(lblBenign);
 		
-		JLabel lblMalign = new JLabel("Malign:");
+		JLabel lblMalign = new JLabel("");
 		lblMalign.setForeground(new Color(255, 0, 0));
 		lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblMalign.setBounds(566, 267, 331, 20);
@@ -694,13 +694,11 @@ public class Doctor_cancer extends JPanel {
 					MalignB.setVisible(true);
 					
 					lblLabel.setVisible(true);
-					lblBenign.setText("Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
+					lblBenign.setText("(class 0) Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
 					lblBenign.setVisible(true);
-					lblMalign.setText("Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
+					lblMalign.setText("(class 1) Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
 					lblMalign.setVisible(true);
 					
-					
-					System.out.println(probB +", "+ probM);
 					
 					if(probB>probM) {
 						parent.patient.result="NEGATIVE";
