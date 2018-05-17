@@ -6,10 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -95,6 +100,16 @@ public class Doctor_login extends JFrame {
 		btnEnter.setBounds(187, 147, 76, 29);
 		contentPane.add(btnEnter);
 		setVisible(true);
+		
+		try {
+			BufferedImage logo;
+			logo = ImageIO.read(new File("images/logo50px.png"));
+			JLabel picLabel = new JLabel(new ImageIcon(logo));
+			picLabel.setLocation(385, 15);
+			picLabel.setSize(50, 50);
+			getContentPane().add(picLabel);
+		} catch (IOException e1) {
+		}
 	}
 
 }

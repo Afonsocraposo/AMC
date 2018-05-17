@@ -12,8 +12,12 @@ import com.itextpdf.text.DocumentException;
 
 import PDF.Report;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -169,6 +173,18 @@ public class Doctor_panel extends JPanel {
 		lbllastDiagnosis.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		lbllastDiagnosis.setBounds(800, 98, 115, 16);
 		add(lbllastDiagnosis);
+		
+		
+		try {
+			BufferedImage logo;
+			logo = ImageIO.read(new File("images/logo50px.png"));
+			JLabel picLabel = new JLabel(new ImageIcon(logo));
+			picLabel.setLocation(925, 5);
+			picLabel.setSize(50, 50);
+			add(picLabel);
+		} catch (IOException e1) {
+		}
+		
 
 	}
 }
