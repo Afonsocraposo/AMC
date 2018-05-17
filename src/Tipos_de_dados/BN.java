@@ -29,8 +29,8 @@ public class BN implements Serializable{
 			if(Parents.length>0) {
 				//obtêm-se os domínios de cada um dos pais
 				int[] piDomains=new int[Parents.length];
-				//prodomain representa o número de colunas que a tabela terá, já que cada uma é uma possivel comnbinação dos valores dos pais, 
-				//o número total de colunas é o produtorio dos domínios
+				//prodomain representa o número de colunas que a tabela terá, já que cada uma é uma possivel 
+				//comnbinação dos valores dos pais, o número total de colunas é o produtorio dos domínios
 				int prodomain=1;
 				for(int i=0;i<piDomains.length;i++) {
 					piDomains[i]=A.Domains(Parents[i]);
