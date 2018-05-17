@@ -18,9 +18,9 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 import java.awt.event.ActionListener;
@@ -73,24 +73,32 @@ public class Aprendizagem {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
-		frame.setBounds(300, 300, 700, 500);
+		frame.setBounds(300, 300, 550, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(img.getImage());
 		frame.setTitle("Medicine for Dummies - Learning");
+		frame.setBackground(Color.WHITE);
+		frame.setResizable(false);
+
+
 		
 		
 		JLabel lblInfo = new JLabel("");
 		lblInfo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		lblInfo.setOpaque(true);
+		lblInfo.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		lblInfo.setVerticalAlignment(SwingConstants.TOP);
 		lblInfo.setBackground(Color.WHITE);
-		lblInfo.setBounds(60, 327, 582, 94);
+		lblInfo.setBounds(31, 267, 491, 94);
 		
 		
-		JButton btnChooseFile = new JButton("Choose file");
-		btnChooseFile.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		RoundedButton btnChooseFile = new RoundedButton("Choose file");
+		btnChooseFile.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnChooseFile.setBounds(15, 40, 141, 31);
+		btnChooseFile.setBackground(new Color(100,155,175));
+		btnChooseFile.setForeground(Color.WHITE);
 		btnChooseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -115,18 +123,22 @@ public class Aprendizagem {
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		textField.setBounds(171, 41, 156, 28);
+		textField.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
+
 		textField.addComponentListener(new ComponentAdapter() {
 			
 		});
 		textField.setColumns(10);
 		
-		JLabel lblChooseParameter = new JLabel("Choose parameter");
-		lblChooseParameter.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblChooseParameter.setBounds(480, 40, 143, 22);
+		JLabel lblChooseParameter = new JLabel("Choose exam:");
+		lblChooseParameter.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblChooseParameter.setForeground(new Color(100,155,175));
+		lblChooseParameter.setBounds(366, 40, 181, 22);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Breast Cancer");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnNewRadioButton.setBounds(490, 85, 141, 31);
+		rdbtnNewRadioButton.setForeground(new Color(100,155,175));
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 16));
+		rdbtnNewRadioButton.setBounds(366, 74, 156, 31);
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Breast_Cancer";
@@ -134,8 +146,9 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Diabetes");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnNewRadioButton_1.setBounds(490, 135, 99, 31);
+		rdbtnNewRadioButton_1.setForeground(new Color(100,155,175));
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		rdbtnNewRadioButton_1.setBounds(366, 124, 141, 31);
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Diabetes";
@@ -143,17 +156,19 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Hepatitis");
-		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnNewRadioButton_2.setBounds(490, 185, 101, 31);
+		rdbtnNewRadioButton_2.setForeground(new Color(100,155,175));
+		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		rdbtnNewRadioButton_2.setBounds(366, 174, 141, 31);
 		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Hepatitis";
 			}
 		});
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid");
-		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnNewRadioButton_4.setBounds(490, 235, 93, 31);
+		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid Disease");
+		rdbtnNewRadioButton_4.setForeground(new Color(100,155,175));
+		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		rdbtnNewRadioButton_4.setBounds(366, 224, 220, 31);
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid";
@@ -168,9 +183,11 @@ public class Aprendizagem {
 		
 
 		
-		JButton btnTeachMe = new JButton("Teach me!");
+		RoundedButton btnTeachMe = new RoundedButton("Teach me!");
 		btnTeachMe.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		btnTeachMe.setBounds(77, 135, 213, 106);
+		btnTeachMe.setBounds(59, 124, 246, 100);
+		btnTeachMe.setBackground(new Color(100,155,175));
+		btnTeachMe.setForeground(Color.WHITE);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

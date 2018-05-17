@@ -13,6 +13,7 @@ import com.itextpdf.text.DocumentException;
 import PDF.Report;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 
@@ -50,6 +51,7 @@ public class Doctor_panel extends JPanel {
 		add(lblNewLabel);
 		
 		textName = new JTextField();
+		textName.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		textName.setBounds(6, 24, 280, 26);
 		add(textName);
 		
