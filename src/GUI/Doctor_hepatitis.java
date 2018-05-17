@@ -71,6 +71,12 @@ public class Doctor_hepatitis extends JPanel {
 		textField.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		textField.setColumns(10);
 		
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(600, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);
+		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
 		comboBox.setBounds(84, 69, 60, 25);
@@ -348,6 +354,7 @@ public class Doctor_hepatitis extends JPanel {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
+				plot.setVisible(false);
 				
 				}
 			}}
@@ -519,6 +526,7 @@ public class Doctor_hepatitis extends JPanel {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
+				plot.setVisible(false);
 				
 				}
 			}}
@@ -528,7 +536,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[0] = comboBox.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -536,7 +544,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[1] = comboBox_1.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -544,7 +552,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[2] = comboBox_2.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -552,7 +560,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[3] = comboBox_3.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -560,7 +568,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[4] = comboBox_4.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -568,7 +576,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[5] = comboBox_5.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -576,7 +584,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[6] = comboBox_6.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -584,7 +592,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[7] = comboBox_7.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -592,7 +600,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[8] = comboBox_8.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -600,7 +608,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[9] = comboBox_9.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -608,7 +616,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[10] = comboBox_10.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -616,7 +624,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[11] = comboBox_11.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -624,7 +632,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[12] = comboBox_12.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -632,7 +640,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[13] = comboBox_13.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -640,7 +648,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[14] = comboBox_14.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -648,7 +656,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[15] = comboBox_15.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -656,7 +664,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[16] = comboBox_16.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -664,7 +672,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[17] = comboBox_17.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -672,7 +680,7 @@ public class Doctor_hepatitis extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[18] = comboBox_18.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 19)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -738,12 +746,6 @@ public class Doctor_hepatitis extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 		
-		JPanel plot = new JPanel();
-		plot.setBackground(Color.WHITE);
-		plot.setLocation(600, 30);
-		plot.setSize(400,300);
-		plot.setVisible(false);
-		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
 		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -784,6 +786,8 @@ public class Doctor_hepatitis extends JPanel {
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				plot.setVisible(false);
 				
 					List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
 					

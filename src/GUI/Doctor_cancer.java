@@ -74,7 +74,11 @@ public class Doctor_cancer extends JPanel {
 		textField.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		textField.setColumns(10);
 		
-		
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(500, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
@@ -242,6 +246,8 @@ public class Doctor_cancer extends JPanel {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
+				plot.setVisible(false);
+				
 				
 				}
 			}
@@ -348,16 +354,21 @@ public class Doctor_cancer extends JPanel {
 					parameters[j]=Integer.parseInt(list.get(j));
 				}
 				
+				plot.setVisible(false);
+				
 				
 				}
 			}}
 		});
 		
+		
+		
+		
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parameters[0] = comboBox.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -365,7 +376,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[1] = comboBox_1.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -373,7 +384,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[2] = comboBox_2.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -381,7 +392,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[3] = comboBox_3.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -389,7 +400,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[4] = comboBox_4.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -397,7 +408,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[5] = comboBox_5.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -405,7 +416,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[6] = comboBox_6.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -413,7 +424,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[7] = comboBox_7.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -421,7 +432,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[8] = comboBox_8.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 
@@ -429,7 +440,7 @@ public class Doctor_cancer extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				parameters[9] = comboBox_9.getSelectedIndex();
 				textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
-				
+				plot.setVisible(false);
 			}
 		});
 		
@@ -494,13 +505,7 @@ public class Doctor_cancer extends JPanel {
 		textObs.setBounds(15, 407, 530, 46);
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
-		
-		
-		JPanel plot = new JPanel();
-		plot.setBackground(Color.WHITE);
-		plot.setLocation(500, 30);
-		plot.setSize(400,300);
-		plot.setVisible(false);
+	
 		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
@@ -542,7 +547,7 @@ public class Doctor_cancer extends JPanel {
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+					plot.setVisible(false);
 					List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
 					
 					if(list.size()!=10) {
