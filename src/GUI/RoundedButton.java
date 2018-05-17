@@ -2,7 +2,7 @@ package GUI;
 
 import java.awt.AWTEvent;
 import java.awt.AWTEventMulticaster;
-
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -73,7 +73,7 @@ class RoundedButton extends Component {
         g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
 
         // draw the perimeter of the button
-        g.setColor(getBackground().darker().darker().darker());
+        g.setColor(Color.WHITE);
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
 
         // draw the label centered in the button

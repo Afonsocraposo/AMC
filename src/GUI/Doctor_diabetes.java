@@ -69,19 +69,19 @@ public class Doctor_diabetes extends JPanel {
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
 		comboBox.addItem(1);
-		comboBox.setBounds(101, 69, 60, 25);
+		comboBox.setBounds(84, 69, 60, 25);
 		add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.addItem(0);
-		comboBox_1.setBounds(101, 119, 60, 25);
+		comboBox_1.setBounds(84, 119, 60, 25);
 		add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.addItem(0);
 		comboBox_2.addItem(1);
 		comboBox_2.addItem(2);
-		comboBox_2.setBounds(101, 169, 60, 25);
+		comboBox_2.setBounds(84, 169, 60, 25);
 		add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
@@ -89,34 +89,35 @@ public class Doctor_diabetes extends JPanel {
 		comboBox_3.addItem(1);
 		comboBox_3.addItem(2);
 		comboBox_3.addItem(3);
-		comboBox_3.setBounds(101, 219, 60, 25);
+		comboBox_3.setBounds(84, 219, 60, 25);
 		add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox();
 		comboBox_4.addItem(0);
 		comboBox_4.addItem(1);
 		comboBox_4.addItem(2);
-		comboBox_4.setBounds(101, 269, 60, 25);
+		comboBox_4.setBounds(84, 269, 60, 25);
 		add(comboBox_4);
 		
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.addItem(0);
 		comboBox_5.addItem(1);
-		comboBox_5.setBounds(262, 69, 60, 25);
+		comboBox_5.setBounds(227, 69, 60, 25);
 		add(comboBox_5);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.addItem(0);
 		comboBox_6.addItem(1);
-		comboBox_6.setBounds(262, 119, 60, 25);
+		comboBox_6.setBounds(227, 119, 60, 25);
 		add(comboBox_6);
 		
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
 		comboBox_7.addItem(2);
-		comboBox_7.setBounds(262, 169, 60, 25);
+		comboBox_7.setBounds(227, 169, 60, 25);
 		add(comboBox_7);
+		
 		
 		textField.addFocusListener(new FocusAdapter() {
 			@Override
@@ -366,44 +367,44 @@ public class Doctor_diabetes extends JPanel {
 
 		
 		JLabel lblParmetro = new JLabel("Parameter 1");
-		lblParmetro.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblParmetro.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblParmetro.setBounds(15, 69, 105, 20);
 		add(lblParmetro);
 		
 		JLabel label = new JLabel("Parameter 2");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label.setBounds(15, 119, 105, 20);
 		add(label);
 		
 		
 		JLabel label_2 = new JLabel("Parameter 3");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_2.setBounds(15, 169, 105, 20);
 		add(label_2);
 		
 		JLabel label_3 = new JLabel("Parameter 4");
-		label_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_3.setBounds(15, 219, 105, 20);
 		add(label_3);
 		
 		JLabel label_4 = new JLabel("Parameter 5");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_4.setBounds(15, 269, 105, 20);
 		add(label_4);
 		
 		JLabel label_1 = new JLabel("Parameter 6");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(173, 69, 105, 20);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label_1.setBounds(156, 69, 105, 20);
 		add(label_1);
 		
 		JLabel label_5 = new JLabel("Parameter 7");
-		label_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_5.setBounds(173, 119, 105, 20);
+		label_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label_5.setBounds(156, 119, 105, 20);
 		add(label_5);
 		
 		JLabel label_6 = new JLabel("Parameter 8");
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_6.setBounds(173, 169, 105, 20);
+		label_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		label_6.setBounds(156, 169, 105, 20);
 		add(label_6);
 
 		
@@ -565,8 +566,8 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 			}
 		});
 		
-		btnDiagnose.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnDiagnose.setBounds(463, 31, 115, 29);
+		btnDiagnose.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnDiagnose.setBounds(562, 407, 162, 46);
 		btnDiagnose.setBackground(new Color(100,155,175));
 		btnDiagnose.setForeground(Color.WHITE);
 		add(btnDiagnose);
