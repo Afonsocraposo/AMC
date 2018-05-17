@@ -99,84 +99,84 @@ public class Doctor_hepatitis extends JPanel {
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.addItem(0);
 		comboBox_5.addItem(1);
-		comboBox_5.setBounds(227, 69, 60, 25);
+		comboBox_5.setBounds(235, 69, 60, 25);
 		add(comboBox_5);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.addItem(0);
 		comboBox_6.addItem(1);
-		comboBox_6.setBounds(227, 119, 60, 25);
+		comboBox_6.setBounds(235, 119, 60, 25);
 		add(comboBox_6);
 		
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.setBounds(227, 169, 60, 25);
+		comboBox_7.setBounds(235, 169, 60, 25);
 		add(comboBox_7);
 		
 		JComboBox comboBox_8 = new JComboBox();
 		comboBox_8.addItem(0);
 		comboBox_8.addItem(1);
-		comboBox_8.setBounds(227, 219, 60, 25);
+		comboBox_8.setBounds(235, 219, 60, 25);
 		add(comboBox_8);
 		
 		JComboBox comboBox_9 = new JComboBox();
 		comboBox_9.addItem(0);
 		comboBox_9.addItem(1);
-		comboBox_9.setBounds(227, 269, 60, 25);
+		comboBox_9.setBounds(235, 269, 60, 25);
 		add(comboBox_9);
 
 		JComboBox comboBox_10 = new JComboBox();
 		comboBox_10.addItem(0);
 		comboBox_10.addItem(1);
-		comboBox_10.setBounds(372, 69, 60, 25);
+		comboBox_10.setBounds(388, 69, 60, 25);
 		add(comboBox_10);
 		
 		JComboBox comboBox_11 = new JComboBox();
 		comboBox_11.addItem(0);
 		comboBox_11.addItem(1);
-		comboBox_11.setBounds(372, 119, 60, 25);
+		comboBox_11.setBounds(388, 119, 60, 25);
 		add(comboBox_11);
 		
 		JComboBox comboBox_12 = new JComboBox();
 		comboBox_12.addItem(0);
 		comboBox_12.addItem(1);
-		comboBox_12.setBounds(372, 169, 60, 25);
+		comboBox_12.setBounds(388, 169, 60, 25);
 		add(comboBox_12);
 		
 		JComboBox comboBox_13 = new JComboBox();
 		comboBox_13.addItem(0);
 		comboBox_13.addItem(1);
-		comboBox_13.setBounds(372, 219, 60, 25);
+		comboBox_13.setBounds(388, 219, 60, 25);
 		add(comboBox_13);
 		
 		JComboBox comboBox_14 = new JComboBox();
 		comboBox_14.addItem(0);
-		comboBox_14.setBounds(372, 269, 60, 25);
+		comboBox_14.setBounds(388, 269, 60, 25);
 		add(comboBox_14);
 		
 		JComboBox comboBox_15 = new JComboBox();
 		comboBox_15.addItem(0);
-		comboBox_15.setBounds(516, 69, 60, 25);
+		comboBox_15.setBounds(542, 69, 60, 25);
 		add(comboBox_15);
 		
 		JComboBox comboBox_16 = new JComboBox();
 		comboBox_16.addItem(0);
 		comboBox_16.addItem(1);
 		comboBox_16.addItem(2);
-		comboBox_16.setBounds(516, 119, 60, 25);
+		comboBox_16.setBounds(542, 119, 60, 25);
 		add(comboBox_16);
 		
 		JComboBox comboBox_17 = new JComboBox();
 		comboBox_17.addItem(0);
 		comboBox_17.addItem(1);
-		comboBox_17.setBounds(516, 169, 60, 25);
+		comboBox_17.setBounds(542, 169, 60, 25);
 		add(comboBox_17);
 		
 		JComboBox comboBox_18 = new JComboBox();
 		comboBox_18.addItem(0);
 		comboBox_18.addItem(1);
-		comboBox_18.setBounds(516, 219, 60, 25);
+		comboBox_18.setBounds(542, 219, 60, 25);
 		add(comboBox_18);
 		
 		textField.addFocusListener(new FocusAdapter() {
@@ -975,47 +975,47 @@ public class Doctor_hepatitis extends JPanel {
 		
 		JLabel label_9 = new JLabel("Parameter 11");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_9.setBounds(299, 69, 105, 20);
+		label_9.setBounds(307, 69, 105, 20);
 		add(label_9);
 		
 		JLabel label_10 = new JLabel("Parameter 12");
 		label_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_10.setBounds(299, 119, 105, 20);
+		label_10.setBounds(307, 119, 105, 20);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("Parameter 13");
 		label_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_11.setBounds(299, 169, 105, 20);
+		label_11.setBounds(307, 169, 105, 20);
 		add(label_11);
 		
 		JLabel label_12 = new JLabel("Parameter 14");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_12.setBounds(299, 219, 105, 20);
+		label_12.setBounds(307, 219, 105, 20);
 		add(label_12);
 		
 		JLabel label_13 = new JLabel("Parameter 15");
 		label_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_13.setBounds(299, 269, 105, 20);
+		label_13.setBounds(307, 269, 105, 20);
 		add(label_13);
 		
 		JLabel label_14 = new JLabel("Parameter 16");
 		label_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_14.setBounds(444, 69, 105, 20);
+		label_14.setBounds(462, 69, 105, 20);
 		add(label_14);
 		
 		JLabel label_15 = new JLabel("Parameter 17");
 		label_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_15.setBounds(444, 119, 105, 20);
+		label_15.setBounds(462, 119, 105, 20);
 		add(label_15);
 		
 		JLabel label_16 = new JLabel("Parameter 18");
 		label_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_16.setBounds(444, 169, 105, 20);
+		label_16.setBounds(462, 169, 105, 20);
 		add(label_16);
 		
 		JLabel label_17 = new JLabel("Parameter 19");
 		label_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_17.setBounds(444, 219, 105, 20);
+		label_17.setBounds(462, 219, 105, 20);
 		add(label_17);
 
 
