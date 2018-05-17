@@ -66,33 +66,31 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
 		comboBox.addItem(1);
+		comboBox.addItem(2);
 		comboBox.setBounds(25, 100, 60, 25);
 		add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.addItem(0);
+		comboBox_1.addItem(1);		
 		comboBox_1.setBounds(25, 150, 60, 25);
 		add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.addItem(0);
 		comboBox_2.addItem(1);
-		comboBox_2.addItem(2);
 		comboBox_2.setBounds(25, 200, 60, 25);
 		add(comboBox_2);
 		
 		JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.addItem(0);
 		comboBox_3.addItem(1);
-		comboBox_3.addItem(2);
-		comboBox_3.addItem(3);
 		comboBox_3.setBounds(25, 250, 60, 25);
 		add(comboBox_3);
 		
 		JComboBox comboBox_4 = new JComboBox();
 		comboBox_4.addItem(0);
 		comboBox_4.addItem(1);
-		comboBox_4.addItem(2);
 		comboBox_4.setBounds(25, 300, 60, 25);
 		add(comboBox_4);
 		
@@ -111,7 +109,6 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.addItem(2);
 		comboBox_7.setBounds(125, 200, 60, 25);
 		add(comboBox_7);
 		
@@ -142,7 +139,6 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_12 = new JComboBox();
 		comboBox_12.addItem(0);
 		comboBox_12.addItem(1);
-		comboBox_12.addItem(2);
 		comboBox_12.setBounds(225, 200, 60, 25);
 		add(comboBox_12);
 		
@@ -167,7 +163,6 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_16 = new JComboBox();
 		comboBox_16.addItem(0);
 		comboBox_16.addItem(1);
-		comboBox_16.addItem(2);
 		comboBox_16.setBounds(325, 150, 60, 25);
 		add(comboBox_16);
 		
@@ -180,12 +175,17 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_18 = new JComboBox();
 		comboBox_18.addItem(0);
 		comboBox_18.addItem(1);
+		comboBox_18.addItem(2);
+		comboBox_18.addItem(3);
 		comboBox_18.setBounds(325, 250, 60, 25);
 		add(comboBox_18);
 		
 		JComboBox comboBox_19 = new JComboBox();
 		comboBox_19.addItem(0);
 		comboBox_19.addItem(1);
+		comboBox_19.addItem(2);
+		comboBox_19.addItem(3);
+		comboBox_19.addItem(4);
 		comboBox_19.setBounds(325, 300, 60, 25);
 		add(comboBox_19);
 		
