@@ -149,7 +149,7 @@ public class WGraph implements Weighted_Graphs {
 			visited.add(nodeB2add);
 			
 			// check if it works
-			System.out.println(nodeA2add + " , " + nodeB2add + " | " + weight2add);
+			//System.out.println(nodeA2add + " , " + nodeB2add + " | " + weight2add);
 			
 			// adiciona a aresta ao grafo orientado
 			result_dgraph.add_edge(nodeA2add,nodeB2add);
@@ -186,12 +186,12 @@ public class WGraph implements Weighted_Graphs {
 	
 	
 //  TRY IT
-					
+	
+/*
 	public static void main(String[] args) {
 		WGraph wg = new WGraph(10);
 		
-/*
- * 
+ 
 		wg.add_edge(0, 1, 4.0);
 		wg.add_edge(0, 7, 8.0);
 		wg.add_edge(1, 7, 11.0);
@@ -207,9 +207,6 @@ public class WGraph implements Weighted_Graphs {
 		wg.add_edge(3, 4, 9.0);
 		wg.add_edge(5, 4, 10.0); 
 		
-
-*/
-
 		wg.add_edge(0,1,0);
 		wg.add_edge(0,2,0.0889);
 		wg.add_edge(0,3,0.1512);
@@ -274,7 +271,7 @@ public class WGraph implements Weighted_Graphs {
 		DGraph dg = wg.MST(0);
 
 	}
-
+*/
 
 	
 	
