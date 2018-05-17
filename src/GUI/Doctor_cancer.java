@@ -107,32 +107,31 @@ public class Doctor_cancer extends JPanel {
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.addItem(0);
 		comboBox_5.addItem(1);
-		comboBox_5.setBounds(227, 69, 60, 25);
+		comboBox_5.setBounds(235, 69, 60, 25);
 		add(comboBox_5);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.addItem(0);
 		comboBox_6.addItem(1);
-		comboBox_6.setBounds(227, 119, 60, 25);
+		comboBox_6.setBounds(235, 119, 60, 25);
 		add(comboBox_6);
 		
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.addItem(2);
-		comboBox_7.setBounds(227, 169, 60, 25);
+		comboBox_7.setBounds(235, 169, 60, 25);
 		add(comboBox_7);
 		
 		JComboBox comboBox_8 = new JComboBox();
 		comboBox_8.addItem(0);
 		comboBox_8.addItem(1);
-		comboBox_8.setBounds(227, 219, 60, 25);
+		comboBox_8.setBounds(235, 219, 60, 25);
 		add(comboBox_8);
 		
 		JComboBox comboBox_9 = new JComboBox();
 		comboBox_9.addItem(0);
 		comboBox_9.addItem(1);
-		comboBox_9.setBounds(227, 269, 60, 25);
+		comboBox_9.setBounds(235, 269, 60, 25);
 		add(comboBox_9);
 		
 		

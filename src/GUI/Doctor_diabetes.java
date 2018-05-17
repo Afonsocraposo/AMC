@@ -102,22 +102,21 @@ public class Doctor_diabetes extends JPanel {
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.addItem(0);
 		comboBox_5.addItem(1);
-		comboBox_5.setBounds(227, 69, 60, 25);
+		comboBox_5.setBounds(235, 69, 60, 25);
 		add(comboBox_5);
 		
 		JComboBox comboBox_6 = new JComboBox();
 		comboBox_6.addItem(0);
 		comboBox_6.addItem(1);
-		comboBox_6.setBounds(227, 119, 60, 25);
+		comboBox_6.setBounds(235, 119, 60, 25);
 		add(comboBox_6);
 		
 		JComboBox comboBox_7 = new JComboBox();
 		comboBox_7.addItem(0);
 		comboBox_7.addItem(1);
-		comboBox_7.addItem(2);
-		comboBox_7.setBounds(227, 169, 60, 25);
+		comboBox_7.setBounds(235, 169, 60, 25);
 		add(comboBox_7);
-		
+
 		
 		textField.addFocusListener(new FocusAdapter() {
 			@Override
@@ -406,7 +405,7 @@ public class Doctor_diabetes extends JPanel {
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_6.setBounds(156, 169, 105, 20);
 		add(label_6);
-
+		
 		
 		JLabel lblSelectValuesFor1 = new JLabel("Select values for each parameter:");
 		lblSelectValuesFor1.setForeground(new Color(100,155,175));
