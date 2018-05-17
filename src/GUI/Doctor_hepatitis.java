@@ -12,11 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +25,8 @@ import java.util.Locale;
 import Tipos_de_dados.BN;
 
 import javax.swing.JTextField;
+
+import PDF.ScreenImage;
 
 @SuppressWarnings("serial")
 public class Doctor_hepatitis extends JPanel {
@@ -735,48 +737,49 @@ public class Doctor_hepatitis extends JPanel {
 		textObs.setBounds(15, 407, 530, 46);
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
-
+		
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(600, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);
+		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
 		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblResults.setBounds(644, 79, 281, 20);
-		lblResults.setVisible(false);
-		add(lblResults);
+		lblResults.setBounds(30, 30, 66, 20);
+		plot.setLayout(null);
+		plot.add(lblResults);
 		
 		JLabel LiveB = new JLabel("");
 		LiveB.setBackground(new Color(0, 100, 0));
 		LiveB.setOpaque(true);
-		LiveB.setBounds(644, 119, 171, 46);
-		LiveB.setVisible(false);
-		add(LiveB);
+		LiveB.setBounds(30, 62, 171, 46);
+		plot.add(LiveB);
 		
 		JLabel DieB = new JLabel("");
 		DieB.setOpaque(true);
 		DieB.setBackground(new Color(255, 0, 0));
-		DieB.setBounds(814, 119, 171, 46);
-		DieB.setVisible(false);
-		add(DieB);
+		DieB.setBounds(202, 62, 171, 46);
+		plot.add(DieB);
 		
 		JLabel lblLabel = new JLabel("Label:");
 		lblLabel.setForeground(new Color(100, 155, 175));
 		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblLabel.setBounds(644, 195, 281, 20);
-		lblLabel.setVisible(false);
-		add(lblLabel);
+		lblLabel.setBounds(30, 115, 100, 63);
+		plot.add(lblLabel);
 		
 		JLabel lblLive = new JLabel("");
 		lblLive.setForeground(new Color(0, 100, 0));
 		lblLive.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblLive.setBounds(644, 231, 331, 20);
-		lblLive.setVisible(false);
-		add(lblLive);
-		
+		lblLive.setBounds(30, 164, 279, 35);
+		plot.add(lblLive);
+
 		JLabel lblDie = new JLabel("");
 		lblDie.setForeground(new Color(255, 0, 0));
 		lblDie.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDie.setBounds(644, 267, 331, 20);
-		lblDie.setVisible(false);
-		add(lblDie);
+		lblDie.setBounds(30, 211, 279, 35);
+		plot.add(lblDie);
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -998,11 +1001,28 @@ public class Doctor_hepatitis extends JPanel {
 					DieB.setBounds(LiveB.getX()+LiveB.getWidth(), DieB.getY(), (int)(width*probD), DieB.getHeight());
 					DieB.setVisible(true);
 					
-					lblLabel.setVisible(true);
-					lblLive.setText("(1) You live: "+(new DecimalFormat("##.##").format(probL*100))+"%");
-					lblLive.setVisible(true);
-					lblDie.setText("(0) You die: "+(new DecimalFormat("##.##").format(probD*100))+"%");
-					lblDie.setVisible(true);
+					lblLive.setText("(1) Live: "+ String.format( "%.2f",probL*100) +"%");
+					lblDie.setText("(0) Die: "+ String.format( "%.2f",probD*100) +"%");
+					
+					plot.setVisible(true);
+					
+					lblResults.setForeground(Color.BLACK);
+					lblLabel.setForeground(Color.BLACK);
+					lblResults.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblLive.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblDie.setFont(new Font("Helvetica", Font.BOLD, 16));
+
+					
+					BufferedImage plot_pic = ScreenImage.createImage(plot);
+					parent.patient.picture = plot_pic;
+					
+					lblResults.setForeground(new Color(100, 155, 175));
+					lblLabel.setForeground(new Color(100, 155, 175));
+					lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblLive.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblDie.setFont(new Font("Tahoma", Font.BOLD, 16));
 					
 					if(probL>probD) {
 						parent.patient.result="NEGATIVE";
@@ -1080,6 +1100,8 @@ public class Doctor_hepatitis extends JPanel {
 		label_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_17.setBounds(462, 219, 105, 20);
 		add(label_17);
+		
+		add(plot);
 
 
 	}

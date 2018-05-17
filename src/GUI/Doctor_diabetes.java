@@ -427,7 +427,7 @@ public class Doctor_diabetes extends JPanel {
 		plot.setBackground(Color.WHITE);
 		plot.setLocation(500, 30);
 		plot.setSize(400,300);
-		plot.setVisible(false);;
+		plot.setVisible(false);
 		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));

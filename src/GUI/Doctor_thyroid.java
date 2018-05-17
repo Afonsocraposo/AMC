@@ -3,6 +3,9 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import PDF.ScreenImage;
+
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -15,7 +18,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,6 +26,7 @@ import java.util.Locale;
 import Tipos_de_dados.BN;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.image.BufferedImage;
 
 @SuppressWarnings("serial")
 public class Doctor_thyroid extends JPanel {
@@ -773,47 +776,49 @@ public class Doctor_thyroid extends JPanel {
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(600, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);
+		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
 		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblResults.setBounds(644, 79, 281, 20);
-		lblResults.setVisible(false);
-		add(lblResults);
+		lblResults.setBounds(30, 30, 66, 20);
+		plot.setLayout(null);
+		plot.add(lblResults);
 		
 		JLabel NormalB = new JLabel("");
 		NormalB.setBackground(new Color(0, 100, 0));
 		NormalB.setOpaque(true);
-		NormalB.setBounds(644, 119, 171, 46);
-		NormalB.setVisible(false);
-		add(NormalB);
+		NormalB.setBounds(30, 62, 171, 46);
+		plot.add(NormalB);
 		
 		JLabel AbnormalB = new JLabel("");
 		AbnormalB.setOpaque(true);
 		AbnormalB.setBackground(new Color(255, 0, 0));
-		AbnormalB.setBounds(814, 119, 171, 46);
-		AbnormalB.setVisible(false);
-		add(AbnormalB);
+		AbnormalB.setBounds(202, 62, 171, 46);
+		plot.add(AbnormalB);
 		
 		JLabel lblLabel = new JLabel("Label:");
 		lblLabel.setForeground(new Color(100, 155, 175));
 		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblLabel.setBounds(644, 195, 281, 20);
-		lblLabel.setVisible(false);
-		add(lblLabel);
+		lblLabel.setBounds(30, 115, 100, 63);
+		plot.add(lblLabel);
 		
-		JLabel lblNormal = new JLabel("0: ");
+		JLabel lblNormal = new JLabel("");
 		lblNormal.setForeground(new Color(0, 100, 0));
 		lblNormal.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNormal.setBounds(644, 231, 331, 20);
-		lblNormal.setVisible(false);
-		add(lblNormal);
+		lblNormal.setBounds(30, 164, 279, 35);
+		plot.add(lblNormal);
 		
-		JLabel lblAbnormal = new JLabel("1:");
+		JLabel lblAbnormal = new JLabel("");
 		lblAbnormal.setForeground(new Color(255, 0, 0));
 		lblAbnormal.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblAbnormal.setBounds(644, 267, 331, 20);
-		lblAbnormal.setVisible(false);
-		add(lblAbnormal);
+		lblAbnormal.setBounds(30, 211, 279, 35);
+		plot.add(lblAbnormal);
+		
 		
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -1042,11 +1047,28 @@ public class Doctor_thyroid extends JPanel {
 					AbnormalB.setBounds(NormalB.getX()+NormalB.getWidth(), AbnormalB.getY(), (int)(width*probAb), AbnormalB.getHeight());
 					AbnormalB.setVisible(true);
 					
-					lblLabel.setVisible(true);
-					lblNormal.setText("(0) Normal functioning: "+(new DecimalFormat("##.##").format(probN*100))+"%");
-					lblNormal.setVisible(true);
-					lblAbnormal.setText("(1) Abnormal functioning: "+(new DecimalFormat("##.##").format(probAb*100))+"%");
-					lblAbnormal.setVisible(true);
+					lblNormal.setText("(0) Normal: "+ String.format( "%.2f",probN*100) +"%");
+					lblAbnormal.setText("(1) Abnormal: "+ String.format( "%.2f",probAb*100) +"%");
+					
+					plot.setVisible(true);
+					
+					lblResults.setForeground(Color.BLACK);
+					lblLabel.setForeground(Color.BLACK);
+					lblResults.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblNormal.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblAbnormal.setFont(new Font("Helvetica", Font.BOLD, 16));
+
+					
+					BufferedImage plot_pic = ScreenImage.createImage(plot);
+					parent.patient.picture = plot_pic;
+					
+					lblResults.setForeground(new Color(100, 155, 175));
+					lblLabel.setForeground(new Color(100, 155, 175));
+					lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblNormal.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblAbnormal.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 					if(probN>probAb) {
 						parent.patient.result="NEGATIVE";
@@ -1127,6 +1149,7 @@ public class Doctor_thyroid extends JPanel {
 		label_18.setBounds(462, 270, 105, 20);
 		add(label_18);
 
+		add(plot);
 
 
 	}
