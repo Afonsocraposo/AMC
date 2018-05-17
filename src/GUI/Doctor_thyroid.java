@@ -131,13 +131,13 @@ public class Doctor_thyroid extends JPanel {
 		JComboBox comboBox_10 = new JComboBox();
 		comboBox_10.addItem(0);
 		comboBox_10.addItem(1);
-		comboBox_11.setBounds(388, 119, 60, 25);
+		comboBox_10.setBounds(388, 69, 60, 25);
 		add(comboBox_10);
 		
 		JComboBox comboBox_11 = new JComboBox();
 		comboBox_11.addItem(0);
 		comboBox_11.addItem(1);
-		comboBox_11.setBounds(372, 119, 60, 25);
+		comboBox_11.setBounds(388, 119, 60, 25);
 		add(comboBox_11);
 		
 		JComboBox comboBox_12 = new JComboBox();
@@ -190,7 +190,7 @@ public class Doctor_thyroid extends JPanel {
 		comboBox_19.addItem(2);
 		comboBox_19.addItem(3);
 		comboBox_19.addItem(4);
-		comboBox_19.setBounds(516, 269, 60, 25);
+		comboBox_19.setBounds(542, 269, 60, 25);
 		add(comboBox_19);
 		
 		textField.addFocusListener(new FocusAdapter() {
@@ -1016,52 +1016,52 @@ public class Doctor_thyroid extends JPanel {
 		
 		JLabel label_9 = new JLabel("Parameter 11");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_9.setBounds(299, 69, 105, 20);
+		label_9.setBounds(307, 69, 105, 20);
 		add(label_9);
 		
 		JLabel label_10 = new JLabel("Parameter 12");
 		label_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_10.setBounds(299, 119, 105, 20);
+		label_10.setBounds(307, 119, 105, 20);
 		add(label_10);
 		
 		JLabel label_11 = new JLabel("Parameter 13");
 		label_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_11.setBounds(299, 169, 105, 20);
+		label_11.setBounds(307, 169, 105, 20);
 		add(label_11);
 		
 		JLabel label_12 = new JLabel("Parameter 14");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_12.setBounds(299, 219, 105, 20);
+		label_12.setBounds(307, 219, 105, 20);
 		add(label_12);
 		
 		JLabel label_13 = new JLabel("Parameter 15");
 		label_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_13.setBounds(299, 269, 105, 20);
+		label_13.setBounds(307, 269, 105, 20);
 		add(label_13);
 		
 		JLabel label_14 = new JLabel("Parameter 16");
 		label_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_14.setBounds(444, 69, 105, 20);
+		label_14.setBounds(462, 69, 105, 20);
 		add(label_14);
 		
 		JLabel label_15 = new JLabel("Parameter 17");
 		label_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_15.setBounds(444, 119, 105, 20);
+		label_15.setBounds(462, 119, 105, 20);
 		add(label_15);
 		
 		JLabel label_16 = new JLabel("Parameter 18");
 		label_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_16.setBounds(444, 169, 105, 20);
+		label_16.setBounds(462, 169, 105, 20);
 		add(label_16);
 		
 		JLabel label_17 = new JLabel("Parameter 19");
 		label_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_17.setBounds(444, 219, 105, 20);
+		label_17.setBounds(462, 219, 105, 20);
 		add(label_17);
 		
 		JLabel label_18 = new JLabel("Parameter 20");
 		label_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_18.setBounds(444, 269, 105, 20);
+		label_18.setBounds(462, 270, 105, 20);
 		add(label_18);
 
 
