@@ -123,7 +123,7 @@ public class Doctor_panel extends JPanel {
 				});
 				add(btnSource);
 		
-		RoundedButton btnSave = new RoundedButton("Print as PDF");
+		RoundedButton btnSave = new RoundedButton("Save as PDF");
 		btnSave.setBounds(800, 69, 115, 26);
 		btnSave.setBackground(new Color(100,155,175));
 		btnSave.setForeground(Color.WHITE);
