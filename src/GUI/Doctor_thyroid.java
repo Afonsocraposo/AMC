@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Locale;
 
 import Tipos_de_dados.BN;
 import java.awt.event.FocusAdapter;
@@ -39,6 +39,7 @@ public class Doctor_thyroid extends JPanel {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_thyroid(Doctor_on parent) {
+		Locale.setDefault(Locale.US);
 		setBackground(Color.WHITE);
 		setLayout(null);
 		

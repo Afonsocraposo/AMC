@@ -1,5 +1,6 @@
 package PDF;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class PatientInfo {
@@ -14,6 +15,7 @@ public class PatientInfo {
 	public String result;
 	public ArrayList<Integer> signs;
 	public String comments;
+	public BufferedImage picture;
 	
 	public PatientInfo( ) {
 		name = "John Doe";

@@ -3,6 +3,9 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import PDF.ScreenImage;
+
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -13,15 +16,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Locale;
 
 import Tipos_de_dados.BN;
 
@@ -39,6 +42,7 @@ public class Doctor_diabetes extends JPanel {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_diabetes(Doctor_on parent) {
+		Locale.setDefault(Locale.US);
 		setBackground(Color.WHITE);
 		setLayout(null);
 
@@ -418,48 +422,49 @@ public class Doctor_diabetes extends JPanel {
 		textObs.setBounds(15, 407, 530, 46);
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
-
+			
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(500, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);;
+		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
 		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblResults.setBounds(556, 79, 281, 20);
-		lblResults.setVisible(false);
-		add(lblResults);
+		lblResults.setBounds(30, 30, 66, 20);
+		plot.setLayout(null);
+		plot.add(lblResults);
 		
 		JLabel NegativeB = new JLabel("");
 		NegativeB.setBackground(new Color(0, 100, 0));
 		NegativeB.setOpaque(true);
-		NegativeB.setBounds(556, 119, 171, 46);
-		NegativeB.setVisible(false);
-		add(NegativeB);
+		NegativeB.setBounds(30, 62, 171, 46);
+		plot.add(NegativeB);
 		
 		JLabel PositiveB = new JLabel("");
 		PositiveB.setOpaque(true);
 		PositiveB.setBackground(new Color(255, 0, 0));
-		PositiveB.setBounds(726, 119, 171, 46);
-		PositiveB.setVisible(false);
-		add(PositiveB);
+		PositiveB.setBounds(202, 62, 171, 46);
+		plot.add(PositiveB);
 		
 		JLabel lblLabel = new JLabel("Label:");
 		lblLabel.setForeground(new Color(100, 155, 175));
 		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblLabel.setBounds(556, 195, 281, 20);
-		lblLabel.setVisible(false);
-		add(lblLabel);
+		lblLabel.setBounds(30, 115, 100, 63);
+		plot.add(lblLabel);
 		
-		JLabel lblNegative = new JLabel("0: ");
+		JLabel lblNegative = new JLabel("");
 		lblNegative.setForeground(new Color(0, 100, 0));
 		lblNegative.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNegative.setBounds(566, 231, 331, 20);
-		lblNegative.setVisible(false);
-		add(lblNegative);
+		lblNegative.setBounds(30, 164, 279, 35);
+		plot.add(lblNegative);
 		
-		JLabel lblPositive = new JLabel("1:");
+		JLabel lblPositive = new JLabel("");
 		lblPositive.setForeground(new Color(255, 0, 0));
 		lblPositive.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblPositive.setBounds(566, 267, 331, 20);
-		lblPositive.setVisible(false);
-		add(lblPositive);
+		lblPositive.setBounds(30, 211, 279, 35);
+		plot.add(lblPositive);
 
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
@@ -585,9 +590,9 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 					ois.close(); 
 					fis.close(); 
 
-					parameters[8]=0; 
-					double negative=bayesnet.prob(parameters); 
 					parameters[8]=1; 
+					double negative=bayesnet.prob(parameters); 
+					parameters[8]=0; 
 					double positive=bayesnet.prob(parameters);
 					
 					double total=negative+positive;
@@ -605,11 +610,28 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 					PositiveB.setBounds(NegativeB.getX()+NegativeB.getWidth(), PositiveB.getY(), (int)(width*probP), PositiveB.getHeight());
 					PositiveB.setVisible(true);
 					
-					lblLabel.setVisible(true);
-					lblNegative.setText("(0) Healthy: "+(new DecimalFormat("##.##").format(probN*100))+"%");
-					lblNegative.setVisible(true);
-					lblPositive.setText("(1) Diabetic: "+(new DecimalFormat("##.##").format(probP*100))+"%");
-					lblPositive.setVisible(true);
+					lblPositive.setText("(1) Diabetic: "+ String.format( "%.2f",probP*100) +"%");
+					lblNegative.setText("(0) Healthy: "+ String.format( "%.2f",probN*100) +"%");
+					
+					plot.setVisible(true);
+					
+					lblResults.setForeground(Color.BLACK);
+					lblLabel.setForeground(Color.BLACK);
+					lblResults.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblPositive.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblNegative.setFont(new Font("Helvetica", Font.BOLD, 16));
+
+					
+					BufferedImage plot_pic = ScreenImage.createImage(plot);
+					parent.patient.picture = plot_pic;
+					
+					lblResults.setForeground(new Color(100, 155, 175));
+					lblLabel.setForeground(new Color(100, 155, 175));
+					lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblPositive.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblNegative.setFont(new Font("Tahoma", Font.BOLD, 16));
 					
 					if(probN>probP) {
 						parent.patient.result="NEGATIVE";
@@ -642,6 +664,8 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 		JLabel lblComment = new JLabel("Comment:");
 		lblComment.setBounds(15, 379, 358, 16);
 		add(lblComment);
+		
+		add(plot);
 		
 	}
 

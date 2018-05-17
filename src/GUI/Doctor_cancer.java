@@ -2,6 +2,9 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import PDF.ScreenImage;
+
 import javax.swing.JLabel;
 
 import java.awt.Font;
@@ -14,10 +17,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BorderFactory;
@@ -25,6 +28,7 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.image.BufferedImage;
 
 
 @SuppressWarnings("serial")
@@ -41,6 +45,7 @@ public class Doctor_cancer extends JPanel {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_cancer(Doctor_on parent) {
+		Locale.setDefault(Locale.US);
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
@@ -489,49 +494,50 @@ public class Doctor_cancer extends JPanel {
 		textObs.setBounds(15, 407, 530, 46);
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
-
-
+		
+		
+		JPanel plot = new JPanel();
+		plot.setBackground(Color.WHITE);
+		plot.setLocation(500, 30);
+		plot.setSize(400,300);
+		plot.setVisible(false);;
+		
 		JLabel lblResults = new JLabel("Results:");
 		lblResults.setForeground(new Color(100, 155, 175));
 		lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblResults.setBounds(556, 79, 281, 20);
-		lblResults.setVisible(false);
-		add(lblResults);
+		lblResults.setBounds(30, 30, 66, 20);
+		plot.setLayout(null);
+		plot.add(lblResults);
 		
 		JLabel BenignB = new JLabel("");
 		BenignB.setBackground(new Color(0, 100, 0));
 		BenignB.setOpaque(true);
-		BenignB.setBounds(556, 119, 171, 46);
-		BenignB.setVisible(false);
-		add(BenignB);
+		BenignB.setBounds(30, 62, 171, 46);
+		plot.add(BenignB);
 		
 		JLabel MalignB = new JLabel("");
 		MalignB.setOpaque(true);
 		MalignB.setBackground(new Color(255, 0, 0));
-		MalignB.setBounds(726, 119, 171, 46);
-		MalignB.setVisible(false);
-		add(MalignB);
+		MalignB.setBounds(202, 62, 171, 46);
+		plot.add(MalignB);
 		
 		JLabel lblLabel = new JLabel("Label:");
 		lblLabel.setForeground(new Color(100, 155, 175));
 		lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblLabel.setBounds(556, 195, 281, 20);
-		lblLabel.setVisible(false);
-		add(lblLabel);
+		lblLabel.setBounds(30, 115, 100, 63);
+		plot.add(lblLabel);
 		
 		JLabel lblBenign = new JLabel("");
 		lblBenign.setForeground(new Color(0, 100, 0));
 		lblBenign.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblBenign.setBounds(566, 231, 331, 20);
-		lblBenign.setVisible(false);
-		add(lblBenign);
+		lblBenign.setBounds(30, 164, 279, 35);
+		plot.add(lblBenign);
 		
 		JLabel lblMalign = new JLabel("");
 		lblMalign.setForeground(new Color(255, 0, 0));
 		lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblMalign.setBounds(566, 267, 331, 20);
-		lblMalign.setVisible(false);
-		add(lblMalign);
+		lblMalign.setBounds(30, 211, 279, 35);
+		plot.add(lblMalign);
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -683,22 +689,38 @@ public class Doctor_cancer extends JPanel {
 					double probM=Malign/total;
 					double probB=Benign/total;
 					
-					lblResults.setVisible(true);
 					
 					int width = 350;
 					
 					BenignB.setBounds(BenignB.getX(), BenignB.getY(), (int)(width*probB), BenignB.getHeight());
-					BenignB.setVisible(true);
 					
 					MalignB.setBounds(BenignB.getX()+BenignB.getWidth(), MalignB.getY(), (int)(width*probM), MalignB.getHeight());
-					MalignB.setVisible(true);
 					
-					lblLabel.setVisible(true);
-					lblBenign.setText("(0) Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
-					lblBenign.setVisible(true);
-					lblMalign.setText("(1) Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
-					lblMalign.setVisible(true);
+					lblBenign.setText("(0) Benign: "+ String.format( "%.2f",probB*100) +"%");
+					lblMalign.setText("(1) Malign: "+ String.format( "%.2f",probM*100) +"%");
 					
+					plot.setVisible(true);
+					
+					lblResults.setForeground(Color.BLACK);
+					lblLabel.setForeground(Color.BLACK);
+					lblResults.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblBenign.setFont(new Font("Helvetica", Font.BOLD, 16));
+					lblMalign.setFont(new Font("Helvetica", Font.BOLD, 16));
+
+					
+					BufferedImage plot_pic = ScreenImage.createImage(plot);
+					parent.patient.picture = plot_pic;
+					
+					lblResults.setForeground(new Color(100, 155, 175));
+					lblLabel.setForeground(new Color(100, 155, 175));
+					lblResults.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblBenign.setFont(new Font("Tahoma", Font.BOLD, 16));
+					lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
+
+
+
 					
 					if(probB>probM) {
 						parent.patient.result="NEGATIVE";
@@ -732,7 +754,7 @@ public class Doctor_cancer extends JPanel {
 		add(lblComment);
 		
 
-		
+		add(plot);
 			
 
 		

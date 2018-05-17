@@ -20,7 +20,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Locale;
 
 import Tipos_de_dados.BN;
 
@@ -40,6 +40,7 @@ public class Doctor_hepatitis extends JPanel {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_hepatitis(Doctor_on parent) {
+		Locale.setDefault(Locale.US);
 		setBackground(Color.WHITE);
 		setLayout(null);
 		
