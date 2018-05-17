@@ -163,6 +163,12 @@ public class Doctor_panel extends JPanel {
 	        }
 		});
 		add(btnSave);
+		
+		JLabel lbllastDiagnosis = new JLabel("(last diagnosis)");
+		lbllastDiagnosis.setHorizontalAlignment(SwingConstants.CENTER);
+		lbllastDiagnosis.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lbllastDiagnosis.setBounds(800, 98, 115, 16);
+		add(lbllastDiagnosis);
 
 	}
 }

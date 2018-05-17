@@ -998,10 +998,16 @@ public class Doctor_hepatitis extends JPanel {
 					DieB.setVisible(true);
 					
 					lblLabel.setVisible(true);
-					lblLive.setText("(class 1) You live: "+(new DecimalFormat("##.##").format(probL*100))+"%");
+					lblLive.setText("(1) You live: "+(new DecimalFormat("##.##").format(probL*100))+"%");
 					lblLive.setVisible(true);
-					lblDie.setText("(class 0) You die: "+(new DecimalFormat("##.##").format(probD*100))+"%");
+					lblDie.setText("(0) You die: "+(new DecimalFormat("##.##").format(probD*100))+"%");
 					lblDie.setVisible(true);
+					
+					if(probL>probD) {
+						parent.patient.result="NEGATIVE";
+					} else {
+						parent.patient.result="POSITIVE";
+					}
 
 
 				} 

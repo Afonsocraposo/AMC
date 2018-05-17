@@ -433,8 +433,6 @@ public class Report {
         document.close();
       
         Desktop.getDesktop().open(new File(dest));
-
-        System.out.println("PDF successfully generated!");
     
     }
     

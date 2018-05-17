@@ -694,9 +694,9 @@ public class Doctor_cancer extends JPanel {
 					MalignB.setVisible(true);
 					
 					lblLabel.setVisible(true);
-					lblBenign.setText("(class 0) Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
+					lblBenign.setText("(0) Benign: "+(new DecimalFormat("##.##").format(probB*100))+"%");
 					lblBenign.setVisible(true);
-					lblMalign.setText("(class 1) Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
+					lblMalign.setText("(1) Malign: "+(new DecimalFormat("##.##").format(probM*100))+"%");
 					lblMalign.setVisible(true);
 					
 					

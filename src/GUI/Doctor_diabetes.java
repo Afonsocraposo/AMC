@@ -606,10 +606,16 @@ List<String> list = Arrays.asList(textField.getText().substring(1, textField.get
 					PositiveB.setVisible(true);
 					
 					lblLabel.setVisible(true);
-					lblNegative.setText("Class 0: "+(new DecimalFormat("##.##").format(probN*100))+"%");
+					lblNegative.setText("(0) Healthy: "+(new DecimalFormat("##.##").format(probN*100))+"%");
 					lblNegative.setVisible(true);
-					lblPositive.setText("Class 1: "+(new DecimalFormat("##.##").format(probP*100))+"%");
+					lblPositive.setText("(1) Diabetic: "+(new DecimalFormat("##.##").format(probP*100))+"%");
 					lblPositive.setVisible(true);
+					
+					if(probN>probP) {
+						parent.patient.result="NEGATIVE";
+					} else {
+						parent.patient.result="POSITIVE";
+					}
 					
 
 					

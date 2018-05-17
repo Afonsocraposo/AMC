@@ -1042,11 +1042,16 @@ public class Doctor_thyroid extends JPanel {
 					AbnormalB.setVisible(true);
 					
 					lblLabel.setVisible(true);
-					lblNormal.setText("(class 0) Normal functioning: "+(new DecimalFormat("##.##").format(probN*100))+"%");
+					lblNormal.setText("(0) Normal functioning: "+(new DecimalFormat("##.##").format(probN*100))+"%");
 					lblNormal.setVisible(true);
-					lblAbnormal.setText("(class 1) Abnormal functioning: "+(new DecimalFormat("##.##").format(probAb*100))+"%");
+					lblAbnormal.setText("(1) Abnormal functioning: "+(new DecimalFormat("##.##").format(probAb*100))+"%");
 					lblAbnormal.setVisible(true);
 
+					if(probN>probAb) {
+						parent.patient.result="NEGATIVE";
+					} else {
+						parent.patient.result="POSITIVE";
+					}
 
 				} 
 
