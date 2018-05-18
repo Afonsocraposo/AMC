@@ -25,7 +25,9 @@ public class Doctor_on extends JFrame {
 	Doctor_diabetes secondPanel;
 	Doctor_hepatitis thirdPanel;
 	Doctor_thyroid forthPanel;
+	Doctor_other fifthPanel;
 	Doctor_panel doctorPanel;
+	
 	
 	public PatientInfo patient = new PatientInfo();
 	
@@ -58,6 +60,7 @@ public class Doctor_on extends JFrame {
 		secondPanel = new Doctor_diabetes(this);
 		thirdPanel = new Doctor_hepatitis(this);
 		forthPanel = new Doctor_thyroid(this);
+		fifthPanel = new Doctor_other(this);
 		
 		doctorPanel = new Doctor_panel(username, this);
 		
@@ -87,6 +90,7 @@ public class Doctor_on extends JFrame {
 		tabbedPane.add("Diabetes",secondPanel);
 		tabbedPane.add("Hepatitis",thirdPanel);
 		tabbedPane.add("Thyroid Disease",forthPanel);
+		tabbedPane.add("Other",fifthPanel);
 		
 		contentPane.add(tabbedPane);
 	}

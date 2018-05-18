@@ -41,7 +41,7 @@ public class Doctor_hepatitis extends JPanel {
 	
 	// 19 parâmetros
 	
-	int [] parameters = new int[20];
+	private int [] parameters = new int[20];
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_hepatitis(Doctor_on parent) {

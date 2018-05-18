@@ -41,7 +41,7 @@ public class Doctor_thyroid extends JPanel {
 	
 	// 20 parâmetros
 	
-	int [] parameters = new int[21];
+	private int [] parameters = new int[21];
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Doctor_thyroid(Doctor_on parent) {
