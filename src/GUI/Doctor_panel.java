@@ -112,8 +112,8 @@ public class Doctor_panel extends JPanel {
 		add(comboBoxDay);
 		
 				
-				RoundedButton btnSource = new RoundedButton("Choose Models");
-				btnSource.setBounds(632, 69, 136, 26);
+				RoundedButton btnSource = new RoundedButton("Choose BNs Folder");
+				btnSource.setBounds(632, 69, 140, 26);
 				btnSource.setBackground(new Color(100,155,175));
 				btnSource.setForeground(Color.WHITE);
 				btnSource.addActionListener(new ActionListener() {

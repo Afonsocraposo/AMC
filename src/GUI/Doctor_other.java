@@ -52,16 +52,16 @@ public class Doctor_other extends JPanel {
 		
 		setSize(1000,480);
 				
-		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters. Please insert 10 parameters.");
+		JLabel Jlabel_1 = new JLabel("Incorrect number of parameters.");
 		Jlabel_1.setForeground(Color.RED);
 		Jlabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Jlabel_1.setBounds(253, 347, 489, 20);
+		Jlabel_1.setBounds(25, 226, 489, 20);
 		add(Jlabel_1);
 		
 		JLabel Jlabel_2 = new JLabel("Invalid parameter value. Verify domain.");
 		Jlabel_2.setForeground(Color.RED);
 		Jlabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		Jlabel_2.setBounds(253, 347, 489, 20);
+		Jlabel_2.setBounds(25, 226, 489, 20);
 		add(Jlabel_2);
 		
 		Jlabel_1.setVisible(false);
@@ -69,7 +69,7 @@ public class Doctor_other extends JPanel {
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setBounds(15, 345, 222, 26);
+		textField.setBounds(25, 188, 459, 26);
 		textField.setText(Arrays.toString(Arrays.copyOf(parameters, 10)));
 		add(textField);
 		textField.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
@@ -354,7 +354,9 @@ public class Doctor_other extends JPanel {
 		add(btnDiagnose);
 		
 		JLabel lblInsertParametersIn = new JLabel("Insert parameters in array form:");
-		lblInsertParametersIn.setBounds(15, 317, 358, 16);
+		lblInsertParametersIn.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		lblInsertParametersIn.setForeground(new Color(100,155,175));
+		lblInsertParametersIn.setBounds(25, 150, 358, 26);
 		add(lblInsertParametersIn);
 		
 		JLabel lblComment = new JLabel("Comment:");
@@ -363,6 +365,13 @@ public class Doctor_other extends JPanel {
 		
 
 		add(plot);
+		
+		RoundedButton roundedButton = new RoundedButton("Select BN");
+		roundedButton.setBounds(25, 55, 162, 46);
+		roundedButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+		roundedButton.setBackground(new Color(100,155,175));
+		roundedButton.setForeground(Color.WHITE);
+		add(roundedButton);
 			
 
 		
