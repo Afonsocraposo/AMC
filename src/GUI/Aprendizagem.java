@@ -12,12 +12,14 @@ import Tipos_de_dados.Weights;
 import javax.swing.JFrame;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -29,6 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.event.ComponentAdapter;
+import java.awt.image.BufferedImage;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -73,13 +76,13 @@ public class Aprendizagem {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
+		frame.getContentPane().setBackground(new Color(240,250,255));
 		frame.setFont(new Font("Bookman Old Style", Font.PLAIN, 17));
 		frame.setBounds(300, 300, 550, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setIconImage(img.getImage());
 		frame.setTitle("Medicine for Dummies - Learning");
-		frame.setBackground(Color.WHITE);
+
 		frame.setResizable(false);
 
 
@@ -113,13 +116,11 @@ public class Aprendizagem {
 		
 		JLabel lblChooseParameter = new JLabel("Choose exam:");
 		lblChooseParameter.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblChooseParameter.setForeground(new Color(100,155,175));
-		lblChooseParameter.setBounds(366, 40, 181, 22);
+		lblChooseParameter.setBounds(370, 79, 181, 22);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Breast Cancer");
-		rdbtnNewRadioButton.setForeground(new Color(100,155,175));
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 16));
-		rdbtnNewRadioButton.setBounds(366, 74, 156, 31);
+		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnNewRadioButton.setBounds(370, 103, 156, 31);
 		rdbtnNewRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Breast_Cancer";
@@ -127,9 +128,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Diabetes");
-		rdbtnNewRadioButton_1.setForeground(new Color(100,155,175));
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		rdbtnNewRadioButton_1.setBounds(366, 124, 141, 31);
+		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnNewRadioButton_1.setBounds(370, 133, 141, 31);
 		rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Diabetes";
@@ -137,9 +137,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Hepatitis");
-		rdbtnNewRadioButton_2.setForeground(new Color(100,155,175));
-		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		rdbtnNewRadioButton_2.setBounds(366, 174, 141, 31);
+		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnNewRadioButton_2.setBounds(370, 163, 141, 31);
 		rdbtnNewRadioButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Hepatitis";
@@ -147,9 +146,8 @@ public class Aprendizagem {
 		});
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Thyroid Disease");
-		rdbtnNewRadioButton_4.setForeground(new Color(100,155,175));
-		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.BOLD, 16));
-		rdbtnNewRadioButton_4.setBounds(366, 224, 220, 31);
+		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnNewRadioButton_4.setBounds(370, 193, 220, 31);
 		rdbtnNewRadioButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				choosenparameter="Thyroid";
@@ -162,6 +160,15 @@ public class Aprendizagem {
 		group.add(rdbtnNewRadioButton_2);
 		group.add(rdbtnNewRadioButton_4);
 		
+		try {
+			BufferedImage logo;
+			logo = ImageIO.read(new File("images/logo50px.png"));
+			JLabel picLabel = new JLabel(new ImageIcon(logo));
+			picLabel.setLocation(475, 15);
+			picLabel.setSize(50, 50);
+			frame.getContentPane().add(picLabel);
+		} catch (IOException e1) {
+		}
 
 		
 		RoundedButton btnTeachMe = new RoundedButton("Teach me!");
