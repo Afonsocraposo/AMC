@@ -644,8 +644,8 @@ public class Doctor_diabetes extends JPanel {
 					PositiveB.setBounds(NegativeB.getX()+NegativeB.getWidth(), PositiveB.getY(), (int)(width*probP), PositiveB.getHeight());
 					PositiveB.setVisible(true);
 					
-					lblPositive.setText("(1) Diabetic: "+ String.format( "%.2f",probP*100) +"%");
-					lblNegative.setText("(0) Healthy: "+ String.format( "%.2f",probN*100) +"%");
+					lblPositive.setText("(0) Diabetic: "+ String.format( "%.2f",probP*100) +"%");
+					lblNegative.setText("(1) Healthy: "+ String.format( "%.2f",probN*100) +"%");
 					
 					
 					
