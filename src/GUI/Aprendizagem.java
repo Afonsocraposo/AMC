@@ -43,6 +43,7 @@ public class Aprendizagem {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textField1;
 	
 	private String selecteddatabase;
 	private String choosenparameter;
@@ -95,7 +96,7 @@ public class Aprendizagem {
 		lblInfo.setOpaque(true);
 		lblInfo.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		lblInfo.setBackground(Color.WHITE);
-		lblInfo.setBounds(31, 267, 491, 94);
+		lblInfo.setBounds(31, 290, 491, 80);
 		
 		
 		RoundedButton btnChooseFile = new RoundedButton("Choose file");
@@ -155,11 +156,32 @@ public class Aprendizagem {
 			}
 		});
 		
+		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Other Diseases");
+		rdbtnNewRadioButton_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		rdbtnNewRadioButton_5.setBounds(370, 223, 220, 31);
+		rdbtnNewRadioButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				choosenparameter="other";
+			}
+		});
+		
+		textField1 = new JTextField();
+		textField1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		textField1.setBounds(380, 255, 142, 31);
+		textField1.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
+
+		textField1.addComponentListener(new ComponentAdapter() {
+			
+		});
+		textField1.setColumns(10);
+		
+		
 		ButtonGroup group = new ButtonGroup(); 
 		group.add(rdbtnNewRadioButton);
 		group.add(rdbtnNewRadioButton_1);
 		group.add(rdbtnNewRadioButton_2);
 		group.add(rdbtnNewRadioButton_4);
+		group.add(rdbtnNewRadioButton_5);
 		
 		try {
 			BufferedImage logo;
@@ -276,6 +298,8 @@ public class Aprendizagem {
 					f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
 					f.showSaveDialog(null);
 
+					
+					if(rdbtnNewRadioButton_5.isSelected()) choosenparameter=textField1.getText();
 					try {
 						FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
 						ObjectOutputStream oos=new ObjectOutputStream(fos);
@@ -337,7 +361,8 @@ public class Aprendizagem {
 		frame.getContentPane().add(btnTeachMe);
 		frame.getContentPane().add(rdbtnNewRadioButton_4);
 		frame.getContentPane().add(lblChooseParameter);
-
+		frame.getContentPane().add(rdbtnNewRadioButton_5);
+		frame.getContentPane().add(textField1);
 	}
 }
 	
