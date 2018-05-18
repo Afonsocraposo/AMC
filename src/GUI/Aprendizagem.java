@@ -99,26 +99,7 @@ public class Aprendizagem {
 		btnChooseFile.setBounds(15, 40, 141, 31);
 		btnChooseFile.setBackground(new Color(100,155,175));
 		btnChooseFile.setForeground(Color.WHITE);
-		btnChooseFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				lblInfo.setText("");
-				
-				FileDialog fd = new FileDialog(frame, "Select a file", FileDialog.LOAD);
-				frame.getContentPane().setLayout(null);
-
-				fd.setDirectory("C:\\");
-				fd.setFile("*.csv");
-				fd.setVisible(true);
-				String filename = fd.getFile();
-				if (filename == null)
-					lblInfo.setText("Select a valid file");
-				else 
-					lblInfo.setText("File selected: " + filename);
-				selecteddatabase=fd.getDirectory()+filename;
-				textField.setText(filename);
-			}
-		});
+		
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -190,121 +171,145 @@ public class Aprendizagem {
 		btnTeachMe.setForeground(Color.WHITE);
 		btnTeachMe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				lblInfo.setText("LEARNING...");
-				
-//Primeira leitura, define domínios e determina as dimensões dos dados (entradas para  amostra e número de variaveis)				
-				int nlines=0;
-				int[] Domains=null;
+				if(selecteddatabase==null) lblInfo.setText("PLEASE SELECT A VALID .CVS FILE");
+				else {
+					lblInfo.setText("LEARNING...");
 
-				try {
-					FileReader fr=new FileReader(selecteddatabase);
-					BufferedReader br=new BufferedReader(fr);
-					
-					String CurrentLine=br.readLine();
-					String[] line=CurrentLine.split(",");
-					Domains=new int[line.length];
-					nlines++;
-					for(int pos=0;pos<line.length;pos++) {
-						int x=Integer.parseInt(line[pos]);
-						if(Domains[pos]<x)Domains[pos]=x;
-					}
-					while ((CurrentLine=br.readLine())!=null){
+					//Primeira leitura, define domínios e determina as dimensões dos dados (entradas para  amostra e número de variaveis)				
+					int nlines=0;
+					int[] Domains=null;
+
+					try {
+						FileReader fr=new FileReader(selecteddatabase);
+						BufferedReader br=new BufferedReader(fr);
+
+						String CurrentLine=br.readLine();
+						String[] line=CurrentLine.split(",");
+						Domains=new int[line.length];
+						nlines++;
+						for(int pos=0;pos<line.length;pos++) {
+							int x=Integer.parseInt(line[pos]);
+							if(Domains[pos]<x)Domains[pos]=x;
+						}
+						while ((CurrentLine=br.readLine())!=null){
 							nlines++;
 							line=CurrentLine.split(",");
 							for(int pos=0;pos<line.length;pos++) {
 								int x=Integer.parseInt(line[pos]);
 								if(Domains[pos]<x)Domains[pos]=x;
 							}
-					}	
-					br.close();
-					fr.close();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				for(int i=0;i<Domains.length;i++) {
-					Domains[i]++;
-				}
-				
-				
-//Segunda leitura, copia os dados para a matriz dataentry				
-				Amostra amostra;
-				int[][] dataentry=new int[nlines][Domains.length];
-				
-				try {
-					FileReader fr=new FileReader(selecteddatabase);
-					BufferedReader br=new BufferedReader(fr);
-					
-					String CurrentLine;
-					String[] line;
-					for(int i=0;i<nlines;i++){
-						CurrentLine=br.readLine();
-						line=CurrentLine.split(",");
-						for(int j=0;j<line.length;j++) {
-							dataentry[i][j]=Integer.parseInt(line[j]);
+						}	
+						br.close();
+						fr.close();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					for(int i=0;i<Domains.length;i++) {
+						Domains[i]++;
+					}
+
+
+					//Segunda leitura, copia os dados para a matriz dataentry				
+					Amostra amostra;
+					int[][] dataentry=new int[nlines][Domains.length];
+
+					try {
+						FileReader fr=new FileReader(selecteddatabase);
+						BufferedReader br=new BufferedReader(fr);
+
+						String CurrentLine;
+						String[] line;
+						for(int i=0;i<nlines;i++){
+							CurrentLine=br.readLine();
+							line=CurrentLine.split(",");
+							for(int j=0;j<line.length;j++) {
+								dataentry[i][j]=Integer.parseInt(line[j]);
+							}
+						}	
+						br.close();
+						fr.close();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+
+					//Formação da amostra
+					amostra=new Amostra(Domains);
+
+
+					for(int k=0;k<dataentry.length;k++) {
+						amostra.add(dataentry[k]);
+					}
+
+
+					//Criação dos grafo pesado completo
+					WGraph WG=new WGraph(Domains.length-1);
+					for(int i=0;i<WG.dim();i++) {
+						for(int j=i+1;j<WG.dim();j++) {
+							double w=Weights.weight(i, j, amostra);
+							WG.add_edge(i, j, w);
 						}
-					}	
-					br.close();
-					fr.close();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-//Formação da amostra
-				amostra=new Amostra(Domains);
-				
-				
-				for(int k=0;k<dataentry.length;k++) {
-					amostra.add(dataentry[k]);
-				}
-				
-				
-//Criação dos grafo pesado completo
-				WGraph WG=new WGraph(Domains.length-1);
-				for(int i=0;i<WG.dim();i++) {
-					for(int j=i+1;j<WG.dim();j++) {
-						double w=Weights.weight(i, j, amostra);
-						WG.add_edge(i, j, w);
+					}
+
+					DGraph DG=WG.MST(0);
+
+					BN net=new BN(DG,amostra,0.5);
+					//				
+
+					JFileChooser f = new JFileChooser();
+					f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
+					f.showSaveDialog(null);
+
+					try {
+						FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
+						ObjectOutputStream oos=new ObjectOutputStream(fos);
+						oos.writeObject(net);
+						oos.close();
+						lblInfo.setText("Bayesian net successfully generated and saved as ''"+f.getCurrentDirectory()+"/"+choosenparameter+".BN''");
+
+					} catch (FileNotFoundException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+						lblInfo.setText(e3.getMessage());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						lblInfo.setText(e1.getMessage());
 					}
 				}
-				
-				DGraph DG=WG.MST(0);
-				
-				BN net=new BN(DG,amostra,0.5);
-//				
-				
-				JFileChooser f = new JFileChooser();
-		        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
-		        f.showSaveDialog(null);
-		        				
-				try {
-					FileOutputStream fos=new FileOutputStream(f.getCurrentDirectory()+"/"+choosenparameter+".BN");
-					ObjectOutputStream oos=new ObjectOutputStream(fos);
-					oos.writeObject(net);
-					oos.close();
-					lblInfo.setText("Bayesian net successfully generated and saved as ''"+f.getCurrentDirectory()+"/"+choosenparameter+".BN''");
-					
-				} catch (FileNotFoundException e3) {
-					// TODO Auto-generated catch block
-					e3.printStackTrace();
-					lblInfo.setText(e3.getMessage());
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-					lblInfo.setText(e1.getMessage());
-				}
-//Falta ter a certeza de que forma estão escritos os ficheiros, mas tenho quase a 
-//certeza que serão .csv, pelo que fiz aqui foi pensando assim
+			}
+		});
 
+
+
+		btnChooseFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				lblInfo.setText("");
+
+				FileDialog fd = new FileDialog(frame, "Select a file", FileDialog.LOAD);
+				frame.getContentPane().setLayout(null);
+
+				fd.setDirectory("C:\\");
+				fd.setFile("*.csv");
+				fd.setVisible(true);
+				String filename = fd.getFile();
+				if (filename == null || !filename.matches(".*.csv"))
+					lblInfo.setText("Select a valid file");
+				else {
+					lblInfo.setText("File selected: " + filename);
+					selecteddatabase=fd.getDirectory()+filename;
+					textField.setText(filename);
+					btnTeachMe.setEnabled(true);
+				}
 			}
 		});
 
