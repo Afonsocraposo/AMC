@@ -113,5 +113,14 @@ public class BN implements Serializable{
 		}
 		//reconverte o valor encontrado de logaritmo para probabilidade de observar o vector v
 		return Math.pow(10.0, p); 
-	}	                       
+	}	
+	
+	//retorna o número de variaveis e os seus domínios
+	public int[] domains() {
+		int[] res=new int[Theta.length];
+		for(int i=0;i<Theta.length;i++) {
+			res[i]=Theta[i].length;
+		}
+		return res;
+	}
 }
