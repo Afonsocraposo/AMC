@@ -6,7 +6,9 @@ import javax.swing.JTextField;
 
 import PDF.ScreenImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -14,6 +16,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -824,6 +827,33 @@ public class Doctor_thyroid extends JPanel {
 		plot.add(lblAbnormal);
 		
 		
+		JPanel healthy_panel = new JPanel();
+		healthy_panel.setBounds(280, 140, 100, 101);
+		healthy_panel.setBackground(Color.WHITE);;
+		JPanel sick_panel = new JPanel();
+		sick_panel.setBounds(280, 140, 100, 101);
+		sick_panel.setBackground(Color.WHITE);;
+
+		try {
+			BufferedImage healthy_pic = ImageIO.read(new File("images/healthy.png"));
+			BufferedImage sick_pic = ImageIO.read(new File("images/sick.png"));
+			JLabel healthy = new JLabel(new ImageIcon(healthy_pic));
+			JLabel sick = new JLabel(new ImageIcon(sick_pic));
+			healthy.setLocation(0, 0);
+			healthy.setSize(100, 100);
+			healthy_panel.add(healthy);
+			sick.setLocation(0, 0);
+			sick.setSize(100, 100);
+			sick_panel.add(sick);
+			
+			
+		} catch (IOException e1) {
+		}
+		
+		plot.add(healthy_panel);
+		plot.add(sick_panel);
+		
+		
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -1054,6 +1084,16 @@ public class Doctor_thyroid extends JPanel {
 					
 					lblNormal.setText("(0) Normal: "+ String.format( "%.2f",probN*100) +"%");
 					lblAbnormal.setText("(1) Abnormal: "+ String.format( "%.2f",probAb*100) +"%");
+
+					if(probN>probAb) {
+						sick_panel.setVisible(false);
+						healthy_panel.setVisible(true);
+						parent.patient.result="NEGATIVE";
+					} else {
+						sick_panel.setVisible(true);
+						healthy_panel.setVisible(false);
+						parent.patient.result="POSITIVE";
+					}
 					
 					plot.setVisible(true);
 					
@@ -1075,11 +1115,6 @@ public class Doctor_thyroid extends JPanel {
 					lblNormal.setFont(new Font("Tahoma", Font.BOLD, 16));
 					lblAbnormal.setFont(new Font("Tahoma", Font.BOLD, 16));
 
-					if(probN>probAb) {
-						parent.patient.result="NEGATIVE";
-					} else {
-						parent.patient.result="POSITIVE";
-					}
 
 				} 
 

@@ -2,7 +2,9 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -13,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -782,6 +785,32 @@ public class Doctor_hepatitis extends JPanel {
 		lblDie.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblDie.setBounds(30, 211, 279, 35);
 		plot.add(lblDie);
+		
+		JPanel healthy_panel = new JPanel();
+		healthy_panel.setBounds(280, 140, 100, 101);
+		healthy_panel.setBackground(Color.WHITE);;
+		JPanel sick_panel = new JPanel();
+		sick_panel.setBounds(280, 140, 100, 101);
+		sick_panel.setBackground(Color.WHITE);;
+
+		try {
+			BufferedImage healthy_pic = ImageIO.read(new File("images/healthy.png"));
+			BufferedImage sick_pic = ImageIO.read(new File("images/sick.png"));
+			JLabel healthy = new JLabel(new ImageIcon(healthy_pic));
+			JLabel sick = new JLabel(new ImageIcon(sick_pic));
+			healthy.setLocation(0, 0);
+			healthy.setSize(100, 100);
+			healthy_panel.add(healthy);
+			sick.setLocation(0, 0);
+			sick.setSize(100, 100);
+			sick_panel.add(sick);
+			
+			
+		} catch (IOException e1) {
+		}
+		
+		plot.add(healthy_panel);
+		plot.add(sick_panel);
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
@@ -1008,6 +1037,18 @@ public class Doctor_hepatitis extends JPanel {
 					lblLive.setText("(1) Live: "+ String.format( "%.2f",probL*100) +"%");
 					lblDie.setText("(0) Die: "+ String.format( "%.2f",probD*100) +"%");
 					
+					if(probL>probD) {
+						sick_panel.setVisible(false);
+						healthy_panel.setVisible(true);
+						parent.patient.result="NEGATIVE";
+
+					} else {
+						sick_panel.setVisible(true);
+						healthy_panel.setVisible(false);
+						parent.patient.result="POSITIVE";
+
+					}
+					
 					plot.setVisible(true);
 					
 					lblResults.setForeground(Color.BLACK);
@@ -1027,12 +1068,7 @@ public class Doctor_hepatitis extends JPanel {
 					lblLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 					lblLive.setFont(new Font("Tahoma", Font.BOLD, 16));
 					lblDie.setFont(new Font("Tahoma", Font.BOLD, 16));
-					
-					if(probL>probD) {
-						parent.patient.result="NEGATIVE";
-					} else {
-						parent.patient.result="POSITIVE";
-					}
+
 
 
 				} 

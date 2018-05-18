@@ -13,6 +13,7 @@ import Tipos_de_dados.BN;
 
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +24,10 @@ import java.util.List;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+
 import java.awt.Color;
 import javax.swing.JTextArea;
 import java.awt.event.FocusAdapter;
@@ -79,6 +83,7 @@ public class Doctor_cancer extends JPanel {
 		plot.setLocation(500, 30);
 		plot.setSize(400,300);
 		plot.setVisible(false);
+
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItem(0);
@@ -142,6 +147,8 @@ public class Doctor_cancer extends JPanel {
 		comboBox_9.addItem(1);
 		comboBox_9.setBounds(235, 269, 60, 25);
 		add(comboBox_9);
+		
+		
 		
 		
 		textField.addFocusListener(new FocusAdapter() {
@@ -543,11 +550,39 @@ public class Doctor_cancer extends JPanel {
 		lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblMalign.setBounds(30, 211, 279, 35);
 		plot.add(lblMalign);
+		
+		JPanel healthy_panel = new JPanel();
+		healthy_panel.setBounds(280, 140, 100, 101);
+		healthy_panel.setBackground(Color.WHITE);;
+		JPanel sick_panel = new JPanel();
+		sick_panel.setBounds(280, 140, 100, 101);
+		sick_panel.setBackground(Color.WHITE);;
+
+		try {
+			BufferedImage healthy_pic = ImageIO.read(new File("images/healthy.png"));
+			BufferedImage sick_pic = ImageIO.read(new File("images/sick.png"));
+			JLabel healthy = new JLabel(new ImageIcon(healthy_pic));
+			JLabel sick = new JLabel(new ImageIcon(sick_pic));
+			healthy.setLocation(0, 0);
+			healthy.setSize(100, 100);
+			healthy_panel.add(healthy);
+			sick.setLocation(0, 0);
+			sick.setSize(100, 100);
+			sick_panel.add(sick);
+			
+			
+		} catch (IOException e1) {
+		}
+		
+		plot.add(healthy_panel);
+		plot.add(sick_panel);
+		
 
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
 		btnDiagnose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					plot.setVisible(false);
+
 					List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
 					
 					if(list.size()!=10) {
@@ -704,6 +739,17 @@ public class Doctor_cancer extends JPanel {
 					lblBenign.setText("(0) Benign: "+ String.format( "%.2f",probB*100) +"%");
 					lblMalign.setText("(1) Malign: "+ String.format( "%.2f",probM*100) +"%");
 					
+
+					if(probB>probM) {
+						sick_panel.setVisible(false);
+						healthy_panel.setVisible(true);
+						parent.patient.result="NEGATIVE";
+					} else {
+						sick_panel.setVisible(true);
+						healthy_panel.setVisible(false);
+						parent.patient.result="POSITIVE";
+					}
+					
 					plot.setVisible(true);
 					
 					lblResults.setForeground(Color.BLACK);
@@ -725,13 +771,6 @@ public class Doctor_cancer extends JPanel {
 					lblMalign.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 
-
-					
-					if(probB>probM) {
-						parent.patient.result="NEGATIVE";
-					} else {
-						parent.patient.result="POSITIVE";
-					}
 	
 					
 				} 
