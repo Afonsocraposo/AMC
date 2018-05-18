@@ -25,7 +25,9 @@ public class Weights {
 					int Nc = a.count(varc, valc);
 					int N = a.length();
 					if (Nxyc!=0) { 
-						r=((double)Nxyc/N)*Math.log10((double)(Nxyc*Nc)/(double)(Nyc*Nxc));
+						r=((double)Nxyc/N)*Math.log10((double)(Nxyc*Nc)/(double)(Nyc*Nxc)); //double garante que, para valores próximos
+						                  							//de 1 dentro do log, não sejam aproximados para 1 (caso em que 
+																	//obteriamos uma informação mutua condicional nula, indevidamente)
 						it += r;
 					}
 					}
