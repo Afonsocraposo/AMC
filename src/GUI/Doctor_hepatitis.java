@@ -787,10 +787,10 @@ public class Doctor_hepatitis extends JPanel {
 		plot.add(lblDie);
 		
 		JPanel healthy_panel = new JPanel();
-		healthy_panel.setBounds(280, 140, 100, 101);
+		healthy_panel.setBounds(220, 140, 100, 101);
 		healthy_panel.setBackground(Color.WHITE);;
 		JPanel sick_panel = new JPanel();
-		sick_panel.setBounds(280, 140, 100, 101);
+		sick_panel.setBounds(220, 140, 100, 101);
 		sick_panel.setBackground(Color.WHITE);;
 
 		try {
