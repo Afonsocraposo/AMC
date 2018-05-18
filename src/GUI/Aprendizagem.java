@@ -30,11 +30,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
 import java.awt.event.ComponentAdapter;
 import java.awt.image.BufferedImage;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 
 
 
@@ -88,11 +89,11 @@ public class Aprendizagem {
 
 		
 		
-		JLabel lblInfo = new JLabel("");
+		JTextArea lblInfo = new JTextArea("");
+		lblInfo.setWrapStyleWord(true);
 		lblInfo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		lblInfo.setOpaque(true);
 		lblInfo.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
-		lblInfo.setVerticalAlignment(SwingConstants.TOP);
 		lblInfo.setBackground(Color.WHITE);
 		lblInfo.setBounds(31, 267, 491, 94);
 		
@@ -280,7 +281,7 @@ public class Aprendizagem {
 						ObjectOutputStream oos=new ObjectOutputStream(fos);
 						oos.writeObject(net);
 						oos.close();
-						lblInfo.setText("Bayesian net successfully generated and saved as ''"+f.getCurrentDirectory()+"/"+choosenparameter+".BN''");
+						lblInfo.setText("Bayesian net successfully generated and saved as: \n''"+f.getCurrentDirectory()+"/"+choosenparameter+".BN''");
 
 					} catch (FileNotFoundException e3) {
 						// TODO Auto-generated catch block
