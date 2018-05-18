@@ -38,7 +38,7 @@ public class Lista implements List,Serializable {
 		}
 		return res;
 	}
-	
+
 	//insere um  novo elemento no início da lista
 	public void insert(int x) {
 		Node aux=new Node(x,first);

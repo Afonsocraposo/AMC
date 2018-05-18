@@ -9,4 +9,3 @@ public interface Sample {
 	                                              //variaveis com esses valores
 	public int Domains(int x);//devolve o domínio da variavel x
 }
-// SERÁ QUE A AMOSTRA SÓ RECEBE MESMO INTEIROS?

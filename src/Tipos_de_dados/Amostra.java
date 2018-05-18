@@ -19,7 +19,7 @@ public class Amostra implements Sample{
 	protected int len;
 	protected no first;
 	
-
+// Construtor que recebe, à partida, um vetor de inteiros correspondentes ao domínio de cada variável
 	public Amostra(int[] Domains) {
 		this.Domains = Domains;
 		this.len = 0;

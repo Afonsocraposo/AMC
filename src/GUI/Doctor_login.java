@@ -26,7 +26,8 @@ public class Doctor_login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textUsername;
 	public JFrame frame_on;
-
+	static ImageIcon img=new ImageIcon("images/logo.png");
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,6 +37,7 @@ public class Doctor_login extends JFrame {
 				try {
 					Doctor_login frame = new Doctor_login();
 					frame.setVisible(true);
+					frame.setIconImage(img.getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
