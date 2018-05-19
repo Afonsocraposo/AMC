@@ -86,6 +86,8 @@ public class Aprendizagem {
 		frame.setTitle("Medicine for Dummies - Learning");
 
 		frame.setResizable(false);
+		
+		frame.setLocationRelativeTo(null);
 
 
 

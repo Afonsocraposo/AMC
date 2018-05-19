@@ -87,6 +87,7 @@ public class Doctor_other extends JPanel {
 		   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		res.setLocation(739, 55);
 		res.setSize(190,320);
+		res.setVisible(false);
 		add(res);
 
 
