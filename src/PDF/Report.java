@@ -76,6 +76,8 @@ public class Report {
         
         if(patient.result=="NEGATIVE") {
         	safe="SAFE";
+        } else if(patient.result=="UNKNOWN") {
+        	safe="ALIVE FOR NOW";
         } else {
         	safe= "NOT SAFE";
         }

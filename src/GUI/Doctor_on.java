@@ -27,10 +27,10 @@ public class Doctor_on extends JFrame {
 	Doctor_thyroid forthPanel;
 	Doctor_other fifthPanel;
 	Doctor_panel doctorPanel;
-	
-	
+
+
 	public PatientInfo patient = new PatientInfo();
-	
+
 	JTabbedPane tabbedPane = new JTabbedPane();
 	static ImageIcon img=new ImageIcon("images/logo.png");
 
@@ -61,14 +61,15 @@ public class Doctor_on extends JFrame {
 		thirdPanel = new Doctor_hepatitis(this);
 		forthPanel = new Doctor_thyroid(this);
 		fifthPanel = new Doctor_other(this);
-		
+
 		doctorPanel = new Doctor_panel(username, this);
-		
+
 		setTitle("Medicine for Dummies");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(1000,680);
+		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(240,250,255));
@@ -76,22 +77,22 @@ public class Doctor_on extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setResizable(false);
-		
+
 		contentPane.add(doctorPanel, BorderLayout.NORTH);
-		
+
 		username = "Unknown";
 		JLabel lbluser = new JLabel(username);
 		lbluser.setBounds(0, 0, 970, 60);
 		lbluser.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbluser.setFont(new Font("Dialog", Font.PLAIN, 18));
 		getContentPane().add(lbluser);
-		
+
 		tabbedPane.add("Breast Cancer",firstPanel);
 		tabbedPane.add("Diabetes",secondPanel);
 		tabbedPane.add("Hepatitis",thirdPanel);
 		tabbedPane.add("Thyroid Disease",forthPanel);
 		tabbedPane.add("Other",fifthPanel);
-		
+
 		contentPane.add(tabbedPane);
 	}
 
