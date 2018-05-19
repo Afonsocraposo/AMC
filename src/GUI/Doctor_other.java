@@ -46,8 +46,8 @@ public class Doctor_other extends JPanel {
 	private String selectedBN;
 	private String filename;
 	private BN bayesnet;
-	FileInputStream fis; 
-	ObjectInputStream ois; 
+	private FileInputStream fis; 
+	private ObjectInputStream ois; 
 	private double[] classes;
 
 	public Doctor_other(Doctor_on parent) {
@@ -89,10 +89,6 @@ public class Doctor_other extends JPanel {
 		res.setSize(190,320);
 		res.setVisible(false);
 		add(res);
-
-
-
-
 
 		textField.addFocusListener(new FocusAdapter() {
 			@Override
@@ -167,114 +163,12 @@ public class Doctor_other extends JPanel {
 			}
 		});
 
-
-
-
-
-
-
 		JTextArea textObs = new JTextArea();
 		textObs.setBounds(15, 407, 530, 46);
 		textObs.setBorder(BorderFactory.createLineBorder(new Color(100,155,175)));
 		add(textObs);
 
-
-		
-
-		
-
-
 		RoundedButton btnDiagnose = new RoundedButton("Diagnose");
-		btnDiagnose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				res.setVisible(false);
-
-				List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
-
-				if(list.size()!=domain.length) {
-					Jlabel_1.setVisible(true);
-					Jlabel_2.setVisible(false);
-				}else {
-					if(list.contains("")) {
-						Jlabel_1.setVisible(true);
-						Jlabel_2.setVisible(false);
-					}else {
-						Jlabel_1.setVisible(false);
-						Jlabel_2.setVisible(false);
-
-
-						list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
-						for(int j=0;j<domain.length-1;j++) {
-							int number = Integer.parseInt(list.get(j));
-							if(number>=0 && number<domain[j]) {
-								parameters[j]=number;
-							}else {
-								Jlabel_1.setVisible(false);
-								Jlabel_2.setVisible(true);
-							}
-
-
-
-						}
-						
-						textField.setText(Arrays.toString(Arrays.copyOfRange(parameters, 0, domain.length-1)));
-						
-				}}
-
-				ArrayList<Integer> signsParameters = new ArrayList<Integer>();
-
-				for(int i=0; i<domain.length-1; i++) {
-					signsParameters.add(parameters[i]);
-				}
-
-				parent.patient.signs = signsParameters;
-				parent.patient.exam = "";
-				parent.patient.comments = textObs.getText();
-
-
-				Jlabel_1.setVisible(false);
-				Jlabel_2.setVisible(false);
-
-				try { 
-					
-					double total = 0;
-					double[] probs = new double[classes.length];
-
-					for(int i = 0; i<classes.length; i++) {
-						parameters[domain.length-1]=i;
-						classes[i]=bayesnet.prob(parameters); 
-						total+=classes[i];
-					} 
-					
-					String print = "";
-					
-					for(int i = 0; i<classes.length; i++) {
-						probs[i]=classes[i]*100/total;
-						print+= " Class " + i + ": " + String.format( "%.2f",probs[i]) + " %\n";
-					}
-
-					textArea.setText(print);
-
-					res.setVisible(true);
-
-
-					BufferedImage plot_pic = ScreenImage.createImage(res);
-					parent.patient.picture = plot_pic;
-					
-					parent.patient.result = "UNKNOWN";
-					parent.patient.exam = "UNKNOWN";
-
-
-
-				} catch(Exception e3) {
-					
-				}
-				
-
-
-			}
-		});
-
 		btnDiagnose.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnDiagnose.setBounds(562, 407, 162, 46);
 		btnDiagnose.setBackground(new Color(100,155,175));
@@ -300,6 +194,14 @@ public class Doctor_other extends JPanel {
 		roundedButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		roundedButton.setBackground(new Color(100,155,175));
 		roundedButton.setForeground(Color.WHITE);
+		add(roundedButton);
+		
+		JLabel lblResults = new JLabel("Results:");
+		lblResults.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		lblResults.setBounds(739, 27, 100, 16);
+		lblResults.setForeground(new Color(100,155,175));
+		add(lblResults);
+		
 		roundedButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -314,10 +216,13 @@ public class Doctor_other extends JPanel {
 				fd.setVisible(true);
 				filename = fd.getFile();
 				if (filename == null || !filename.matches(".*.BN")) {
-					// do nothing
+					lblBNSel.setForeground(Color.RED);
+					lblBNSel.setText("Please select a valid .BN file.");
+					selectedBN=null;
 				} else {
 					selectedBN=fd.getDirectory()+filename;
 					roundedButton.setEnabled(true);
+					lblBNSel.setForeground(Color.BLACK);
 					lblBNSel.setText("Selected BN: "+filename);
 	
 				}
@@ -344,16 +249,104 @@ public class Doctor_other extends JPanel {
 				}
 			}
 		});
-		add(roundedButton);
-		
-		JLabel lblResults = new JLabel("Results:");
-		lblResults.setFont(new Font("Lucida Grande", Font.BOLD, 18));
-		lblResults.setBounds(739, 27, 100, 16);
-		lblResults.setForeground(new Color(100,155,175));
-		add(lblResults);
-		
-		
 
+		btnDiagnose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (filename == null || !filename.matches(".*.BN")) {
+					lblBNSel.setForeground(Color.RED);
+					lblBNSel.setText("Please select a valid .BN file.");
+					selectedBN=null;
+				}
+				else {
+
+					res.setVisible(false);
+
+					List<String> list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
+
+					if(list.size()!=domain.length) {
+						Jlabel_1.setVisible(true);
+						Jlabel_2.setVisible(false);
+					}else {
+						if(list.contains("")) {
+							Jlabel_1.setVisible(true);
+							Jlabel_2.setVisible(false);
+						}else {
+							Jlabel_1.setVisible(false);
+							Jlabel_2.setVisible(false);
+
+
+							list = Arrays.asList(textField.getText().substring(1, textField.getText().length() - 1).split(", "));
+							for(int j=0;j<domain.length-1;j++) {
+								int number = Integer.parseInt(list.get(j));
+								if(number>=0 && number<domain[j]) {
+									parameters[j]=number;
+								}else {
+									Jlabel_1.setVisible(false);
+									Jlabel_2.setVisible(true);
+								}
+
+
+
+							}
+
+							textField.setText(Arrays.toString(Arrays.copyOfRange(parameters, 0, domain.length-1)));
+
+						}}
+
+					ArrayList<Integer> signsParameters = new ArrayList<Integer>();
+
+					for(int i=0; i<domain.length-1; i++) {
+						signsParameters.add(parameters[i]);
+					}
+
+					parent.patient.signs = signsParameters;
+					parent.patient.exam = "";
+					parent.patient.comments = textObs.getText();
+
+
+					Jlabel_1.setVisible(false);
+					Jlabel_2.setVisible(false);
+
+					try { 
+
+						double total = 0;
+						double[] probs = new double[classes.length];
+
+						for(int i = 0; i<classes.length; i++) {
+							parameters[domain.length-1]=i;
+							classes[i]=bayesnet.prob(parameters); 
+							total+=classes[i];
+						} 
+
+						String print = "";
+
+						for(int i = 0; i<classes.length; i++) {
+							probs[i]=classes[i]*100/total;
+							print+= " Class " + i + ": " + String.format( "%.2f",probs[i]) + " %\n";
+						}
+
+						textArea.setText(print);
+
+						res.setVisible(true);
+
+
+						BufferedImage plot_pic = ScreenImage.createImage(res);
+						parent.patient.picture = plot_pic;
+
+						parent.patient.result = "UNKNOWN";
+						parent.patient.exam = "UNKNOWN";
+
+
+
+					} catch(Exception e3) {
+
+					}
+
+				}
+
+			}
+		});
 
 
 	}
