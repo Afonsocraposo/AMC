@@ -122,7 +122,7 @@ public class Doctor_panel extends JPanel {
 				JFileChooser f = new JFileChooser();
 				f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY); 
 				f.setDialogTitle("Choose folder containing models");
-				f.showOpenDialog(null);
+				f.showSaveDialog(null);
 
 				modelsource= f.getCurrentDirectory();
 			}
